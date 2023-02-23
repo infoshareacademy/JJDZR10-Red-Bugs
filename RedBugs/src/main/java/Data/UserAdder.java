@@ -7,11 +7,12 @@ public class UserAdder {
     public static User createUser() {
 
         User user = new User();
-        int userChecker = 1;
-        int anotherUser = 1;
+        int id = 1;
+
+        String anotherUser = null;
         Scanner scanner = new Scanner(System.in);
 
-        while (userChecker == anotherUser) {
+        do {
 
             System.out.println("Rozpoczynasz procedurę wprowadzania nowego użytkownika. ");
 
@@ -38,30 +39,21 @@ public class UserAdder {
                 String password = scanner.nextLine();
                 user.setPassword(password);
 
-                // ID should be generated automiaticly - work in progress
-                System.out.println("Wprowadź ID użytkownika:");
-
-
-                int id = scanner.nextInt();
-                user.setId(id);
+                user.setId(id + 1);
 
                 System.out.println("Czy chcesz stworzyć kolejnego użytkownika? Jeżeli tak, wciśnij 'y' ");
 
-                anotherUser = scanner.nextInt();
+                anotherUser = scanner.nextLine();
 
-                if (anotherUser !=1) break;
-
+                System.out.println("Zakończono procedurę tworzenia uzytkownika");
 
             } catch (InputMismatchException e) {
 
                 System.out.println("Podana przez Ciebie wartość nie jest prawidłowa. ");
 
             }
-
-            System.out.println("Zakończono procedurę tworzenia uzytkownika");
-        }
+        } while (anotherUser.equals("y"));
         return user;
-
     }
 }
 
