@@ -2,6 +2,7 @@ package com.infoshareacademy;
 
 import static Data.Menu.menu;
 import static Data.UserAdder.createUser;
+import static Data.UserAdder.logUser;
 
 
 /**
@@ -15,5 +16,6 @@ public class App
 
        // menu();
 createUser();
+//logUser();
     }
 }
