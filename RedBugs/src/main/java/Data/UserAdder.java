@@ -7,7 +7,7 @@ public class UserAdder {
     public static User createUser() {
 
         User user = new User();
-        int id = 1;
+        int id = 0;
 
         String anotherUser = null;
         Scanner scanner = new Scanner(System.in);
@@ -52,6 +52,7 @@ public class UserAdder {
 
             }
         } while (anotherUser.equals("y"));
+
         return user;
     }
 
@@ -59,12 +60,11 @@ public class UserAdder {
 
         Scanner scanner = new Scanner(System.in);
 
-        User user = new User();
+        User user = createUser();
         //temporarly values for program checkout
         String iPassword = user.getPassword();
         String iLogin = user.getLogin();
-
-
+        int iid = user.getId();
 
 
         //test
@@ -85,7 +85,7 @@ public class UserAdder {
                 String currentPassword = scanner.nextLine().toLowerCase();
 
                 if (currentPassword.equals(iPassword)) {
-                    System.out.println("Zostałeś zalogowany jako użytkownik:" + createUser().getName() + createUser().getSurname());
+                    System.out.println("Zostałeś zalogowany jako użytkownik:" + iLogin + "o id:" + iid);
                 } else {
                     System.out.println("Podałeś nieprawidłowe hasło.");
                 }
