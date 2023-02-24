@@ -17,6 +17,9 @@ public class App
 
         RoutePlanner routePlanner = new RoutePlanner();
 
+        routePlanner.chooseDateOfJourney();
+        routePlanner.chooseTimeOfJourney();
+
         routePlanner.chooseBeginningStop();
         routePlanner.chooseEndingStop();
         routePlanner.summarizeRoute();
