@@ -85,7 +85,7 @@ public class UserAdder {
                 String currentPassword = scanner.nextLine().toLowerCase();
 
                 if (currentPassword.equals(iPassword)) {
-                    System.out.println("Zostałeś zalogowany jako użytkownik:" + iLogin + "o id:" + iid);
+                    System.out.println("Zostałeś zalogowany jako użytkownik:" + iLogin);
                 } else {
                     System.out.println("Podałeś nieprawidłowe hasło.");
                 }
