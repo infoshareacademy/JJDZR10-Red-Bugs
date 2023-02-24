@@ -48,4 +48,27 @@ public class RoutePlanner {
         } return beginningStop;
     }
 
+    public int chooseEndingStop() {
+
+        boolean stopIncorrect = true;
+
+        while (stopIncorrect) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Wybierz przystanek końcowy z listy:\n");
+            getStopList();
+            try {
+                endingStop = scanner.nextInt();
+                stopIncorrect = false;
+            } catch (InputMismatchException e) {
+                System.out.println("Uwaga: wprowadź numer wybranego przystanku");
+            }
+
+        } return endingStop;
+    }
+
+    public void summarizeRoute() {
+        System.out.println("Wybrany przystanek początkowy: " + listOfStops[beginningStop - 1]);
+        System.out.println("Wybrany przystanek końcowy: " + listOfStops[endingStop - 1]);
+    }
+
 }

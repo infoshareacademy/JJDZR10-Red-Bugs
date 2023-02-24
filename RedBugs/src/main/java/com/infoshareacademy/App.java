@@ -17,7 +17,9 @@ public class App
 
         RoutePlanner routePlanner = new RoutePlanner();
 
-        System.out.println(routePlanner.chooseBeginningStop());
+        routePlanner.chooseBeginningStop();
+        routePlanner.chooseEndingStop();
+        routePlanner.summarizeRoute();
 
 
     }
