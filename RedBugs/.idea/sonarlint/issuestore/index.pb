@@ -7,8 +7,6 @@ S
 #src/main/java/Interfaces/Route.java,1/3/1386a2007bf75a49660e9b40d1d18fda11736628
 [
 +src/main/java/Interfaces/ViewInterface.java,b/6/b63fb8705357460ff05df9dcf37d96e0680a2b84
-L
-src/main/java/Data/Menu.java,f/8/f80f717d01a7dc71e214f205e8cd3688f63fc3a1
 P
  src/main/java/Data/Schedule.java,1/d/1df431782bf27d3b0fd1dddcc20345654a97fe16
 7

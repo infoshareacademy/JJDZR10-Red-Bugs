@@ -13,13 +13,11 @@ public class App
     public static void main( String[] args ) throws Exception {
         System.out.println( "RedBugs" );
 
-        // menu();
+         menu();
 
         RoutePlanner routePlanner = new RoutePlanner();
-
         routePlanner.chooseDateOfJourney();
         routePlanner.chooseTimeOfJourney();
-
         routePlanner.chooseBeginningStop();
         routePlanner.chooseEndingStop();
         routePlanner.summarizeRoute();
