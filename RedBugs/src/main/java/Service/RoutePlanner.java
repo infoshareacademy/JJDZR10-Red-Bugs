@@ -1,7 +1,5 @@
 package Service;
 
-import Data.Stop;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -39,7 +37,7 @@ public class RoutePlanner {
             System.out.println("Wybierz przystanek początkowy z listy:\n");
             getStopList();
             try {
-                beginningStop = scanner.nextInt();
+                beginningStop = scanner.nextInt() - 1;
                 stopIncorrect = false;
             } catch (InputMismatchException e) {
                 System.out.println("Uwaga: wprowadź numer wybranego przystanku");
@@ -57,7 +55,7 @@ public class RoutePlanner {
             System.out.println("Wybierz przystanek końcowy z listy:\n");
             getStopList();
             try {
-                endingStop = scanner.nextInt();
+                endingStop = scanner.nextInt() -  1;
                 stopIncorrect = false;
             } catch (InputMismatchException e) {
                 System.out.println("Uwaga: wprowadź numer wybranego przystanku");
@@ -67,8 +65,32 @@ public class RoutePlanner {
     }
 
     public void summarizeRoute() {
-        System.out.println("Wybrany przystanek początkowy: " + listOfStops[beginningStop - 1]);
-        System.out.println("Wybrany przystanek końcowy: " + listOfStops[endingStop - 1]);
+
+        System.out.println("Wybrany przystanek początkowy: " + listOfStops[beginningStop]);
+        System.out.println("Wybrany przystanek końcowy: " + listOfStops[endingStop]);
     }
 
+    public int getBeginningStop() {
+        return beginningStop;
+    }
+
+    public void setBeginningStop(int beginningStop) {
+        this.beginningStop = beginningStop;
+    }
+
+    public int getEndingStop() {
+        return endingStop;
+    }
+
+    public void setEndingStop(int endingStop) {
+        this.endingStop = endingStop;
+    }
+
+    public String[] getListOfStops() {
+        return listOfStops;
+    }
+
+    public void setListOfStops(String[] listOfStops) {
+        this.listOfStops = listOfStops;
+    }
 }
