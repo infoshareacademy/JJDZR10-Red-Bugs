@@ -87,12 +87,8 @@ public class UserAdder {
                 if (currentPassword.equals(iPassword)) {
                     System.out.println("Zostałeś zalogowany jako użytkownik:" + iLogin);
                 } else {
-                    System.out.println("Podałeś nieprawidłowe hasło.");
+                    System.out.println("Podałeś nieprawidłowe hasło lub login");
                 }
-
-            } else {
-                System.out.println("podałeś nieprawidłowy login.");
-            }
         } catch (InputMismatchException e) {
 
             System.out.println("Podana przez Ciebie wartość nie jest prawidłowa. ");
