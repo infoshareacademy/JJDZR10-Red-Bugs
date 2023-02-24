@@ -14,7 +14,7 @@ public class UserAdder {
 
         do {
 
-            System.out.println("Rozpoczynasz procedurę wprowadzania nowego użytkownika. ");
+            System.out.println("Rejestracja. ");
 
             try {
 
