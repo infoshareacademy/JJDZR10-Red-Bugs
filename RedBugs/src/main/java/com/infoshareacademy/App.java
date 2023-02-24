@@ -1,5 +1,7 @@
 package com.infoshareacademy;
 
+import Data.User;
+
 import static Data.Menu.menu;
 import static Data.UserAdder.createUser;
 import static Data.UserAdder.logUser;
@@ -15,7 +17,7 @@ public class App
         System.out.println( "RedBugs" );
 
        // menu();
-createUser();
-//logUser();
+       User example = createUser();
+       logUser();
     }
 }

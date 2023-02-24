@@ -59,9 +59,17 @@ public class UserAdder {
 
         Scanner scanner = new Scanner(System.in);
 
+        User user = new User();
         //temporarly values for program checkout
-        String iPaswrod = createUser().getPassword();
-        String iLogin = createUser().getLogin();
+        String iPassword = user.getPassword();
+        String iLogin = user.getLogin();
+
+
+
+
+        //test
+        System.out.println(user.getPassword());
+        System.out.println(user.getLogin());
 
         System.out.println("Rozpocząłeś procedurę logowania.");
         System.out.printf("Podaj login użytkownika:");
@@ -76,7 +84,7 @@ public class UserAdder {
 
                 String currentPassword = scanner.nextLine().toLowerCase();
 
-                if (currentPassword.equals(iPaswrod)) {
+                if (currentPassword.equals(iPassword)) {
                     System.out.println("Zostałeś zalogowany jako użytkownik:" + createUser().getName() + createUser().getSurname());
                 } else {
                     System.out.println("Podałeś nieprawidłowe hasło.");
