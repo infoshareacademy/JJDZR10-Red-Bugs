@@ -80,7 +80,7 @@ public class UserAdder {
 
             if (currentLogin.equals(iLogin)) {
 
-                System.out.println("Podaj hasło użytkownika:");
+                System.out.println("hasło:");
 
                 String currentPassword = scanner.nextLine().toLowerCase();
 
