@@ -71,8 +71,8 @@ public class UserAdder {
         System.out.println(user.getPassword());
         System.out.println(user.getLogin());
 
-        System.out.println("Rozpocząłeś procedurę logowania.");
-        System.out.printf("Podaj login użytkownika:");
+        System.out.println("Logowanie");
+        System.out.printf("login:");
 
         String currentLogin = scanner.nextLine().toLowerCase();
 
