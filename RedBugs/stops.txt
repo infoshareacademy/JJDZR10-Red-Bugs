@@ -1,0 +1,1 @@
+[{"nameStop":"Przystanek1","idStop":1,"schedule":{"dateTime":null,"vehicle":null}},{"nameStop":"Przystanek2","idStop":2,"schedule":{"dateTime":null,"vehicle":null}},{"nameStop":"Przystanek3","idStop":3,"schedule":{"dateTime":null,"vehicle":null}},{"nameStop":"Przystanek4","idStop":4,"schedule":{"dateTime":null,"vehicle":null}}]
