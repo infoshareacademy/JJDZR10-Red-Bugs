@@ -1,5 +1,4 @@
 package com.infoshareacademy;
-
 import javax.xml.crypto.Data;
 
 import static Data.Menu.menu;
