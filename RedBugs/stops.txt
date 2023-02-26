@@ -1,4 +1,8 @@
 [
-{"nameStop":"PrzystanekPierwszy","idStop":1,"schedule":{"dateTime":null,"vehicle":null}},
-{"nameStop":"22222","idStop":2,"schedule":{"dateTime":null,"vehicle":null}}
+{"nameStop":"Dworzec Główny","idStop":1,"schedule":{"dateTime":null,"vehicle":null}},
+{"nameStop":"Brama Wyżynna","idStop":2,"schedule":{"dateTime":null,"vehicle":null}},
+{"nameStop":"Żabi kruk","idStop":3,"schedule":{"dateTime":null,"vehicle":null}},
+{"nameStop":"Wały Piastowskie","idStop":4,"schedule":{"dateTime":null,"vehicle":null}},
+{"nameStop":"Jaśkowa Dolina","idStop":5,"schedule":{"dateTime":null,"vehicle":null}},
+{"nameStop":"Wrzeszcz PKP","idStop":6,"schedule":{"dateTime":null,"vehicle":null}},
 ]
