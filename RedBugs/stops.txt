@@ -1,1 +1,4 @@
-{"nameStop":"Przystanek1test1","idStop":1,"schedule":{"dateTime":null,"vehicle":null}}
+[
+{"nameStop":"PrzystanekPierwszy","idStop":1,"schedule":{"dateTime":null,"vehicle":null}},
+{"nameStop":"22222","idStop":2,"schedule":{"dateTime":null,"vehicle":null}}
+]

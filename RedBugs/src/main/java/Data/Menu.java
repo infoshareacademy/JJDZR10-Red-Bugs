@@ -13,7 +13,7 @@ public class Menu {
         System.out.println("Start Scan!");
         System.out.println(" ");
 
-        do {
+       do {
             try {
                 Scanner scanner = new Scanner(System.in);
 
@@ -68,7 +68,7 @@ public class Menu {
                                 returnToMenu();
                                 break;
                             case 2:
-                                System.out.println("Create new route");
+                                System.out.println("Create default route from file JSON");
                                 Data.Route.routescreator();
                                 returnToMenu();
                                 break;
@@ -127,5 +127,8 @@ public class Menu {
 
     public static int getNumMenu() {
         return numMenu;
+
+
+
     }
 }
