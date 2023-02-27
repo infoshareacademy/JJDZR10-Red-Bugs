@@ -1,7 +1,5 @@
 package Data;
 
-import java.util.Scanner;
-
 public class User {
     private String name;
     private String surname;
@@ -40,8 +38,9 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) {
+    public String setPassword(String password) {
         this.password = password;
+        return password;
     }
 
     public int getId() {
