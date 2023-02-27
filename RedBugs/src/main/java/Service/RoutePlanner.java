@@ -10,6 +10,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RoutePlanner {
+
     private int beginningStop;
     private int endingStop;
     private String[] listOfStops;
