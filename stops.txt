@@ -1,0 +1,1 @@
+[{"id":1,"name":"Przystanek1","schedule":{"name":null}},{"id":2,"name":"Przystanek2","schedule":{"name":null}},{"id":3,"name":"Przystanek3","schedule":{"name":null}},{"id":4,"name":"Przystanek4","schedule":{"name":null}}]
