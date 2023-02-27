@@ -8,6 +8,11 @@ public class Stop {
 
     private Schedule schedule;
 
+    public Stop(int id, String name, Schedule schedule) {
+        this.idStop = id;
+        this.nameStop = name;
+        this.schedule = schedule;
+    }
     public String getNameStop() {
         return nameStop;
     }
