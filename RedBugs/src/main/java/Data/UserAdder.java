@@ -89,6 +89,7 @@ public class UserAdder {
                 } else {
                     System.out.println("Podałeś nieprawidłowe hasło lub login");
                 }
+            }
         } catch (InputMismatchException e) {
 
             System.out.println("Podana przez Ciebie wartość nie jest prawidłowa. ");
