@@ -48,7 +48,6 @@ public class Route {
             //wypisywanie przystankow linia po linii
             Path path = Paths.get("stops.txt");
             String readedStops = Files.readString(path);
-            System.out.println("All stops taken from the file stops.txt");
             System.out.println(readedStops);
 
         }

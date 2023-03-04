@@ -5,4 +5,10 @@
 {"nameStop":"Wały Piastowskie","idStop":4,"schedule":{"dateTime":null,"vehicle":null}},
 {"nameStop":"Jaśkowa Dolina","idStop":5,"schedule":{"dateTime":null,"vehicle":null}},
 {"nameStop":"Wrzeszcz PKP","idStop":6,"schedule":{"dateTime":null,"vehicle":null}},
+{"nameStop":"Centrum","idStop":7,"schedule":{"dateTime":null,"vehicle":null}},
+{"nameStop":"Galeria Bałtycka","idStop":8,"schedule":{"dateTime":null,"vehicle":null}},
+{"nameStop":"Stogi Pasanil","idStop":9,"schedule":{"dateTime":null,"vehicle":null}},
+{"nameStop":"Grumwaldzka","idStop":10,"schedule":{"dateTime":null,"vehicle":null}},
+{"nameStop":"Rakoczego","idStop":11,"schedule":{"dateTime":null,"vehicle":null}},
+{"nameStop":"Port Lotniczy","idStop":12,"schedule":{"dateTime":null,"vehicle":null}},
 ]
