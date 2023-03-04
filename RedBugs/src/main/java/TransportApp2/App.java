@@ -8,6 +8,7 @@ import TransportApp2.model.Vehicle;
 import TransportApp2.model.VehicleType;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class App {
     static ArrayList<Stop> stops = new ArrayList<>();
@@ -23,6 +24,46 @@ public class App {
         System.out.println(getVehicleById(11));
         System.out.println(getVehicleById(33));
 
+        System.out.println(getStopsOnTheRoute(routes.get(0)));
+
+
+        ArrayList<Stop> listBusOnStop = getStopsOnTheRoute(routes.get(3));
+        listBusOnStop.forEach(stop -> System.out.println(stop));
+
+        System.out.println(getVehicleOnThisStop(getStopById(2)));
+
+
+        List<String> stringListStops = getVehicleOnThisStop(getStopById(2));
+        stringListStops.forEach(s -> System.out.println(s));
+
+    }
+
+    // found all vehicle on this Stop
+    public static ArrayList<String> getVehicleOnThisStop(Stop stop) {
+        ArrayList<String> result = new ArrayList<>();
+
+        for (Route route : routes) {
+            for (long stopId : route.getStops())
+                if (stop.getStopId() == stopId) {
+                    result.add(route.getNameRoute());
+                }
+        }
+
+        return result;
+    }
+
+    // found stops on the rout
+    public static ArrayList<Stop> getStopsOnTheRoute(Route route) {
+        ArrayList<Stop> result = new ArrayList<>();
+
+        for (long stopId : route.getStops()) {
+            Stop stop = getStopById(stopId);
+            if (stop != null ) {
+                result.add(getStopById(stopId));
+            }
+        }
+
+        return result;
     }
 
 
