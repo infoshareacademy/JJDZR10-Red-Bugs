@@ -1,10 +1,5 @@
 package Data;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -63,6 +58,52 @@ public class Route {
         Path path = Paths.get("stops.txt");
         String readedStops = Files.readString(path);
         System.out.println(readedStops);
+    }
+
+    public static class Route {
+        private long routeId;
+        private long numberVehicle;
+        private String nameRoute;
+        private long[] stops;
+
+        public Route(long routeId, long numberVehicle, String nameRoute, long[] stops) {
+            this.routeId = routeId;
+            this.numberVehicle = numberVehicle;
+            this.nameRoute = nameRoute;
+            this.stops = stops;
+        }
+
+        public long getRouteId() {
+            return routeId;
+        }
+
+        public void setRouteId(long routeId) {
+            this.routeId = routeId;
+        }
+
+        public long getNumberVehicle() {
+            return numberVehicle;
+        }
+
+        public void setNumberVehicle(long numberVehicle) {
+            this.numberVehicle = numberVehicle;
+        }
+
+        public String getNameRoute() {
+            return nameRoute;
+        }
+
+        public void setNameRoute(String nameRoute) {
+            this.nameRoute = nameRoute;
+        }
+
+        public long[] getStops() {
+            return stops;
+        }
+
+        public void setStops(long[] stops) {
+            this.stops = stops;
+        }
     }
 }
 
