@@ -1,4 +1,4 @@
-package TransportApp2.model;
+package Data;
 
 public enum VehicleType {
     Bus,

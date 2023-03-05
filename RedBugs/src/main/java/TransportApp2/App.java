@@ -4,8 +4,8 @@ package TransportApp2;
 
 import TransportApp2.model.Route;
 import TransportApp2.model.Stop;
-import TransportApp2.model.Vehicle;
-import TransportApp2.model.VehicleType;
+import Data.Vehicle;
+import Data.VehicleType;
 
 import java.util.ArrayList;
 import java.util.List;
