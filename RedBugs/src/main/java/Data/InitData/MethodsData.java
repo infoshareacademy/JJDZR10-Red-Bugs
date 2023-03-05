@@ -1,19 +1,18 @@
-package TransportApp2;
-
-
+package Data.InitData;
 
 import Data.Route;
-import TransportApp2.model.Stop;
+import Data.Stop;
 import Data.Vehicle;
-import Data.VehicleType;
 
 import java.util.ArrayList;
 import java.util.List;
-public class App {
 
+import static Data.InitData.InitData.*;
+
+public class MethodsData {
 
     public static void main(String[] args) {
-        initData();
+        InitData.initData();
 
         System.out.println(getStopById(1));
         System.out.println(getStopById(3));
@@ -33,13 +32,38 @@ public class App {
         List<String> stringListStops = getVehicleOnThisStop(getStopById(2));
         stringListStops.forEach(s -> System.out.println(s));
 
+        showAllStops();
+        showAllVehicles();
+
+
+    }
+    // show all vehicles
+    public static void showAllVehicles() {
+        ArrayList<Vehicle> vehicleArrayList = new ArrayList<>();
+
+        for (Vehicle vehicle : vehicles) {
+            vehicleArrayList.add(vehicle);
+        }
+
+        vehicleArrayList.forEach(vehicle -> System.out.println(vehicle));
+    }
+
+    // show all stops
+    public static void showAllStops() {
+        ArrayList<Stop> stopArrayList = new ArrayList<>();
+
+        for (Stop stop : stops) {
+            stopArrayList.add(stop);
+        }
+
+        stopArrayList.forEach(stop -> System.out.println(stop));
     }
 
     // found all vehicle on this Stop
     public static ArrayList<String> getVehicleOnThisStop(Stop stop) {
         ArrayList<String> result = new ArrayList<>();
 
-        for (Data.Route.Route route : routes) {
+        for (Route route : routes) {
             for (long stopId : route.getStops())
                 if (stop.getStopId() == stopId) {
                     result.add(route.getNameRoute());
@@ -50,7 +74,7 @@ public class App {
     }
 
     // found stops on the rout
-    public static ArrayList<Stop> getStopsOnTheRoute(Data.Route.Route route) {
+    public static ArrayList<Stop> getStopsOnTheRoute(Route route) {
         ArrayList<Stop> result = new ArrayList<>();
 
         for (long stopId : route.getStops()) {
@@ -90,7 +114,4 @@ public class App {
         return stopFound;
     }
 
-
 }
-
-

@@ -1,16 +1,16 @@
 package Data.InitData;
 
 import Data.Route;
+import Data.Stop;
 import Data.Vehicle;
 import Data.VehicleType;
-import TransportApp2.model.Stop;
 
 import java.util.ArrayList;
 
 public class InitData {
     static ArrayList<Stop> stops = new ArrayList<>();
     static ArrayList<Vehicle> vehicles = new ArrayList<>();
-    static ArrayList<Data.Route.Route> routes = new ArrayList<>();
+    static ArrayList<Route> routes = new ArrayList<>();
 
     public static void initData() {
         stops.add(new Stop(1, "Dąbrowa Centrum"));
