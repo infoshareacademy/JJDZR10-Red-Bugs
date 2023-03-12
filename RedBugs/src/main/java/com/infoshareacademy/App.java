@@ -18,8 +18,7 @@ public class App
         System.out.println( "RedBugs" );
 
         RoutePlanner routePlanner = new RoutePlanner();
-       menu();
-       logUser();
-
+        logUser();
+        menu();
     }
 }
