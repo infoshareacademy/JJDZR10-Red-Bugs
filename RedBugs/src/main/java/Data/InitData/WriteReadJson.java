@@ -6,6 +6,7 @@ import Data.Vehicle;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -31,6 +32,8 @@ public class WriteReadJson {
 
         Path path = Paths.get(fileName);
         Files.write(path, arrayListAsSting.getBytes());
+
+        path.toFile().deleteOnExit();
     }
 
     public static void writeToJsonVehicles(ArrayList<Vehicle> objectArrayList, String fileName) throws Exception {
@@ -40,6 +43,8 @@ public class WriteReadJson {
 
         Path path = Paths.get(fileName);
         Files.write(path, arrayListAsSting.getBytes());
+
+        path.toFile().deleteOnExit();
     }
 
     public static void writeToJsonRoutes(ArrayList<Route> objectArrayList, String fileName) throws Exception {
@@ -49,6 +54,8 @@ public class WriteReadJson {
 
         Path path = Paths.get(fileName);
         Files.write(path, arrayListAsSting.getBytes());
+
+        path.toFile().deleteOnExit();
     }
 
 
