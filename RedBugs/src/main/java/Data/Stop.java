@@ -10,6 +10,9 @@ public class Stop {
         this.stopName = stopName;
     }
 
+    public Stop() {
+    }
+
     public long getStopId() {
         return stopId;
     }
