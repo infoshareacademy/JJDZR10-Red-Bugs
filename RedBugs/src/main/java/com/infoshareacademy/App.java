@@ -18,12 +18,6 @@ public class App
         System.out.println( "RedBugs" );
 
         RoutePlanner routePlanner = new RoutePlanner();
-        routePlanner.chooseDateOfJourney();
-        routePlanner.chooseTimeOfJourney();
-        routePlanner.chooseBeginningStop();
-        routePlanner.chooseEndingStop();
-        routePlanner.summarizeRoute();
-
        menu();
        logUser();
 
