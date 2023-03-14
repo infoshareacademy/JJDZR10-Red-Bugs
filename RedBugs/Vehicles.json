@@ -1,0 +1,41 @@
+[ {
+  "vehicleId" : 11,
+  "vehicleName" : "Siedlce - Stara Piła",
+  "type" : "Bus"
+}, {
+  "vehicleId" : 22,
+  "vehicleName" : "Dworzec Główny - Pruszcz Komarowo",
+  "type" : "Bus"
+}, {
+  "vehicleId" : 33,
+  "vehicleName" : "Dworzec Główny - Pruszcz Matejki",
+  "type" : "Bus"
+}, {
+  "vehicleId" : 44,
+  "vehicleName" : "Port Lotniczy - Sopot Kamienny",
+  "type" : "Bus"
+}, {
+  "vehicleId" : 55,
+  "vehicleName" : "Wrzeszcz PKP - Żukowo Urząd Gminy",
+  "type" : "Bus"
+}, {
+  "vehicleId" : 66,
+  "vehicleName" : "Siedlce - Stara Piła",
+  "type" : "Tram"
+}, {
+  "vehicleId" : 77,
+  "vehicleName" : "Dworzec Główny - Pruszcz Komarowo",
+  "type" : "Tram"
+}, {
+  "vehicleId" : 88,
+  "vehicleName" : "Dworzec Główny - Pruszcz Matejki",
+  "type" : "Tram"
+}, {
+  "vehicleId" : 99,
+  "vehicleName" : "Port Lotniczy - Sopot Kamienny",
+  "type" : "Tram"
+}, {
+  "vehicleId" : 10,
+  "vehicleName" : "Wrzeszcz PKP - Żukowo Urząd Gminy",
+  "type" : "Tram"
+} ]
