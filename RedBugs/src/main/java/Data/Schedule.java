@@ -10,7 +10,7 @@ public class Schedule {
 
     private Integer dateTime;
     private static String[] listOfStops;
-    private static int chooseStop;
+    private static int chosenStop;
     private Vehicle vehicle;
 
     public Integer getDateTime() {
@@ -50,16 +50,16 @@ public class Schedule {
 
         while (stopIncorrect) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Choose stop from the list:\n");
+            System.out.println("Wybierz przystanek z listy:\n");
             getStopList();
             try {
-                chooseStop = scanner.nextInt() ; //usunalem -1
+                chosenStop = scanner.nextInt() ;
                 stopIncorrect = false;
             } catch (InputMismatchException e) {
-                System.out.println("Note: enter the number of the selected stop");
+                System.out.println("Uwaga: podaj numer wybranego przystanku");
             }
-            System.out.println("Selected stop shedule: " + listOfStops[chooseStop] + " is: ");
+            System.out.println("Rozkład jazdy dla linii " + listOfStops[chosenStop] + ": ");
         }
-        return chooseStop;
+        return chosenStop;
     }
 }

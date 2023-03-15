@@ -6,10 +6,4 @@ public class UserService {
 
 
     }
-
-    //public static User getUser() {
-
-    //return User;      ???
-    //}
-
 }

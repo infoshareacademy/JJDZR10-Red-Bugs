@@ -12,7 +12,7 @@ public class Menu {
 
     public static void menu() throws Exception, Error {
         System.out.println(" ");
-        System.out.println("Start Scan!");
+        System.out.println("Witaj!");
         System.out.println(" ");
 
         do {
@@ -21,41 +21,40 @@ public class Menu {
 
                 System.out.println("Menu");
                 System.out.println(" ");
-                System.out.println("1. Login");
-                System.out.println("2. Register");
-                System.out.println("3. Schedule");
-                System.out.println("4. Bus stop list");
-                System.out.println("5. Route");
-                System.out.println("6. Exit");
+                System.out.println("1. Logowanie");
+                System.out.println("2. Rejestracja");
+                System.out.println("3. Rozkład jazdy");
+                System.out.println("4. Lista przystanków");
+                System.out.println("5. Trasa");
+                System.out.println("6. Wyjście");
                 System.out.println(" ");
-                System.out.print("Enter number: ");
+                System.out.print("Wpisz numer: ");
 
                 numMenu = scanner.nextInt();
 
                 switch (numMenu) {
                     case 1:
-                        System.out.println("Login");
+                        System.out.println("Logowanie");
                         UserAdder.logUser();
                         returnToMenu();
                         break;
                     case 2:
-                        System.out.println("Register");
+                        System.out.println("Rejestracja");
                         UserAdder.createUser();
                         returnToMenu();
                         break;
                     case 3:
-                        System.out.println("Schedule");
+                        System.out.println("Rozkład jazdy");
                         Schedule.chooseStop();
-                        // Metods do rozdładu jazdy
                         //BookExcel.readListBusStop("myFile.xlt");
                         returnToMenu();
                         break;
                     case 4:
-                        System.out.println("Bus stop list");
-                        System.out.println("View all stops : 1");
-                        System.out.println("Create new stops : 2");
-                        System.out.println("Exit : 3");
-                        System.out.print("Enter number: ");
+                        System.out.println("Lista przystanków");
+                        System.out.println("1. Pokaż wszystkie przystanki");
+                        System.out.println("2. Dodaj nowy przystanek");
+                        System.out.println("3. Wyjście");
+                        System.out.print("Wpisz numer: ");
                         numMenu = scanner.nextInt();
 
                         switch (numMenu) {
@@ -68,34 +67,27 @@ public class Menu {
                                 returnToMenu();
                                 break;
                             case 3:
-                                System.out.println("Exit");
-                                System.out.println("Goodbye!");
-                                // Metods  for exit and goodbay!
+                                System.out.println("Wyjście");
                                 break;
 
                         }
-                        // Methods for All routes!
                         break;
                     case 5:
-                        System.out.println("Route");
+                        System.out.println("Trasa");
                         RoutePlanner.routePlanner();
-                        // Methods for All routes!
                         break;
 
                     case 6:
-                        System.out.println("Exit");
-                        System.out.println("Goodbye!");
-                        // Metods  for exit and goodbay!
+                        System.out.println("Wyjście");
                         break;
                 }
             } catch (Exception e) {
-                System.out.println("Number can't be lass or equal zero!");
+                System.out.println("Podaj numer większy od 0");
             } catch (Error b) {
-                System.out.println("Number can't be more 6");
+                System.out.println("Numer nie może być większy niż 6");
             }
         } while (getNumMenu() != 6);
 
-        System.out.println("End Scan!");
     }
 
     public static void returnToMenu() throws Exception {
@@ -104,19 +96,18 @@ public class Menu {
             try {
                 Scanner scannerReturn = new Scanner(System.in);
 
-                System.out.print("Enter number 1 for Exit: ");
+                System.out.print("Wpisz 1 aby wyjść: ");
 
                 numberExit = scannerReturn.nextInt();
 
                 switch (numberExit) {
                     case 1:
 
-                        System.out.println("Enter in Menu.....");
-                        //Metods for return menu
+                        System.out.println("Powrót do menu");
                         break;
                 }
             } catch (Exception a) {
-                System.out.println("Number must be one!");
+                System.out.println("Wpisz poprawny numer: ");
             }
         } while (getNumberExit() != 1);
     }

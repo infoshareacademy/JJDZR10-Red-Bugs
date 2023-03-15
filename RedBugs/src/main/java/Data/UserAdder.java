@@ -14,44 +14,44 @@ public class UserAdder {
 
         do {
 
-            System.out.println("Registration. ");
+            System.out.println("Rejestracja użytkownika");
 
             try {
 
-                System.out.println("Please enter your username:");
+                System.out.println("Imię: ");
 
                 String name = scanner.nextLine().toLowerCase();
                 user.setName(name);
 
-                System.out.println("Please enter your surname:");
+                System.out.println("Nazwisko: ");
 
                 String surname = scanner.nextLine().toLowerCase();
                 user.setSurname(surname);
 
-                System.out.println("Provide user login:");
+                System.out.println("Login: ");
 
                 String login = scanner.nextLine().toLowerCase();
                 user.setLogin(login);
 
-                System.out.println("Provide user password:");
+                System.out.println("Hasło: ");
 
                 String password = scanner.nextLine().toLowerCase();
                 user.setPassword(password);
 
                 user.setId(id + 1);
 
-                System.out.println("Do you want to create another user? If so, press 'y'");
+                System.out.println("Czy chcesz stworzyć kolejnego użytkownika? Jeśli tak, wpisz 't'");
 
                 anotherUser = scanner.nextLine();
 
-                System.out.println("The user creation process has been completed");
+                System.out.println("Użytkownik został utworzony");
 
             } catch (InputMismatchException e) {
 
-                System.out.println("The value you entered is not valid. ");
+                System.out.println("Niepoprawne dane");
 
             }
-        } while (anotherUser.equals("y"));
+        } while (anotherUser.equals("t"));
 
         return user;
     }
@@ -71,8 +71,8 @@ public class UserAdder {
         System.out.println(user.getPassword());
         System.out.println(user.getLogin());
 
-        System.out.println("Login");
-        System.out.printf("Login:");
+        System.out.println("Logowanie");
+        System.out.println("Login: ");
 
         String currentLogin = scanner.nextLine().toLowerCase();
 
@@ -80,20 +80,20 @@ public class UserAdder {
 
             if (currentLogin.equals(iLogin)) {
 
-                System.out.println("Password:");
+                System.out.println("Hasło: ");
 
                 String currentPassword = scanner.nextLine().toLowerCase();
 
                 if (currentPassword.equals(iPassword)) {
-                    System.out.println("You have been logged in as user:" + iLogin);
+                    System.out.println("Zostałeś zalogowany jako: " + iLogin);
                 } else {
-                    System.out.println("You have entered an incorrect password or login");
+                    System.out.println("Wprowadzono niepoprawny login lub hasło");
                 }
             }
 
 
         } catch (Exception e) {
-            System.out.println("The value you entered is not valid. ");
+            System.out.println("Wprowadzono niepoprawne dane");
             throw new RuntimeException(e);
         }
     }
