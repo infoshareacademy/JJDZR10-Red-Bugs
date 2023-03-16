@@ -11,14 +11,24 @@ import java.util.Scanner;
 
 public class RoutePlanner {
 
-    private int beginningStop;
-    private int endingStop;
-    private String[] listOfStops;
-    private LocalDate dateOfJourney;
-    private LocalTime timeOfJourney;
+    private static int beginningStop;
+    private static int endingStop;
+    private static String[] listOfStops;
+    private static LocalDate dateOfJourney;
+    private static LocalTime timeOfJourney;
 
     // metody na pewno do poprawki jak zrobimy już plik z dostępnymi przystankami, itd.
-    public LocalDate chooseDateOfJourney(){
+    public static void routePlanner(){
+        chooseDateOfJourney();
+        chooseTimeOfJourney();
+        getStopList();
+        chooseBeginningStop();
+        chooseEndingStop();
+        summarizeRoute();
+
+    };
+
+    public static LocalDate chooseDateOfJourney(){
 
         boolean dateIncorrect = true;
 
@@ -26,33 +36,33 @@ public class RoutePlanner {
             Scanner scanner = new Scanner(System.in);
 
             try {
-                System.out.println("Podaj datę odjazdu (dzień): ");
+                System.out.println("Enter departure date (day): ");
                 int d = scanner.nextInt();
 
-                System.out.println("Podaj datę odjazdu (miesiąc): ");
+                System.out.println("Enter departure date (month): ");
                 int m = scanner.nextInt();
 
-                System.out.println("Podaj datę odjazdu (rok): ");
+                System.out.println("Enter departure date (year): ");
                 int y = scanner.nextInt();
 
                 dateOfJourney = LocalDate.of(y, m, d);
                 if (dateOfJourney.isAfter(LocalDate.now())) {
                     dateIncorrect = false;
                 } else {
-                    System.out.println("Data podróży nie może być wcześniejsza niż dziś. Spróbuj ponownie.");
+                    System.out.println("Travel date cannot be earlier than today. Try again.");
                 }
 
             } catch (InputMismatchException e) {
-                System.out.println("Wprowadź poprawne dane.");
+                System.out.println("Please enter the correct details");
             } catch (DateTimeException f){
-                System.out.println("Niepoprawna data, wprowadź dane ponownie.");
+                System.out.println("Incorrect date, please re-enter the data.");
             }
 
         }
         return dateOfJourney;
     }
 
-    public LocalTime chooseTimeOfJourney(){
+    public static LocalTime chooseTimeOfJourney(){
 
         boolean timeIncorrect = true;
 
@@ -60,27 +70,28 @@ public class RoutePlanner {
             Scanner scanner = new Scanner(System.in);
 
             try {
-                System.out.println("Podaj czas odjazdu odjazdu (godzina): ");
+                System.out.println("\n" +
+                        "Enter the departure time of departure (time): ");
                 int h = scanner.nextInt();
 
-                System.out.println("Podaj czas odjazdu (minuta): ");
+                System.out.println("Enter departure time (minute): ");
                 int m = scanner.nextInt();
 
                 timeOfJourney = LocalTime.of(h, m);
                 timeIncorrect = false;
 
             } catch (InputMismatchException e) {
-                System.out.println("Wprowadź poprawne dane");
+                System.out.println("Please enter the correct details");
             } catch (DateTimeException f){
-                System.out.println("Niepoprawny czas, wprowadź dane ponownie.");
+                System.out.println("Incorrect time, please re-enter.");
             }
 
         }
         return timeOfJourney;
     }
-    public void getStopList() {
-        Path pathToStopList = Path.of("src", "main", "java", "Data", "TestStops.txt");
-
+    public static void getStopList() {
+        //Path pathToStopList = Path.of("src", "main", "java", "Data", "TestStops.txt");
+        Path pathToStopList = Path.of("stops.txt");
         try {
             String content = Files.readString(pathToStopList);
             listOfStops = content.split("\n");
@@ -93,47 +104,47 @@ public class RoutePlanner {
         }
     }
 
-    public int chooseBeginningStop() {
+    public static int chooseBeginningStop() {
 
         boolean stopIncorrect = true;
 
         while (stopIncorrect) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Wybierz przystanek początkowy z listy:\n");
+            System.out.println("Select your starting stop from the list:\n");
             getStopList();
             try {
-                beginningStop = scanner.nextInt() - 1;
+                beginningStop = scanner.nextInt() ; //usunalem -1
                 stopIncorrect = false;
             } catch (InputMismatchException e) {
-                System.out.println("Uwaga: wprowadź numer wybranego przystanku");
+                System.out.println("Note: enter the number of the selected stop");
             }
 
         } return beginningStop;
     }
 
-    public int chooseEndingStop() {
+    public static int chooseEndingStop() {
 
         boolean stopIncorrect = true;
 
         while (stopIncorrect) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Wybierz przystanek końcowy z listy:\n");
+            System.out.println("Select the final stop from the list:\n");
             getStopList();
             try {
-                endingStop = scanner.nextInt() -  1;
+                endingStop = scanner.nextInt() ;//usunalem -1
                 stopIncorrect = false;
             } catch (InputMismatchException e) {
-                System.out.println("Uwaga: wprowadź numer wybranego przystanku");
+                System.out.println("Note: enter the number of the selected stop");
             }
 
         } return endingStop;
     }
 
-    public void summarizeRoute() {
+    public static void summarizeRoute() {
 
-        System.out.println("Wybrany przystanek początkowy: " + listOfStops[beginningStop]);
-        System.out.println("Wybrany przystanek końcowy: " + listOfStops[endingStop]);
-        System.out.println("Wybrany czas podróży: " + dateOfJourney + " " + timeOfJourney);
+        System.out.println("Selected startimg stop: " + listOfStops[beginningStop]);
+        System.out.println("Selected final stop: " + listOfStops[endingStop]);
+        System.out.println("Selected travel time: " + dateOfJourney + " " + timeOfJourney);
     }
 
     public int getBeginningStop() {

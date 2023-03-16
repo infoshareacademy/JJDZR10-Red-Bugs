@@ -1,5 +1,7 @@
 package Data;
 
+import Service.RoutePlanner;
+
 import java.util.Scanner;
 
 
@@ -13,17 +15,17 @@ public class Menu {
         System.out.println("Start Scan!");
         System.out.println(" ");
 
-       do {
+        do {
             try {
                 Scanner scanner = new Scanner(System.in);
 
                 System.out.println("Menu");
                 System.out.println(" ");
-                System.out.println("1. Logowanie");
-                System.out.println("2. Rejestracja");
-                System.out.println("3. Rozkład jazdy");
-                System.out.println("4. Bus stops");
-                System.out.println("5. All routes");
+                System.out.println("1. Login");
+                System.out.println("2. Register");
+                System.out.println("3. Schedule");
+                System.out.println("4. Bus stop list");
+                System.out.println("5. Route");
                 System.out.println("6. Exit");
                 System.out.println(" ");
                 System.out.print("Enter number: ");
@@ -32,43 +34,36 @@ public class Menu {
 
                 switch (numMenu) {
                     case 1:
-                        System.out.println("Enter in Logowanie");
-                        //Metods for Login
+                        System.out.println("Login");
+                        UserAdder.logUser();
                         returnToMenu();
                         break;
                     case 2:
-                        System.out.println("Enter in Rejestracja");
-                        // Metods for Reastretion
+                        System.out.println("Register");
+                        UserAdder.createUser();
                         returnToMenu();
                         break;
                     case 3:
-                        System.out.println("Enter in Rozkład jazdy");
+                        System.out.println("Schedule");
+                        Schedule.chooseStop();
                         // Metods do rozdładu jazdy
                         //BookExcel.readListBusStop("myFile.xlt");
                         returnToMenu();
                         break;
                     case 4:
-                        System.out.println("Enter in Bus stops");
-                        // Metods for bus stops!
-                        //BookExcel.readListBusOnStop("myFile.xlt");
-                        returnToMenu();
-                        break;
-                    case 5:
-                        System.out.println("All routes");
-                        System.out.println("View all routes : 1");
-                        System.out.println("Create new route : 2");
+                        System.out.println("Bus stop list");
+                        System.out.println("View all stops : 1");
+                        System.out.println("Create new stops : 2");
                         System.out.println("Exit : 3");
                         System.out.print("Enter number: ");
                         numMenu = scanner.nextInt();
 
                         switch (numMenu) {
                             case 1:
-                                System.out.println("View all routes");
                                 Data.Route.routesreader();
                                 returnToMenu();
                                 break;
                             case 2:
-                                System.out.println("Create default route from file JSON");
                                 Data.Route.routescreator();
                                 returnToMenu();
                                 break;
@@ -79,6 +74,11 @@ public class Menu {
                                 break;
 
                         }
+                        // Methods for All routes!
+                        break;
+                    case 5:
+                        System.out.println("Route");
+                        RoutePlanner.routePlanner();
                         // Methods for All routes!
                         break;
 
@@ -127,7 +127,6 @@ public class Menu {
 
     public static int getNumMenu() {
         return numMenu;
-
 
 
     }

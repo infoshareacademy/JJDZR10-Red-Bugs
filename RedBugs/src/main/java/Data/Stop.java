@@ -1,32 +1,29 @@
 package Data;
 
 public class Stop {
-
-    private String nameStop;
-
-    private Integer idStop;
-
+    private long stopId;
+    private String stopName;
     private Schedule schedule;
 
-    public Stop(int id, String name, Schedule schedule) {
-        this.idStop = id;
-        this.nameStop = name;
-        this.schedule = schedule;
-    }
-    public String getNameStop() {
-        return nameStop;
+    public Stop(long stopId, String stopName) {
+        this.stopId = stopId;
+        this.stopName = stopName;
     }
 
-    public void setNameStop(String nameStop) {
-        this.nameStop = nameStop;
+    public long getStopId() {
+        return stopId;
     }
 
-    public Integer getIdStop() {
-        return idStop;
+    public void setStopId(long stopId) {
+        this.stopId = stopId;
     }
 
-    public void setIdStop(Integer idStop) {
-        this.idStop = idStop;
+    public String getStopName() {
+        return stopName;
+    }
+
+    public void setStopName(String stopName) {
+        this.stopName = stopName;
     }
 
     public Schedule getSchedule() {
@@ -35,5 +32,11 @@ public class Stop {
 
     public void setSchedule(Schedule schedule) {
         this.schedule = schedule;
+    }
+
+    @Override
+    public String toString() {
+        return "Stop number: " + stopId +
+                ", stopName: " + stopName ;
     }
 }

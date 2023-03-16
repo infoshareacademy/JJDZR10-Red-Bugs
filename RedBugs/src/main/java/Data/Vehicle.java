@@ -1,24 +1,46 @@
 package Data;
 
+import Data.VehicleType;
+
 public class Vehicle {
+    private long vehicleId;
+    private String vehicleName;
+    private VehicleType type;
 
-    private String typeVehicle;
-
-    private Integer number;
-
-    public String getTypeVehicle() {
-        return typeVehicle;
+    public Vehicle(long vehicleId, String vehicleName, VehicleType type) {
+        this.vehicleId = vehicleId;
+        this.vehicleName = vehicleName;
+        this.type = type;
     }
 
-    public void setTypeVehicle(String typeVehicle) {
-        this.typeVehicle = typeVehicle;
+    public long getVehicleId() {
+        return vehicleId;
     }
 
-    public Integer getNumber() {
-        return number;
+    public void setVehicleId(Integer vehicleId) {
+        this.vehicleId = vehicleId;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
+    public String getVehicleName() {
+        return vehicleName;
+    }
+
+    public void setVehicleName(String vehicleName) {
+        this.vehicleName = vehicleName;
+    }
+
+    public VehicleType getType() {
+        return type;
+    }
+
+    public void setType(VehicleType type) {
+        this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "VehicleId: " + vehicleId +
+                ", Name: " + vehicleName +
+                ", type: " + type;
     }
 }
