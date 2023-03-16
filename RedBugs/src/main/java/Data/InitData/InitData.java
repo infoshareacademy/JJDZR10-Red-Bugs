@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class InitData {
     static ArrayList<Stop> stops = new ArrayList<>();
+
     static ArrayList<Vehicle> vehicles = new ArrayList<>();
     static ArrayList<Route> routes = new ArrayList<>();
 
