@@ -1,7 +1,5 @@
 package com.isa.pl.redbugs.model;
 
-import Service.RoutePlanner;
-
 import java.util.Scanner;
 
 
@@ -60,13 +58,13 @@ public class Menu {
 
                         switch (numMenu) {
                             case 1:
-                                Data.Route.routesreader();
+                                Route.routesreader();
                                 returnToMenu();
                                 break;
-                            case 2:
-                                Data.Route.routescreator();
-                                returnToMenu();
-                                break;
+//                            case 2:
+//                                Route.routescreator();
+//                                returnToMenu();
+//                                break;
                             case 3:
                                 System.out.println("Exit");
                                 System.out.println("Goodbye!");

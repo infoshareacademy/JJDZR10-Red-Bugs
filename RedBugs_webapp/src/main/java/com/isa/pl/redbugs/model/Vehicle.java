@@ -1,6 +1,5 @@
 package com.isa.pl.redbugs.model;
 
-import Data.VehicleType;
 
 public class Vehicle {
     private long vehicleId;
