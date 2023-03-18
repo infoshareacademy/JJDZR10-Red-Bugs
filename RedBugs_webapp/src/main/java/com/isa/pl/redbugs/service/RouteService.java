@@ -11,7 +11,7 @@ public class RouteService {
     }
 
     public void deleteRoute(){
-        //delete vehicle
+        //delete route
     }
 
     public List<Route> findAllRoutes() {
