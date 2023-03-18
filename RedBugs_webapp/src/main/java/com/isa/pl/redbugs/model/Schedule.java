@@ -31,7 +31,7 @@ public class Schedule {
 
     public static void getStopList() {
 
-        Path pathToStopList = Path.of("stops.txt");
+        Path pathToStopList = Path.of("stops.json");
         try {
             String content = Files.readString(pathToStopList);
             listOfStops = content.split("\n");
