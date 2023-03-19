@@ -9,11 +9,11 @@ public class VehicleService {
 
     private ReadService readService;
 
-    public void createVehicle(long vehicleId, String vehicleName, VehicleType type){
+    public void createVehicle(long vehicleId, String vehicleName, VehicleType type) {
         new Vehicle(vehicleId, vehicleName, type);
     }
 
-    public void deleteVehicle(){
+    public void deleteVehicle() {
         //delete vehicle
     }
 

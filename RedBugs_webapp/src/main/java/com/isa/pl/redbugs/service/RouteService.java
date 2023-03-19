@@ -6,11 +6,11 @@ import java.util.List;
 
 public class RouteService {
 
-    public void createRoute(long routeId, long numberVehicle, String nameRoute, long[] stops){
+    public void createRoute(long routeId, long numberVehicle, String nameRoute, long[] stops) {
         new Route(routeId, numberVehicle, nameRoute, stops);
     }
 
-    public void deleteRoute(){
+    public void deleteRoute() {
         //delete route
     }
 
