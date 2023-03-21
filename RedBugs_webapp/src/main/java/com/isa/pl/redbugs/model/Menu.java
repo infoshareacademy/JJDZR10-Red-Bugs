@@ -76,8 +76,6 @@ public class Menu {
                         break;
                     case 5:
                         System.out.println("Route");
-                        RoutePlanner.routePlanner();
-                        // Methods for All routes!
                         break;
 
                     case 6:
