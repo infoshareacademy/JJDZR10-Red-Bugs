@@ -9,8 +9,8 @@ public class VehicleService {
 
     private ReadService readService;
 
-    public void createVehicle(long vehicleId, String vehicleName, VehicleType type) {
-        new Vehicle(vehicleId, vehicleName, type);
+    public Vehicle createVehicle(long vehicleId, String vehicleName, VehicleType type) {
+        return new Vehicle(vehicleId, vehicleName, type);
     }
 
     public void deleteVehicle() {
@@ -18,7 +18,6 @@ public class VehicleService {
     }
 
     public List<Vehicle> findAllVehicles() {
-
-        return null;
+        return InitDataService.vehiclesDataList();
     }
 }

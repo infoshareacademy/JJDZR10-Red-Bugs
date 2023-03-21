@@ -6,8 +6,8 @@ import java.util.List;
 
 public class RouteService {
 
-    public void createRoute(long routeId, long numberVehicle, String nameRoute, long[] stops) {
-        new Route(routeId, numberVehicle, nameRoute, stops);
+    public Route createRoute(long routeId, long numberVehicle, String nameRoute, long[] stops) {
+        return new Route(routeId, numberVehicle, nameRoute, stops);
     }
 
     public void deleteRoute() {
@@ -15,7 +15,6 @@ public class RouteService {
     }
 
     public List<Route> findAllRoutes() {
-
-        return null;
+        return InitDataService.routesDataList();
     }
 }
