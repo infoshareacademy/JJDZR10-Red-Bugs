@@ -1,10 +1,8 @@
 package com.isa.pl.redbugs.model;
 
-import com.google.gson.Gson;
+/*import com.google.gson.Gson;*/
 
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,9 +14,9 @@ public class Route {
     private long routeId;
     private long numberVehicle;
     private String nameRoute;
-    private long[] stops;
+    private List<Object> stops;
 
-    public Route(long routeId, long numberVehicle, String nameRoute, long[] stops) {
+    public Route(long routeId, long numberVehicle, String nameRoute, List<Object> stops) {
         this.routeId = routeId;
         this.numberVehicle = numberVehicle;
         this.nameRoute = nameRoute;
@@ -26,6 +24,10 @@ public class Route {
     }
 
     private static List<Stop> stopList = new ArrayList<>();
+
+    public Route() {
+
+    }
 
     public static List<Stop> getStopList() {
         return stopList;
@@ -59,15 +61,15 @@ public class Route {
         this.nameRoute = nameRoute;
     }
 
-    public long[] getStops() {
+    public List<Object> getStops() {
         return stops;
     }
 
-    public void setStops(long[] stops) {
+    public void setStops(List<Object> stops) {
         this.stops = stops;
     }
 
-    public static void fromJson() throws IOException {
+  /*  public static void fromJson() throws IOException {
         Gson gson = new Gson();
         try (Reader reader = new FileReader("stops.txt")) {
             List<Stop> stop = gson.fromJson(reader, List.class);
@@ -78,11 +80,13 @@ public class Route {
             System.out.println(readedStops);
 
         }
-    }
+    }*/
+/*
 
     public static void routescreator() throws IOException {
         fromJson();
     }
+*/
 
     public static void routesreader() throws IOException {
         Path path = Paths.get("stops.txt");
