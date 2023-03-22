@@ -10,7 +10,7 @@ import java.util.List;
 
 public class WriteService {
 
-    public void writeToJson(List<Object> objectList, String fileName) throws IOException {
+    public static void writeToJson(List<Object> objectList, String fileName) throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
         String arrayListAsSting = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(objectList);

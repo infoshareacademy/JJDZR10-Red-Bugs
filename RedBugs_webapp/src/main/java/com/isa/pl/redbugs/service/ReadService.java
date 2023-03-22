@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ReadService {
 
-    public List<Object> readJson(String fileName) throws IOException {
+    public static List<Object> readJson(String fileName) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         Path path = Paths.get(fileName);
 
