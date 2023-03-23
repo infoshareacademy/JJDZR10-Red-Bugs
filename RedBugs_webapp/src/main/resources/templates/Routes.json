@@ -1,0 +1,56 @@
+{
+  "count": 10,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "routeId" : 21,
+      "numberVehicle" : 11,
+      "nameRoute" : "Siedlce - Stara Piła",
+      "stops" : [ 1, 3, 5, 7, 2, 8 ]
+    }, {
+      "routeId" : 22,
+      "numberVehicle" : 22,
+      "nameRoute" : "Port Lotniczy - Sopot Kamienny",
+      "stops" : [ 4, 3, 7, 9, 10 ]
+    }, {
+      "routeId" : 23,
+      "numberVehicle" : 33,
+      "nameRoute" : "Dworzec Główny - Pruszcz Matejki",
+      "stops" : [ 1, 2, 3, 8 ]
+    }, {
+      "routeId" : 24,
+      "numberVehicle" : 44,
+      "nameRoute" : "Wrzeszcz PKP - Żukowo Urząd Gminy",
+      "stops" : [ 5, 7, 2, 8, 10 ]
+    }, {
+      "routeId" : 25,
+      "numberVehicle" : 55,
+      "nameRoute" : "Dworzec Główny - Pruszcz Komarowo",
+      "stops" : [ 1, 7, 2, 8, 9, 4 ]
+    }, {
+      "routeId" : 26,
+      "numberVehicle" : 66,
+      "nameRoute" : "Siedlce - Stara Piła 1",
+      "stops" : [ 1, 3, 7, 2, 8 ]
+    }, {
+      "routeId" : 27,
+      "numberVehicle" : 77,
+      "nameRoute" : "Port Lotniczy - Sopot Kamienny 2",
+      "stops" : [ 2, 4, 3, 7, 9, 10 ]
+    }, {
+      "routeId" : 28,
+      "numberVehicle" : 88,
+      "nameRoute" : "Dworzec Główny - Pruszcz Matejki 3",
+      "stops" : [ 1, 2, 3, 9, 8 ]
+    }, {
+      "routeId" : 29,
+      "numberVehicle" : 99,
+      "nameRoute" : "Wrzeszcz PKP - Żukowo Urząd Gminy 4",
+      "stops" : [ 5, 7, 2, 8, 10 ]
+    }, {
+      "routeId" : 30,
+      "numberVehicle" : 100,
+      "nameRoute" : "Dworzec Główny - Pruszcz Komarowo 5",
+      "stops" : [ 1, 2, 8, 9, 4 ]
+    } ]}
