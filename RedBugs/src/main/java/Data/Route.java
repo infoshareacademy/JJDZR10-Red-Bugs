@@ -1,7 +1,10 @@
 package Data;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -63,6 +66,10 @@ public class Route {
         return stops;
     }
 
+    public Route() {
+
+    }
+
     public void setStops(long[] stops) {
         this.stops = stops;
     }
@@ -88,6 +95,17 @@ public class Route {
         Path path = Paths.get("stops.txt");
         String readedStops = Files.readString(path);
         System.out.println(readedStops);
+    }
+
+    public static void routeDesplayer() throws IOException {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        File routeJsonFile = new File("Routes.json");
+        ArrayList<Route> myRoute = objectMapper.readValue(routeJsonFile, new TypeReference<ArrayList<Route>>() {
+        });
+        for (int i = 0; i < myRoute.size(); i++) {
+            System.out.println(myRoute.get(i).getNameRoute());
+        }
     }
 }
 
