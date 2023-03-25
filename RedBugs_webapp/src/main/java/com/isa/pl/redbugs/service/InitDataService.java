@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InitDataService {
-    public static List<Stop> stopsDataList() {
-        List<Stop> stops = new ArrayList<>();
+    public static List<Object> stopsDataList() {
+        List<Object> stops = new ArrayList<>();
         stops.add(new Stop(1, "Dąbrowa Centrum"));
         stops.add(new Stop(2, "Gdynia Kameliowa"));
         stops.add(new Stop(3, "Paprykowa"));
@@ -24,8 +24,8 @@ public class InitDataService {
         return stops;
     }
 
-    public static List<Vehicle> vehiclesDataList() {
-        List<Vehicle> vehicles = new ArrayList<>();
+    public static List<Object> vehiclesDataList() {
+        List<Object> vehicles = new ArrayList<>();
         vehicles.add(new Vehicle(11, "Siedlce - Stara Piła", VehicleType.Bus));
         vehicles.add(new Vehicle(22, "Dworzec Główny - Pruszcz Komarowo", VehicleType.Bus));
         vehicles.add(new Vehicle(33, "Dworzec Główny - Pruszcz Matejki", VehicleType.Bus));
@@ -39,8 +39,8 @@ public class InitDataService {
         return vehicles;
     }
 
-    public static List<Route> routesDataList() {
-        List<Route> routes = new ArrayList<>();
+    public static List<Object> routesDataList() {
+        List<Object> routes = new ArrayList<>();
         routes.add(new Route(21, 11, "Siedlce - Stara Piła", new long[]{1, 3, 5, 7, 2, 8}));
         routes.add(new Route(22, 22, "Port Lotniczy - Sopot Kamienny", new long[]{4, 3, 7, 9, 10}));
         routes.add(new Route(23, 33, "Dworzec Główny - Pruszcz Matejki", new long[]{1, 2, 3, 8}));
