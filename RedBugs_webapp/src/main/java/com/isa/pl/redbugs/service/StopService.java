@@ -21,6 +21,6 @@ public class StopService {
     }
 
     public List<Object> findAllStops() throws IOException {
-        return ReadService.readJson("routes.json");
+        return ReadService.readJson("Stops.json");
     }
 }

@@ -21,6 +21,6 @@ public class RouteService {
     }
 
     public List<Object> findAllRoutes() throws IOException {
-        return ReadService.readJson("routes.json");
+        return ReadService.readJson("Routes.json");
     }
 }

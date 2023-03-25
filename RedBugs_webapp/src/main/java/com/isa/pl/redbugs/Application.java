@@ -2,6 +2,7 @@ package com.isa.pl.redbugs;
 
 import com.isa.pl.redbugs.service.InitDataService;
 import com.isa.pl.redbugs.service.ReadService;
+import com.isa.pl.redbugs.service.VehicleService;
 import com.isa.pl.redbugs.service.WriteService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

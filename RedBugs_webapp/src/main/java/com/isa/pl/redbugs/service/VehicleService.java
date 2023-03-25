@@ -8,13 +8,11 @@ import java.util.List;
 
 public class VehicleService {
 
-    private ReadService readService; // what should this field do?
-
-//    public static Vehicle createVehicle(long vehicleId, String vehicleName, VehicleType type) {
+//    public Vehicle createVehicle(long vehicleId, String vehicleName, VehicleType type) {
 //        return new Vehicle(vehicleId, vehicleName, type); // should the created vehicle be added to list in InitData?
 //    }
 
-    public static List<Vehicle> deleteVehicle(List<Vehicle> listOfVehicles, long idOfVehicle) {
+    public List<Vehicle> deleteVehicle(List<Vehicle> listOfVehicles, long idOfVehicle) {
         for (int i = 0; i < listOfVehicles.size(); i++) {
             if (listOfVehicles.get(i).getVehicleId() == idOfVehicle) {
                 listOfVehicles.remove(i);
@@ -23,8 +21,8 @@ public class VehicleService {
         } return listOfVehicles;
     }
 
-    public static List<Object> findAllVehicles() throws IOException {
-        return ReadService.readJson("vehicles.json"); // nazwa pliku???
+    public List<Object> findAllVehicles() throws IOException {
+        return ReadService.readJson("Vehicles.json");
     }
 
 
