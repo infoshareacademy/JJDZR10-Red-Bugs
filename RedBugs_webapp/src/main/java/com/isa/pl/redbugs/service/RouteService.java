@@ -4,7 +4,6 @@ import com.isa.pl.redbugs.model.Route;
 import java.io.IOException;
 import java.util.List;
 
-import static com.isa.pl.redbugs.model.Route.findRouteById;
 
 public class RouteService {
 
@@ -13,7 +12,8 @@ public class RouteService {
 //    }
 
     public void deleteRoute(long idOfRoute) throws IOException {
-        Route routeToDelete = findRouteById(idOfRoute);
+        Route route = new Route();
+        Route routeToDelete = route.findRouteById(idOfRoute);
         findAllRoutes().remove(routeToDelete);
         }
 

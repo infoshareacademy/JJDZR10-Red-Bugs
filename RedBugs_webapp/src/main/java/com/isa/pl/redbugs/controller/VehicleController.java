@@ -11,9 +11,9 @@ public class VehicleController {
 
     private VehicleService vehicleService;
 
-//    @GetMapping("/vehicles")
-//    public String getVehicles() throws IOException {
-//        vehicleService.findAllVehicles();
-//        return "vehicles";
-//    }
+    @GetMapping("/vehicles")
+    public String getVehicles() throws IOException {
+        vehicleService.findAllVehicles();
+        return "vehicles";
+    }
 }

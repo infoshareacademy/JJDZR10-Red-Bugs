@@ -1,6 +1,9 @@
 package com.isa.pl.redbugs;
 
 import com.isa.pl.redbugs.model.Route;
+import com.isa.pl.redbugs.model.Stop;
+import com.isa.pl.redbugs.model.Vehicle;
+import com.isa.pl.redbugs.service.InitDataService;
 import com.isa.pl.redbugs.service.VehicleService;
 import com.isa.pl.redbugs.service.WriteService;
 import org.springframework.boot.CommandLineRunner;
@@ -19,15 +22,28 @@ public class Application {
 
 		SpringApplication.run(Application.class, args);
 
-		WriteService writeService = new WriteService();
-		writeService.writeInitializedDataToJson();
+		writeInitializedDataToJson();
 
 //		VehicleService vehicleService = new VehicleService();
 //		vehicleService.deleteVehicle(11);
 //		System.out.println(vehicleService.findAllVehicles());
 
-		System.out.println(Route.findRouteById(21).toString());
+		Route route = new Route();
+		System.out.println(route.findRouteById(21).toString());
 
+		Stop stop = new Stop();
+		System.out.println(stop.findStopById(1).toString());
+
+		Vehicle vehicle = new Vehicle();
+		System.out.println(vehicle.findVehicleById(11).toString());
+
+	}
+
+	public static void writeInitializedDataToJson() throws IOException {
+		WriteService ws = new WriteService();
+		ws.writeToJson(InitDataService.stopsDataList(),"Stops.json");
+		ws.writeToJson(InitDataService.vehiclesDataList(),"Vehicles.json");
+		ws.writeToJson(InitDataService.routesDataList(),"Routes.json");
 	}
 
 	@Bean

@@ -8,9 +8,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class WriteService {
+public class WriteService <T>{
 
-    public void writeToJson(List<Object> objectList, String fileName) throws IOException {
+    public void writeToJson(List<T> objectList, String fileName) throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
         String arrayListAsSting = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(objectList);
@@ -18,14 +18,6 @@ public class WriteService {
         Path path = Paths.get(fileName);
         Files.write(path, arrayListAsSting.getBytes());
 
-//         path.toFile().deleteOnExit();
+        path.toFile().deleteOnExit();
     }
-
-    public void writeInitializedDataToJson() throws IOException {
-        writeToJson(InitDataService.stopsDataList(),"Stops.json");
-        writeToJson(InitDataService.vehiclesDataList(),"Vehicles.json");
-        writeToJson(InitDataService.routesDataList(),"Routes.json");
-    }
-
-
 }
