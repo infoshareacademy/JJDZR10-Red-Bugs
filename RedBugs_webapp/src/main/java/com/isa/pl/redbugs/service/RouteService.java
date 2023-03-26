@@ -8,9 +8,13 @@ import java.util.List;
 
 public class RouteService {
 
-//    public Route createRoute(long routeId, long numberVehicle, String nameRoute, long[] stops) {
-//        return new Route(routeId, numberVehicle, nameRoute, stops); // should the created route be added to list in InitData?
-//    }
+    public void createRoute(Route route) throws IOException {
+        ReadService rs = new ReadService();
+        List<Route> allRoutes = new ArrayList(rs.readJson("Routes.json", Route[].class));
+        allRoutes.add(route);
+        WriteService ws = new WriteService();
+        ws.writeToJson(allRoutes, "Routes.json");
+    }
 
     public void deleteRoute(long idOfRoute) throws IOException {
         Route routeToDelete = new Route().findRouteById(idOfRoute);

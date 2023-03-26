@@ -44,8 +44,6 @@ public class Menu {
                     case 3:
                         System.out.println("Schedule");
                         Schedule.chooseStop();
-                        // Metods do rozdładu jazdy
-                        //BookExcel.readListBusStop("myFile.xlt");
                         returnToMenu();
                         break;
                     case 4:
@@ -57,22 +55,16 @@ public class Menu {
                         numMenu = scanner.nextInt();
 
                         switch (numMenu) {
-//                            case 1:
-//                                Route.routesreader();
-//                                returnToMenu();
-//                                break;
-//                            case 2:
-//                                Route.routescreator();
-//                                returnToMenu();
-//                                break;
+                            case 1:
+                                break;
+                            case 2:
+                                break;
                             case 3:
                                 System.out.println("Exit");
                                 System.out.println("Goodbye!");
-                                // Metods  for exit and goodbay!
                                 break;
 
                         }
-                        // Methods for All routes!
                         break;
                     case 5:
                         System.out.println("Route");
@@ -81,7 +73,6 @@ public class Menu {
                     case 6:
                         System.out.println("Exit");
                         System.out.println("Goodbye!");
-                        // Metods  for exit and goodbay!
                         break;
                 }
             } catch (Exception e) {
@@ -108,7 +99,6 @@ public class Menu {
                     case 1:
 
                         System.out.println("Enter in Menu.....");
-                        //Metods for return menu
                         break;
                 }
             } catch (Exception a) {

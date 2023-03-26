@@ -61,7 +61,6 @@ public class UserAdder {
         Scanner scanner = new Scanner(System.in);
 
         User user = createUser();
-        //temporarly values for program checkout
         String iPassword = user.getPassword();
         String iLogin = user.getLogin();
         int iid = user.getId();

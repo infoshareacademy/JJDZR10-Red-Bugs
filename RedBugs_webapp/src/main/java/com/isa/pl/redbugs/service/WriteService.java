@@ -1,7 +1,6 @@
 package com.isa.pl.redbugs.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,6 +17,6 @@ public class WriteService <T>{
         Path path = Paths.get(fileName);
         Files.write(path, arrayListAsSting.getBytes());
 
-       // path.toFile().deleteOnExit();
+       path.toFile().deleteOnExit();
     }
 }

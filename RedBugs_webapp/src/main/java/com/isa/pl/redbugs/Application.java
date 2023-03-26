@@ -1,8 +1,5 @@
 package com.isa.pl.redbugs;
 
-import com.isa.pl.redbugs.model.Route;
-import com.isa.pl.redbugs.model.Stop;
-import com.isa.pl.redbugs.model.Vehicle;
 import com.isa.pl.redbugs.service.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,16 +12,12 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class Application {
-//a
+
 	public static void main(String[] args) throws IOException {
 
 		SpringApplication.run(Application.class, args);
 
 		writeInitializedDataToJson();
-
-//		VehicleService vehicleService = new VehicleService();
-//		vehicleService.deleteVehicle(11);
-//		System.out.println(vehicleService.findAllVehicles());
 
 	}
 

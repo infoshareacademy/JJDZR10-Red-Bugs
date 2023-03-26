@@ -10,9 +10,6 @@ public class UserRoute {
 
     private Integer time;
 
-
-
-
     public String getJourneyStart() {
         return journeyStart;
     }

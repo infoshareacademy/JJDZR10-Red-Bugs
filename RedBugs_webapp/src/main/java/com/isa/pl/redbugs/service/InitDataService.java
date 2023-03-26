@@ -4,7 +4,6 @@ import com.isa.pl.redbugs.model.Route;
 import com.isa.pl.redbugs.model.Stop;
 import com.isa.pl.redbugs.model.Vehicle;
 import com.isa.pl.redbugs.model.VehicleType;
-
 import java.util.ArrayList;
 import java.util.List;
 
