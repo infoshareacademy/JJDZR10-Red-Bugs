@@ -1,7 +1,6 @@
 package com.isa.pl.redbugs;
 
-import com.isa.pl.redbugs.service.InitDataService;
-import com.isa.pl.redbugs.service.ReadService;
+import com.isa.pl.redbugs.model.Route;
 import com.isa.pl.redbugs.service.VehicleService;
 import com.isa.pl.redbugs.service.WriteService;
 import org.springframework.boot.CommandLineRunner;
@@ -12,7 +11,6 @@ import org.springframework.context.annotation.Bean;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
 
 @SpringBootApplication
 public class Application {
@@ -23,6 +21,12 @@ public class Application {
 
 		WriteService writeService = new WriteService();
 		writeService.writeInitializedDataToJson();
+
+//		VehicleService vehicleService = new VehicleService();
+//		vehicleService.deleteVehicle(11);
+//		System.out.println(vehicleService.findAllVehicles());
+
+		System.out.println(Route.findRouteById(21).toString());
 
 	}
 

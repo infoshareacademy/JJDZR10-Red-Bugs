@@ -1,9 +1,10 @@
 package com.isa.pl.redbugs.service;
 
 import com.isa.pl.redbugs.model.Route;
-
 import java.io.IOException;
 import java.util.List;
+
+import static com.isa.pl.redbugs.model.Route.findRouteById;
 
 public class RouteService {
 
@@ -11,16 +12,14 @@ public class RouteService {
 //        return new Route(routeId, numberVehicle, nameRoute, stops); // should the created route be added to list in InitData?
 //    }
 
-    public static List<Route> deleteRoute(List<Route> listOfRoutes, long idOfRoute) {
-        for (int i = 0; i < listOfRoutes.size(); i++) {
-            if (listOfRoutes.get(i).getRouteId() == idOfRoute) {
-                listOfRoutes.remove(i);
-                i--;
-            }
-        } return listOfRoutes;
-    }
+    public void deleteRoute(long idOfRoute) throws IOException {
+        Route routeToDelete = findRouteById(idOfRoute);
+        findAllRoutes().remove(routeToDelete);
+        }
+
 
     public List<Object> findAllRoutes() throws IOException {
-        return ReadService.readJson("Routes.json");
+        ReadService rs = new ReadService();
+        return rs.readJson("Routes.json", Route[].class);
     }
 }

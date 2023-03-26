@@ -1,13 +1,10 @@
 package com.isa.pl.redbugs.model;
 
+import com.isa.pl.redbugs.service.ReadService;
 
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Route {
@@ -22,6 +19,28 @@ public class Route {
         this.numberVehicle = numberVehicle;
         this.nameRoute = nameRoute;
         this.stops = stops;
+    }
+
+    public Route() {
+    }
+
+    public static Route findRouteById(long id) throws IOException {
+        ReadService rs = new ReadService();
+        List<Route> castedRoutes = rs.readJson("Routes.json", Route[].class);
+//        List<Route> castedRoutes = new ArrayList<>();
+//        allRoutes.forEach(o -> {
+////            if (o instanceof Route) {
+//                Route route = (Route) o;
+//                castedRoutes.add(route);
+////            }
+//        });
+        for (int i = 0; i < castedRoutes.size(); i++) {
+            if (castedRoutes.get(i).getRouteId() == id) {
+                Route foundRoute = castedRoutes.get(i);
+                return foundRoute;
+            }
+        }
+        throw new RuntimeException("No route found");
     }
 
     private static List<Stop> stopList = new ArrayList<>();
@@ -66,5 +85,14 @@ public class Route {
         this.stops = stops;
     }
 
+    @Override
+    public String toString() {
+        return "Route{" +
+                "routeId=" + routeId +
+                ", numberVehicle=" + numberVehicle +
+                ", nameRoute='" + nameRoute + '\'' +
+                ", stops=" + Arrays.toString(stops) +
+                '}';
+    }
 }
 

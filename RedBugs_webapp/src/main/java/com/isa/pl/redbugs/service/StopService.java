@@ -11,16 +11,12 @@ public class StopService {
 //        return new Stop(stopId, stopName);
 //    }
 
-    public static List<Stop> deleteStop(List<Stop> listOfStops, long idOfStop) {
-        for (int i = 0; i < listOfStops.size(); i++) {
-            if (listOfStops.get(i).getStopId() == idOfStop) {
-                listOfStops.remove(i);
-                i--;
-            }
-        } return listOfStops;
+    public static void deleteStop(long idOfStop) {
+
     }
 
-    public List<Object> findAllStops() throws IOException {
-        return ReadService.readJson("Stops.json");
-    }
+//    public List<Object> findAllStops() throws IOException {
+//        ReadService rs = new ReadService();
+//        return rs.readJson("Stops.json");
+//    }
 }
