@@ -1,5 +1,10 @@
 package com.isa.pl.redbugs.model;
 
+import com.isa.pl.redbugs.service.ReadService;
+
+import java.io.IOException;
+import java.util.List;
+
 public class Stop {
     private long stopId;
     private String stopName;
@@ -11,6 +16,18 @@ public class Stop {
     }
 
     public Stop() {
+    }
+
+    public Stop findStopById(long id) throws IOException {
+        ReadService rs = new ReadService();
+        List<Stop> allStops = rs.readJson("Stops.json", Stop[].class);
+        for (int i = 0; i < allStops.size(); i++) {
+            if (allStops.get(i).getStopId() == id) {
+                Stop foundStop = allStops.get(i);
+                return foundStop;
+            }
+        }
+        throw new RuntimeException("No vehicle found");
     }
 
     public long getStopId() {

@@ -24,19 +24,12 @@ public class Route {
     public Route() {
     }
 
-    public static Route findRouteById(long id) throws IOException {
+    public Route findRouteById(long id) throws IOException {
         ReadService rs = new ReadService();
-        List<Route> castedRoutes = rs.readJson("Routes.json", Route[].class);
-//        List<Route> castedRoutes = new ArrayList<>();
-//        allRoutes.forEach(o -> {
-////            if (o instanceof Route) {
-//                Route route = (Route) o;
-//                castedRoutes.add(route);
-////            }
-//        });
-        for (int i = 0; i < castedRoutes.size(); i++) {
-            if (castedRoutes.get(i).getRouteId() == id) {
-                Route foundRoute = castedRoutes.get(i);
+        List<Route> allRoutes = rs.readJson("Routes.json", Route[].class);
+        for (int i = 0; i < allRoutes.size(); i++) {
+            if (allRoutes.get(i).getRouteId() == id) {
+                Route foundRoute = allRoutes.get(i);
                 return foundRoute;
             }
         }

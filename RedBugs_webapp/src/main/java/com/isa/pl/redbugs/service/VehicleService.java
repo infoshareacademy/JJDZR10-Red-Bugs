@@ -1,5 +1,6 @@
 package com.isa.pl.redbugs.service;
 
+import com.isa.pl.redbugs.model.Route;
 import com.isa.pl.redbugs.model.Vehicle;
 import com.isa.pl.redbugs.model.VehicleType;
 
@@ -15,10 +16,10 @@ public class VehicleService {
     public void deleteVehicle(long idOfVehicle) throws IOException {
     }
 
-//    public List<Object> findAllVehicles() throws IOException {
-//        ReadService rs = new ReadService();
-//        return rs.readJson("Vehicles.json");
-//    }
+    public List<Object> findAllVehicles() throws IOException {
+        ReadService rs = new ReadService();
+        return rs.readJson("Vehicles.json", Vehicle[].class);
+    }
 
 
 
