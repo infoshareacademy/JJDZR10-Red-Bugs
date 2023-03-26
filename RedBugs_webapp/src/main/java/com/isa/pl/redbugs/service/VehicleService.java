@@ -1,9 +1,11 @@
 package com.isa.pl.redbugs.service;
 
+import com.isa.pl.redbugs.model.Route;
 import com.isa.pl.redbugs.model.Vehicle;
 import com.isa.pl.redbugs.model.VehicleType;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class VehicleService {
@@ -13,9 +15,14 @@ public class VehicleService {
     }
 
     public void deleteVehicle(long idOfVehicle) throws IOException {
+        Vehicle vehicleToDelete = new Vehicle().findVehicleById(idOfVehicle);
+        List<Vehicle> allVehicles = new ArrayList(findAllVehicles());
+        allVehicles.remove(vehicleToDelete);
+        WriteService ws = new WriteService();
+        ws.writeToJson(allVehicles, "Vehicles.json");
     }
 
-    public List<Object> findAllVehicles() throws IOException {
+    public List<Vehicle> findAllVehicles() throws IOException {
         ReadService rs = new ReadService();
         return rs.readJson("Vehicles.json", Vehicle[].class);
     }

@@ -3,9 +3,7 @@ package com.isa.pl.redbugs;
 import com.isa.pl.redbugs.model.Route;
 import com.isa.pl.redbugs.model.Stop;
 import com.isa.pl.redbugs.model.Vehicle;
-import com.isa.pl.redbugs.service.InitDataService;
-import com.isa.pl.redbugs.service.VehicleService;
-import com.isa.pl.redbugs.service.WriteService;
+import com.isa.pl.redbugs.service.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,15 +25,6 @@ public class Application {
 //		VehicleService vehicleService = new VehicleService();
 //		vehicleService.deleteVehicle(11);
 //		System.out.println(vehicleService.findAllVehicles());
-
-		Route route = new Route();
-		System.out.println(route.findRouteById(21).toString());
-
-		Stop stop = new Stop();
-		System.out.println(stop.findStopById(1).toString());
-
-		Vehicle vehicle = new Vehicle();
-		System.out.println(vehicle.findVehicleById(11).toString());
 
 	}
 

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Route {
 
@@ -86,6 +87,28 @@ public class Route {
                 ", nameRoute='" + nameRoute + '\'' +
                 ", stops=" + Arrays.toString(stops) +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Route route = (Route) o;
+
+        if (routeId != route.routeId) return false;
+        if (numberVehicle != route.numberVehicle) return false;
+        if (!Objects.equals(nameRoute, route.nameRoute)) return false;
+        return Arrays.equals(stops, route.stops);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (routeId ^ (routeId >>> 32));
+        result = 31 * result + (int) (numberVehicle ^ (numberVehicle >>> 32));
+        result = 31 * result + (nameRoute != null ? nameRoute.hashCode() : 0);
+        result = 31 * result + Arrays.hashCode(stops);
+        return result;
     }
 }
 
