@@ -1,6 +1,6 @@
 package com.isa.pl.redbugs.service.CreateData;
 
-import org.example.TransportApp2.model.Vehicle;
+import com.isa.pl.redbugs.model.Vehicle;
 
 import java.util.ArrayList;
 import java.util.List;
