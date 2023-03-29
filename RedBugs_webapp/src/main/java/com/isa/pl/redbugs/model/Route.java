@@ -1,10 +1,5 @@
 package com.isa.pl.redbugs.model;
-
-import com.google.gson.Gson;
-
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -67,22 +62,6 @@ public class Route {
         this.stops = stops;
     }
 
-    public static void fromJson() throws IOException {
-        Gson gson = new Gson();
-        try (Reader reader = new FileReader("stops.txt")) {
-            List<Stop> stop = gson.fromJson(reader, List.class);
-
-            //wypisywanie przystankow linia po linii
-            Path path = Paths.get("stops.txt");
-            String readedStops = Files.readString(path);
-            System.out.println(readedStops);
-
-        }
-    }
-
-    public static void routescreator() throws IOException {
-        fromJson();
-    }
 
     public static void routesreader() throws IOException {
         Path path = Paths.get("stops.txt");

@@ -4,10 +4,12 @@ import com.isa.pl.redbugs.model.Route;
 import com.isa.pl.redbugs.model.Stop;
 import com.isa.pl.redbugs.model.Vehicle;
 import com.isa.pl.redbugs.model.VehicleType;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class InitDataService {
     public static List<Stop> stopsDataList() {
         List<Stop> stops = new ArrayList<>();
