@@ -8,10 +8,10 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class WriteService <T>{
+    ObjectMapper objectMapper = new ObjectMapper();
 
     public void writeToJson(List<T> objectList, String fileName) throws IOException {
 
-        ObjectMapper objectMapper = new ObjectMapper();
         String arrayListAsSting = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(objectList);
 
         Path path = Paths.get(fileName);
