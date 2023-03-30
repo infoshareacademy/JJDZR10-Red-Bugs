@@ -20,18 +20,6 @@ public class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle findVehicleById(long id) throws IOException {
-        ReadService rs = new ReadService();
-        List<Vehicle> allVehicles = rs.readJson("Vehicles.json", Vehicle[].class);
-        for (int i = 0; i < allVehicles.size(); i++) {
-            if (allVehicles.get(i).getVehicleId() == id) {
-                Vehicle foundVehicle = allVehicles.get(i);
-                return foundVehicle;
-            }
-        }
-        throw new RuntimeException("No vehicle found");
-    }
-
     public long getVehicleId() {
         return vehicleId;
     }

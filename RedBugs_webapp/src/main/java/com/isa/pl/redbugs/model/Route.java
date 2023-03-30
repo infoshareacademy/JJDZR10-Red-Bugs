@@ -24,18 +24,6 @@ public class Route {
     public Route() {
     }
 
-    public Route findRouteById(long id) throws IOException {
-        ReadService rs = new ReadService();
-        List<Route> allRoutes = rs.readJson("Routes.json", Route[].class);
-        for (int i = 0; i < allRoutes.size(); i++) {
-            if (allRoutes.get(i).getRouteId() == id) {
-                Route foundRoute = allRoutes.get(i);
-                return foundRoute;
-            }
-        }
-        throw new RuntimeException("No route found");
-    }
-
     private static List<Stop> stopList = new ArrayList<>();
 
     public static List<Stop> getStopList() {

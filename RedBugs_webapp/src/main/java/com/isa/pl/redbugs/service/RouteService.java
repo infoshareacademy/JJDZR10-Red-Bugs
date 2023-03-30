@@ -17,7 +17,7 @@ public class RouteService {
     }
 
     public void deleteRoute(long idOfRoute) throws IOException {
-        Route routeToDelete = new Route().findRouteById(idOfRoute);
+        Route routeToDelete = new RouteService().findRouteById(idOfRoute);
         List<Route> allRoutes = new ArrayList(findAllRoutes());
         allRoutes.remove(routeToDelete);
         WriteService ws = new WriteService();
@@ -28,5 +28,17 @@ public class RouteService {
     public List<Route> findAllRoutes() throws IOException {
         ReadService rs = new ReadService();
         return rs.readJson("Routes.json", Route[].class);
+    }
+
+    public Route findRouteById(long id) throws IOException {
+        ReadService rs = new ReadService();
+        List<Route> allRoutes = rs.readJson("Routes.json", Route[].class);
+        for (int i = 0; i < allRoutes.size(); i++) {
+            if (allRoutes.get(i).getRouteId() == id) {
+                Route foundRoute = allRoutes.get(i);
+                return foundRoute;
+            }
+        }
+        throw new RuntimeException("No route found");
     }
 }

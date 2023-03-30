@@ -16,7 +16,7 @@ public class VehicleService {
     }
 
     public void deleteVehicle(long idOfVehicle) throws IOException {
-        Vehicle vehicleToDelete = new Vehicle().findVehicleById(idOfVehicle);
+        Vehicle vehicleToDelete = new VehicleService().findVehicleById(idOfVehicle);
         List<Vehicle> allVehicles = new ArrayList(findAllVehicles());
         allVehicles.remove(vehicleToDelete);
         WriteService ws = new WriteService();
@@ -26,5 +26,17 @@ public class VehicleService {
     public List<Vehicle> findAllVehicles() throws IOException {
         ReadService rs = new ReadService();
         return rs.readJson("Vehicles.json", Vehicle[].class);
+    }
+
+    public Vehicle findVehicleById(long id) throws IOException {
+        ReadService rs = new ReadService();
+        List<Vehicle> allVehicles = rs.readJson("Vehicles.json", Vehicle[].class);
+        for (int i = 0; i < allVehicles.size(); i++) {
+            if (allVehicles.get(i).getVehicleId() == id) {
+                Vehicle foundVehicle = allVehicles.get(i);
+                return foundVehicle;
+            }
+        }
+        throw new RuntimeException("No vehicle found");
     }
 }

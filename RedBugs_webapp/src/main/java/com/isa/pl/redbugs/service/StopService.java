@@ -19,7 +19,7 @@ public class StopService {
     }
 
     public void deleteStop(long idOfStop) throws IOException {
-        Stop stopToDelete = new Stop().findStopById(idOfStop);
+        Stop stopToDelete = new StopService().findStopById(idOfStop);
         List<Stop> allStops = new ArrayList(findAllStops());
         allStops.remove(stopToDelete);
         WriteService ws = new WriteService();
@@ -29,5 +29,17 @@ public class StopService {
     public List<Stop> findAllStops() throws IOException {
         ReadService rs = new ReadService();
         return rs.readJson("Stops.json", Stop[].class);
+    }
+
+    public Stop findStopById(long id) throws IOException {
+        ReadService rs = new ReadService();
+        List<Stop> allStops = rs.readJson("Stops.json", Stop[].class);
+        for (int i = 0; i < allStops.size(); i++) {
+            if (allStops.get(i).getStopId() == id) {
+                Stop foundStop = allStops.get(i);
+                return foundStop;
+            }
+        }
+        throw new RuntimeException("No stop found");
     }
 }
