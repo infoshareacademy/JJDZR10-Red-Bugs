@@ -7,6 +7,7 @@ import com.isa.pl.redbugs.model.Stop;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class StopService {
 
@@ -34,12 +35,10 @@ public class StopService {
     public Stop findStopById(long id) throws IOException {
         ReadService rs = new ReadService();
         List<Stop> allStops = rs.readJson("Stops.json", Stop[].class);
-        for (int i = 0; i < allStops.size(); i++) {
-            if (allStops.get(i).getStopId() == id) {
-                Stop foundStop = allStops.get(i);
-                return foundStop;
-            }
-        }
-        throw new RuntimeException("No stop found");
+
+        return allStops.stream()
+                .filter(route -> route.getStopId() == id)
+                .findFirst()
+                .orElseThrow(() -> new NoSuchElementException("Stop with id " + id + " not found"));
     }
 }

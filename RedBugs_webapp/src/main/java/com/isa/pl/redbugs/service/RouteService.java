@@ -4,6 +4,7 @@ import com.isa.pl.redbugs.model.Route;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 
 public class RouteService {
@@ -33,12 +34,10 @@ public class RouteService {
     public Route findRouteById(long id) throws IOException {
         ReadService rs = new ReadService();
         List<Route> allRoutes = rs.readJson("Routes.json", Route[].class);
-        for (int i = 0; i < allRoutes.size(); i++) {
-            if (allRoutes.get(i).getRouteId() == id) {
-                Route foundRoute = allRoutes.get(i);
-                return foundRoute;
-            }
-        }
-        throw new RuntimeException("No route found");
+
+        return allRoutes.stream()
+                .filter(route -> route.getRouteId() == id)
+                .findFirst()
+                .orElseThrow(() -> new NoSuchElementException("Route with id " + id + " not found"));
     }
 }

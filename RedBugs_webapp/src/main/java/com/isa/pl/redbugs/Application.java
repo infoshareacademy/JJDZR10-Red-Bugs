@@ -17,15 +17,9 @@ public class Application {
 
 		SpringApplication.run(Application.class, args);
 
-		writeInitializedDataToJson();
+		InitDataService initDataService = new InitDataService();
+		initDataService.writeInitializedDataToJson();
 
-	}
-
-	public static void writeInitializedDataToJson() throws IOException {
-		WriteService ws = new WriteService();
-		ws.writeToJson(InitDataService.stopsDataList(),"Stops.json");
-		ws.writeToJson(InitDataService.vehiclesDataList(),"Vehicles.json");
-		ws.writeToJson(InitDataService.routesDataList(),"Routes.json");
 	}
 
 	@Bean

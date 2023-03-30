@@ -4,6 +4,7 @@ import com.isa.pl.redbugs.model.Vehicle;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class VehicleService {
 
@@ -31,12 +32,10 @@ public class VehicleService {
     public Vehicle findVehicleById(long id) throws IOException {
         ReadService rs = new ReadService();
         List<Vehicle> allVehicles = rs.readJson("Vehicles.json", Vehicle[].class);
-        for (int i = 0; i < allVehicles.size(); i++) {
-            if (allVehicles.get(i).getVehicleId() == id) {
-                Vehicle foundVehicle = allVehicles.get(i);
-                return foundVehicle;
-            }
-        }
-        throw new RuntimeException("No vehicle found");
+
+        return allVehicles.stream()
+                .filter(route -> route.getVehicleId() == id)
+                .findFirst()
+                .orElseThrow(() -> new NoSuchElementException("Vehicle with id " + id + " not found"));
     }
 }
