@@ -17,9 +17,9 @@ public class InitDataServiceController {
     private InitDataServiceController initDataServiceController;
 
 
-    @GetMapping("/data")
+    @GetMapping("/templates/data.html")
     public String getInitDataServices(Model model) {
-        List<Stop>  stops = InitDataService.stopsDataList();
+        List<Stop> stops = InitDataService.stopsDataList();
         model.addAttribute("stops", stops);
 
         List<Vehicle> vehicles = InitDataService.vehiclesDataList();
@@ -27,6 +27,11 @@ public class InitDataServiceController {
 
         List<Route> routes = InitDataService.routesDataList();
         model.addAttribute("routes", routes);
-      return "data";
+        model.addAttribute("stops", stops);
+        return "data";
     }
 }
+
+
+
+
