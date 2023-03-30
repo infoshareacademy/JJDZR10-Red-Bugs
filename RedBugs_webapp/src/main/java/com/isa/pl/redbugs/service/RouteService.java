@@ -13,7 +13,6 @@ public class RouteService {
     ReadService rs = new ReadService();
 
     public void createRoute(Route route) throws IOException {
-
         List<Route> allRoutes = new ArrayList(rs.readJson("Routes.json", Route[].class));
         allRoutes.add(route);
         ws.writeToJson(allRoutes, "Routes.json");

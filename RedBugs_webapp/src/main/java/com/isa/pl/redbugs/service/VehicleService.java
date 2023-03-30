@@ -12,7 +12,6 @@ public class VehicleService {
     WriteService ws = new WriteService();
 
     public void createVehicle(Vehicle vehicle) throws IOException {
-
         List<Vehicle> allVehicles = new ArrayList(rs.readJson("Vehicles.json", Vehicle[].class));
         allVehicles.add(vehicle);
         ws.writeToJson(allVehicles, "Vehicles.json");
