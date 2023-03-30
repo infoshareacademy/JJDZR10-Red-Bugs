@@ -11,11 +11,12 @@ import java.util.NoSuchElementException;
 
 public class StopService {
 
+    ReadService rs = new ReadService();
+    WriteService ws = new WriteService();
+
     public void createStop(Stop stop) throws IOException {
-        ReadService rs = new ReadService();
         List<Stop> allStops = new ArrayList(rs.readJson("Stops.json", Stop[].class));
         allStops.add(stop);
-        WriteService ws = new WriteService();
         ws.writeToJson(allStops, "Stops.json");
     }
 
@@ -23,17 +24,14 @@ public class StopService {
         Stop stopToDelete = new StopService().findStopById(idOfStop);
         List<Stop> allStops = new ArrayList(findAllStops());
         allStops.remove(stopToDelete);
-        WriteService ws = new WriteService();
         ws.writeToJson(allStops, "Stops.json");
     }
 
     public List<Stop> findAllStops() throws IOException {
-        ReadService rs = new ReadService();
         return rs.readJson("Stops.json", Stop[].class);
     }
 
     public Stop findStopById(long id) throws IOException {
-        ReadService rs = new ReadService();
         List<Stop> allStops = rs.readJson("Stops.json", Stop[].class);
 
         return allStops.stream()

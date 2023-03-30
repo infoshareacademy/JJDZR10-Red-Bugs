@@ -8,11 +8,13 @@ import java.util.NoSuchElementException;
 
 public class VehicleService {
 
+    ReadService rs = new ReadService();
+    WriteService ws = new WriteService();
+
     public void createVehicle(Vehicle vehicle) throws IOException {
-        ReadService rs = new ReadService();
+
         List<Vehicle> allVehicles = new ArrayList(rs.readJson("Vehicles.json", Vehicle[].class));
         allVehicles.add(vehicle);
-        WriteService ws = new WriteService();
         ws.writeToJson(allVehicles, "Vehicles.json");
     }
 
@@ -20,17 +22,14 @@ public class VehicleService {
         Vehicle vehicleToDelete = new VehicleService().findVehicleById(idOfVehicle);
         List<Vehicle> allVehicles = new ArrayList(findAllVehicles());
         allVehicles.remove(vehicleToDelete);
-        WriteService ws = new WriteService();
         ws.writeToJson(allVehicles, "Vehicles.json");
     }
 
     public List<Vehicle> findAllVehicles() throws IOException {
-        ReadService rs = new ReadService();
         return rs.readJson("Vehicles.json", Vehicle[].class);
     }
 
     public Vehicle findVehicleById(long id) throws IOException {
-        ReadService rs = new ReadService();
         List<Vehicle> allVehicles = rs.readJson("Vehicles.json", Vehicle[].class);
 
         return allVehicles.stream()
