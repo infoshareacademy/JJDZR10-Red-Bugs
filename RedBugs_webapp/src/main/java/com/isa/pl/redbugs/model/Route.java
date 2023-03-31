@@ -1,7 +1,5 @@
 package com.isa.pl.redbugs.model;
 
-import com.isa.pl.redbugs.service.ReadService;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
