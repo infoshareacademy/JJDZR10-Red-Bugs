@@ -1,6 +1,8 @@
 package com.isa.pl.redbugs.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class ReadService <T>{
 
     public List<T> readJson(String fileName, Class<T[]> clazz) throws IOException {

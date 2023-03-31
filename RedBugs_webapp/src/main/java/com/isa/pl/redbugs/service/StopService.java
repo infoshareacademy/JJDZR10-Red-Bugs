@@ -13,8 +13,19 @@ import java.util.NoSuchElementException;
 @Component
 public class StopService {
 
-    ReadService rs = new ReadService();
-    WriteService ws = new WriteService();
+    private WriteService ws;
+    private ReadService rs;
+
+    public StopService(WriteService ws) {
+        this.ws = ws;
+    }
+
+    public StopService(ReadService rs) {
+        this.rs = rs;
+    }
+
+    public StopService() {
+    }
 
     public void createStop(Stop stop) throws IOException {
         List<Stop> allStops = new ArrayList(rs.readJson("Stops.json", Stop[].class));
@@ -23,7 +34,7 @@ public class StopService {
     }
 
     public void deleteStop(long idOfStop) throws IOException {
-        Stop stopToDelete = new StopService().findStopById(idOfStop);
+        Stop stopToDelete = findStopById(idOfStop);
         List<Stop> allStops = new ArrayList(findAllStops());
         allStops.remove(stopToDelete);
         ws.writeToJson(allStops, "Stops.json");

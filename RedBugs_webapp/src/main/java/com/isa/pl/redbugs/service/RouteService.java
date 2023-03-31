@@ -11,8 +11,19 @@ import java.util.NoSuchElementException;
 @Component
 public class RouteService {
 
-    WriteService ws = new WriteService();
-    ReadService rs = new ReadService();
+    private WriteService ws;
+    private ReadService rs;
+
+    public RouteService(WriteService ws) {
+        this.ws = ws;
+    }
+
+    public RouteService(ReadService rs) {
+        this.rs = rs;
+    }
+
+    public RouteService() {
+    }
 
     public void createRoute(Route route) throws IOException {
         List<Route> allRoutes = new ArrayList(rs.readJson("Routes.json", Route[].class));
@@ -21,7 +32,7 @@ public class RouteService {
     }
 
     public void deleteRoute(long idOfRoute) throws IOException {
-        Route routeToDelete = new RouteService().findRouteById(idOfRoute);
+        Route routeToDelete = findRouteById(idOfRoute);
         List<Route> allRoutes = new ArrayList(findAllRoutes());
         allRoutes.remove(routeToDelete);
         ws.writeToJson(allRoutes, "Routes.json");
