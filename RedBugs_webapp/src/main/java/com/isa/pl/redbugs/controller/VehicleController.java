@@ -11,6 +11,10 @@ public class VehicleController {
 
     private VehicleService vehicleService;
 
+    public VehicleController(VehicleService vehicleService) {
+        this.vehicleService = vehicleService;
+    }
+
     @GetMapping("/vehicles")
     public String getVehicles() throws IOException {
         vehicleService.findAllVehicles();

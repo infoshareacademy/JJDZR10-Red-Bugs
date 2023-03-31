@@ -11,6 +11,10 @@ public class StopController {
 
     private StopService stopService;
 
+    public StopController(StopService stopService) {
+        this.stopService = stopService;
+    }
+
     @GetMapping("/stops")
     public String getStops() throws IOException {
         stopService.findAllStops();

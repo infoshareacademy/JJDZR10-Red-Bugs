@@ -8,8 +8,11 @@ import java.io.IOException;
 
 @Controller
 public class RouteController {
-
     private RouteService routeService;
+
+    public RouteController(RouteService routeService) {
+        this.routeService = routeService;
+    }
 
     @GetMapping("/routes")
     public String getRoutes() throws IOException {
