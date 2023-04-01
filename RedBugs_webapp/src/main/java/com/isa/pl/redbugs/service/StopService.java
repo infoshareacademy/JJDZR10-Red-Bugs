@@ -13,11 +13,8 @@ public class StopService {
     private WriteService ws;
     private ReadService rs;
 
-    public StopService(WriteService ws) {
+    public StopService(WriteService ws, ReadService rs) {
         this.ws = ws;
-    }
-
-    public StopService(ReadService rs) {
         this.rs = rs;
     }
 

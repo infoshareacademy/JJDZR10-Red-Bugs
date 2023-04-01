@@ -13,11 +13,8 @@ public class VehicleService {
     private WriteService ws;
     private ReadService rs;
 
-    public VehicleService(WriteService ws) {
+    public VehicleService(WriteService ws, ReadService rs) {
         this.ws = ws;
-    }
-
-    public VehicleService(ReadService rs) {
         this.rs = rs;
     }
 

@@ -13,11 +13,8 @@ public class RouteService {
     private WriteService ws;
     private ReadService rs;
 
-    public RouteService(WriteService ws) {
+    public RouteService(WriteService ws, ReadService rs) {
         this.ws = ws;
-    }
-
-    public RouteService(ReadService rs) {
         this.rs = rs;
     }
 
