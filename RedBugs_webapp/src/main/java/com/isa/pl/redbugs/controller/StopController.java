@@ -9,7 +9,7 @@ import java.io.IOException;
 @Controller
 public class StopController {
 
-    private StopService stopService;
+    private final StopService stopService;
 
     public StopController(StopService stopService) {
         this.stopService = stopService;

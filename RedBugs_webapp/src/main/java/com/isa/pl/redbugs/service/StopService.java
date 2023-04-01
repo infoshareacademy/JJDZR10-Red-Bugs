@@ -10,15 +10,12 @@ import java.util.NoSuchElementException;
 @Component
 public class StopService {
 
-    private WriteService ws;
-    private ReadService rs;
+    private final WriteService ws;
+    private final ReadService rs;
 
     public StopService(WriteService ws, ReadService rs) {
         this.ws = ws;
         this.rs = rs;
-    }
-
-    public StopService() {
     }
 
     public void createStop(Stop stop) throws IOException {

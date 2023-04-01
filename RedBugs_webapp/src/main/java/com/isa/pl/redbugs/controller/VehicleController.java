@@ -9,7 +9,7 @@ import java.io.IOException;
 @Controller
 public class VehicleController {
 
-    private VehicleService vehicleService;
+    private final VehicleService vehicleService;
 
     public VehicleController(VehicleService vehicleService) {
         this.vehicleService = vehicleService;

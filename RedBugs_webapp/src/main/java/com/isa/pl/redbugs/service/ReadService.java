@@ -12,10 +12,11 @@ import java.util.List;
 @Component
 public class ReadService <T>{
 
-    public List<T> readJson(String fileName, Class<T[]> clazz) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        Path path = Paths.get(fileName);
+    ObjectMapper objectMapper = new ObjectMapper();
 
+    public List<T> readJson(String fileName, Class<T[]> clazz) throws IOException {
+
+        Path path = Paths.get(fileName);
         String readFromJson = Files.readString(path);
 
         T[] array = objectMapper.readValue(readFromJson, clazz);

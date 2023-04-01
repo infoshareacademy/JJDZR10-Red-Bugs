@@ -10,15 +10,12 @@ import java.util.NoSuchElementException;
 @Component
 public class RouteService {
 
-    private WriteService ws;
-    private ReadService rs;
+    private final WriteService ws;
+    private final ReadService rs;
 
     public RouteService(WriteService ws, ReadService rs) {
         this.ws = ws;
         this.rs = rs;
-    }
-
-    public RouteService() {
     }
 
     public void createRoute(Route route) throws IOException {

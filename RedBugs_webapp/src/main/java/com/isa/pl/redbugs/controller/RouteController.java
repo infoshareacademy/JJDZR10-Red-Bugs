@@ -8,7 +8,7 @@ import java.io.IOException;
 
 @Controller
 public class RouteController {
-    private RouteService routeService;
+    private final RouteService routeService;
 
     public RouteController(RouteService routeService) {
         this.routeService = routeService;

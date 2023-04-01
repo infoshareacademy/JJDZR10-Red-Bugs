@@ -10,15 +10,12 @@ import java.util.NoSuchElementException;
 @Component
 public class VehicleService {
 
-    private WriteService ws;
-    private ReadService rs;
+    private final WriteService ws;
+    private final ReadService rs;
 
     public VehicleService(WriteService ws, ReadService rs) {
         this.ws = ws;
         this.rs = rs;
-    }
-
-    public VehicleService() {
     }
 
     public void createVehicle(Vehicle vehicle) throws IOException {
