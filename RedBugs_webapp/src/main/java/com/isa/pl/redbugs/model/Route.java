@@ -1,5 +1,10 @@
 package com.isa.pl.redbugs.model;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -94,6 +99,17 @@ public class Route {
         result = 31 * result + (nameRoute != null ? nameRoute.hashCode() : 0);
         result = 31 * result + Arrays.hashCode(stops);
         return result;
+    }
+
+    public static void routeDesplayer() throws IOException {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        File routeJsonFile = new File("Routes.json");
+        ArrayList<Route> myRoute = objectMapper.readValue(routeJsonFile, new TypeReference<ArrayList<Route>>() {
+        });
+        for (int i = 0; i < myRoute.size(); i++) {
+            System.out.println(myRoute.get(i).getNameRoute());
+        }
     }
 }
 
