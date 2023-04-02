@@ -31,7 +31,7 @@ public class Schedule {
 
     public static void getStopList() {
 
-        Path pathToStopList = Path.of("stops.txt");
+        Path pathToStopList = Path.of("stops.json");
         try {
             String content = Files.readString(pathToStopList);
             listOfStops = content.split("\n");
@@ -53,7 +53,7 @@ public class Schedule {
             System.out.println("Choose stop from the list:\n");
             getStopList();
             try {
-                chooseStop = scanner.nextInt() ; //usunalem -1
+                chooseStop = scanner.nextInt();
                 stopIncorrect = false;
             } catch (InputMismatchException e) {
                 System.out.println("Note: enter the number of the selected stop");

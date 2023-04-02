@@ -7,7 +7,6 @@ public class User {
     private String password;
     private int id;
 
-    //userRoute is unavilable at current moment, due to lack of data in class UserRoute
     private UserRoute userRoute;
 
     public String getName() {

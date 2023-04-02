@@ -1,15 +1,9 @@
 package com.isa.pl.redbugs.model;
 
-import com.google.gson.Gson;
-
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Route {
 
@@ -23,6 +17,9 @@ public class Route {
         this.numberVehicle = numberVehicle;
         this.nameRoute = nameRoute;
         this.stops = stops;
+    }
+
+    public Route() {
     }
 
     private static List<Stop> stopList = new ArrayList<>();
@@ -67,27 +64,36 @@ public class Route {
         this.stops = stops;
     }
 
-    public static void fromJson() throws IOException {
-        Gson gson = new Gson();
-        try (Reader reader = new FileReader("stops.txt")) {
-            List<Stop> stop = gson.fromJson(reader, List.class);
-
-            //wypisywanie przystankow linia po linii
-            Path path = Paths.get("stops.txt");
-            String readedStops = Files.readString(path);
-            System.out.println(readedStops);
-
-        }
+    @Override
+    public String toString() {
+        return "Route{" +
+                "routeId=" + routeId +
+                ", numberVehicle=" + numberVehicle +
+                ", nameRoute='" + nameRoute + '\'' +
+                ", stops=" + Arrays.toString(stops) +
+                '}';
     }
 
-    public static void routescreator() throws IOException {
-        fromJson();
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Route route = (Route) o;
+
+        if (routeId != route.routeId) return false;
+        if (numberVehicle != route.numberVehicle) return false;
+        if (!Objects.equals(nameRoute, route.nameRoute)) return false;
+        return Arrays.equals(stops, route.stops);
     }
 
-    public static void routesreader() throws IOException {
-        Path path = Paths.get("stops.txt");
-        String readedStops = Files.readString(path);
-        System.out.println(readedStops);
+    @Override
+    public int hashCode() {
+        int result = (int) (routeId ^ (routeId >>> 32));
+        result = 31 * result + (int) (numberVehicle ^ (numberVehicle >>> 32));
+        result = 31 * result + (nameRoute != null ? nameRoute.hashCode() : 0);
+        result = 31 * result + Arrays.hashCode(stops);
+        return result;
     }
 }
 

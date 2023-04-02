@@ -4,7 +4,7 @@ import com.isa.pl.redbugs.model.Route;
 import com.isa.pl.redbugs.model.Stop;
 import com.isa.pl.redbugs.model.Vehicle;
 import com.isa.pl.redbugs.model.VehicleType;
-
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,5 +52,12 @@ public class InitDataService {
         routes.add(new Route(29, 99, "Wrzeszcz PKP - Żukowo Urząd Gminy 4", new long[]{5, 7, 2, 8, 10}));
         routes.add(new Route(30, 100, "Dworzec Główny - Pruszcz Komarowo 5", new long[]{1, 2, 8, 9, 4}));
         return routes;
+    }
+
+    public void writeInitializedDataToJson() throws IOException {
+        WriteService ws = new WriteService();
+        ws.writeToJson(InitDataService.stopsDataList(),"Stops.json");
+        ws.writeToJson(InitDataService.vehiclesDataList(),"Vehicles.json");
+        ws.writeToJson(InitDataService.routesDataList(),"Routes.json");
     }
 }

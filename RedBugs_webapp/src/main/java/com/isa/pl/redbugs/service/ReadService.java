@@ -1,23 +1,25 @@
 package com.isa.pl.redbugs.service;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 
-public class ReadService {
+@Component
+public class ReadService <T>{
 
-    public List<Object> readJson(String fileName) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
+    ObjectMapper objectMapper = new ObjectMapper();
+
+    public List<T> readJson(String fileName, Class<T[]> clazz) throws IOException {
+
         Path path = Paths.get(fileName);
-
         String readFromJson = Files.readString(path);
 
-        return objectMapper.readValue(readFromJson, new TypeReference<List<Object>>() {
-        });
+        T[] array = objectMapper.readValue(readFromJson, clazz);
+        return Arrays.asList(array);
     }
 }

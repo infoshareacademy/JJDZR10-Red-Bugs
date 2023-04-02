@@ -1,5 +1,7 @@
 package com.isa.pl.redbugs.model;
 
+import java.util.Objects;
+
 public class Stop {
     private long stopId;
     private String stopName;
@@ -41,5 +43,25 @@ public class Stop {
     public String toString() {
         return "Stop number: " + stopId +
                 ", stopName: " + stopName ;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Stop stop = (Stop) o;
+
+        if (stopId != stop.stopId) return false;
+        if (!Objects.equals(stopName, stop.stopName)) return false;
+        return Objects.equals(schedule, stop.schedule);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (stopId ^ (stopId >>> 32));
+        result = 31 * result + (stopName != null ? stopName.hashCode() : 0);
+        result = 31 * result + (schedule != null ? schedule.hashCode() : 0);
+        return result;
     }
 }
