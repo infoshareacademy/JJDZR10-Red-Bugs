@@ -32,16 +32,8 @@ public class InitDataService {
 
     public static List<Vehicle> vehiclesDataList() {
         List<Vehicle> vehicles = new ArrayList<>();
-        vehicles.add(new Vehicle(11, "Siedlce - Stara Piła", VehicleType.Bus));
-        vehicles.add(new Vehicle(22, "Dworzec Główny - Pruszcz Komarowo", VehicleType.Bus));
-        vehicles.add(new Vehicle(33, "Dworzec Główny - Pruszcz Matejki", VehicleType.Bus));
-        vehicles.add(new Vehicle(44, "Port Lotniczy - Sopot Kamienny", VehicleType.Bus));
-        vehicles.add(new Vehicle(55, "Wrzeszcz PKP - Żukowo Urząd Gminy", VehicleType.Bus));
-        vehicles.add(new Vehicle(66, "Siedlce - Stara Piła", VehicleType.Tram));
-        vehicles.add(new Vehicle(77, "Dworzec Główny - Pruszcz Komarowo", VehicleType.Tram));
-        vehicles.add(new Vehicle(88, "Dworzec Główny - Pruszcz Matejki", VehicleType.Tram));
-        vehicles.add(new Vehicle(99, "Port Lotniczy - Sopot Kamienny", VehicleType.Tram));
-        vehicles.add(new Vehicle(10, "Wrzeszcz PKP - Żukowo Urząd Gminy", VehicleType.Tram));
+        vehicles.add(new Vehicle(4, "Dworzec Główny - Płocka", VehicleType.Bus));
+        vehicles.add(new Vehicle(14, "Dworzec Główny - Płocka", VehicleType.Bus));
         return vehicles;
     }
 
