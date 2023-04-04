@@ -3,13 +3,13 @@ package com.isa.pl.redbugs.model;
 import java.util.Objects;
 
 public class Stop {
-    private long stopId;
+    private String stopId;
     private String stopName;
     private Schedule schedule;
     private double latitude;
     private double longitude;
 
-    public Stop(long stopId, String stopName, Schedule schedule, double latitude, double longitude) {
+    public Stop(String stopId, String stopName, Schedule schedule, double latitude, double longitude) {
         this.stopId = stopId;
         this.stopName = stopName;
         this.schedule = schedule;
@@ -20,11 +20,11 @@ public class Stop {
     public Stop() {
     }
 
-    public long getStopId() {
+    public String getStopId() {
         return stopId;
     }
 
-    public void setStopId(long stopId) {
+    public void setStopId(String stopId) {
         this.stopId = stopId;
     }
 
@@ -67,9 +67,9 @@ public class Stop {
 
         Stop stop = (Stop) o;
 
-        if (stopId != stop.stopId) return false;
         if (Double.compare(stop.latitude, latitude) != 0) return false;
         if (Double.compare(stop.longitude, longitude) != 0) return false;
+        if (!Objects.equals(stopId, stop.stopId)) return false;
         if (!Objects.equals(stopName, stop.stopName)) return false;
         return Objects.equals(schedule, stop.schedule);
     }
@@ -78,7 +78,7 @@ public class Stop {
     public int hashCode() {
         int result;
         long temp;
-        result = (int) (stopId ^ (stopId >>> 32));
+        result = stopId != null ? stopId.hashCode() : 0;
         result = 31 * result + (stopName != null ? stopName.hashCode() : 0);
         result = 31 * result + (schedule != null ? schedule.hashCode() : 0);
         temp = Double.doubleToLongBits(latitude);

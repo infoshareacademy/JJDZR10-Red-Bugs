@@ -1,9 +1,7 @@
 package com.isa.pl.redbugs.service;
 
-import com.isa.pl.redbugs.model.Route;
-import com.isa.pl.redbugs.model.Stop;
-import com.isa.pl.redbugs.model.Vehicle;
-import com.isa.pl.redbugs.model.VehicleType;
+import com.isa.pl.redbugs.model.*;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,16 +9,8 @@ import java.util.List;
 public class InitDataService {
     public static List<Stop> stopsDataList() {
         List<Stop> stops = new ArrayList<>();
-        stops.add(new Stop(1, "Dąbrowa Centrum"));
-        stops.add(new Stop(2, "Gdynia Kameliowa"));
-        stops.add(new Stop(3, "Paprykowa"));
-        stops.add(new Stop(4, "Szafranowa"));
-        stops.add(new Stop(5, "Centrum Nadawcze RTV"));
-        stops.add(new Stop(6, "Chwaszczyno"));
-        stops.add(new Stop(7, "Gdynia Szafranowa"));
-        stops.add(new Stop(8, "Dziewicza"));
-        stops.add(new Stop(9, "Pogórze - Szkolna"));
-        stops.add(new Stop(10, "Dąbka - Zielona"));
+        stops.add(new Stop("1", "Dąbrowa Centrum", new Schedule(), 54.35483, 54.35483 ));
+
         return stops;
     }
 
