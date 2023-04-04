@@ -15,6 +15,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static com.isa.pl.redbugs.service.InitDataService.stopsDataList;
+
 @SpringBootApplication
 public class Application {
 
@@ -25,10 +27,11 @@ public class Application {
 		InitDataService initDataService = new InitDataService();
 		initDataService.writeInitializedDataToJson();
 
+
 		Graph<Stop> stationGraph = setUp();
 		RouteFinder<Stop> routeFinder = new RouteFinder<>(stationGraph, new DistanceScorer(), new DistanceScorer());
 
-		List<Stop> route = routeFinder.findRoute(stationGraph.getNode("1"), stationGraph.getNode("1"));
+		List<Stop> route = routeFinder.findRoute(stationGraph.getNode("1028"), stationGraph.getNode("14693"));
 		route.stream().map(Stop::getStopName).collect(Collectors.toList()).forEach(station -> System.out.println(station));
 	}
 
@@ -46,18 +49,12 @@ public class Application {
 	}
 
 	public static Graph<Stop> setUp() throws Exception {
-		Set<Stop> stops = new HashSet<>();
+		Set<Stop> stops = InitDataService.stopsDataList().stream().collect(Collectors.toSet());
 		Map<String, Set<String>> connections = new HashMap<>();
 
-		stops.add(new Stop("1", "Acton Town", new Schedule(), 51.5028, -0.2801));
-
-
-		connections.put("1", Stream.of("52","73","73","233","264").collect(Collectors.toSet()));
-		connections.put("2", Stream.of("156","262","156").collect(Collectors.toSet()));
-		connections.put("3", Stream.of("262","294","156","294").collect(Collectors.toSet()));
-		connections.put("4", Stream.of("70","200").collect(Collectors.toSet()));
-		connections.put("5", Stream.of("193","251").collect(Collectors.toSet()));
-
+		connections.put("1013", Stream.of("1028").collect(Collectors.toSet()));
+		connections.put("1028", Stream.of("1013", "14693", "1248").collect(Collectors.toSet()));
+		connections.put("14693", Stream.of("1028", "1200").collect(Collectors.toSet()));
 
 		return new Graph<>(stops, connections);
 	}

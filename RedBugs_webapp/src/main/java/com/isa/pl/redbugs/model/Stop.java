@@ -11,7 +11,7 @@ public class Stop implements GraphNode {
     private double latitude;
     private double longitude;
 
-    public Stop(String id, String name, Schedule schedule, double latitude, double longitude) {
+    public Stop(String stopId, String stopName, Schedule schedule, double latitude, double longitude) {
         this.stopId = stopId;
         this.stopName = stopName;
         this.schedule = schedule;
