@@ -1,17 +1,14 @@
 package com.isa.pl.redbugs;
 
-import com.isa.pl.redbugs.service.*;
-import com.isa.pl.redbugs.service.pathfinding.DistanceScorer;
-import com.isa.pl.redbugs.service.pathfinding.Graph;
-import com.isa.pl.redbugs.service.pathfinding.RouteFinder;
-import com.isa.pl.redbugs.model.Stop;
+import com.isa.pl.redbugs.service.InitDataService;
+import com.isa.pl.redbugs.service.PathFindingService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import java.util.*;
-import java.util.stream.Collectors;
+
+import java.util.Arrays;
 
 @SpringBootApplication
 public class Application {

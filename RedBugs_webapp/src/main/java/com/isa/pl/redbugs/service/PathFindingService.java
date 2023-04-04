@@ -19,6 +19,7 @@ public class PathFindingService {
         Set<Stop> stops = InitDataService.stopsDataList().stream().collect(Collectors.toSet());
         Map<String, Set<String>> connections = new HashMap<>();
 
+        // TODO: task 39 to be done by Adam
         connections.put("1013", Stream.of("1028").collect(Collectors.toSet()));
         connections.put("1028", Stream.of("1013", "14693", "1248").collect(Collectors.toSet()));
         connections.put("14693", Stream.of("1028", "1200").collect(Collectors.toSet()));
