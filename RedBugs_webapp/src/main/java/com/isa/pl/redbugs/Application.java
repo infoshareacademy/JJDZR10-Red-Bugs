@@ -1,10 +1,11 @@
 package com.isa.pl.redbugs;
 
+import com.isa.pl.redbugs.model.Schedule;
 import com.isa.pl.redbugs.service.*;
 import com.isa.pl.redbugs.service.pathfinding.DistanceScorer;
 import com.isa.pl.redbugs.service.pathfinding.Graph;
 import com.isa.pl.redbugs.service.pathfinding.RouteFinder;
-import com.isa.pl.redbugs.service.pathfinding.Station;
+import com.isa.pl.redbugs.model.Stop;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,11 +25,11 @@ public class Application {
 		InitDataService initDataService = new InitDataService();
 		initDataService.writeInitializedDataToJson();
 
-		Graph<Station> stationGraph = setUp();
-		RouteFinder<Station> routeFinder = new RouteFinder<>(stationGraph, new DistanceScorer(), new DistanceScorer());
+		Graph<Stop> stationGraph = setUp();
+		RouteFinder<Stop> routeFinder = new RouteFinder<>(stationGraph, new DistanceScorer(), new DistanceScorer());
 
-		List<Station> route = routeFinder.findRoute(stationGraph.getNode("74"), stationGraph.getNode("7"));
-		route.stream().map(Station::getName).collect(Collectors.toList()).forEach(station -> System.out.println(station));
+		List<Stop> route = routeFinder.findRoute(stationGraph.getNode("1"), stationGraph.getNode("1"));
+		route.stream().map(Stop::getStopName).collect(Collectors.toList()).forEach(station -> System.out.println(station));
 	}
 
 	@Bean
@@ -44,16 +45,12 @@ public class Application {
 		};
 	}
 
-	public static Graph<Station> setUp() throws Exception {
-		Set<Station> stations = new HashSet<>();
+	public static Graph<Stop> setUp() throws Exception {
+		Set<Stop> stops = new HashSet<>();
 		Map<String, Set<String>> connections = new HashMap<>();
 
-		stations.add(new Station("1", "Acton Town", 51.5028, -0.2801));
-		stations.add(new Station("2", "Aldgate", 51.5143, -0.0755));
-		stations.add(new Station("3", "Aldgate East", 51.5154, -0.0726));
-		stations.add(new Station("4", "All Saints", 51.5107, -0.013));
-		stations.add(new Station("5", "Alperton", 51.5407, -0.2997));
-		stations.add(new Station("6", "Amersham", 51.6736, -0.607));
+		stops.add(new Stop("1", "Acton Town", new Schedule(), 51.5028, -0.2801));
+
 
 		connections.put("1", Stream.of("52","73","73","233","264").collect(Collectors.toSet()));
 		connections.put("2", Stream.of("156","262","156").collect(Collectors.toSet()));
@@ -62,7 +59,7 @@ public class Application {
 		connections.put("5", Stream.of("193","251").collect(Collectors.toSet()));
 
 
-		return new Graph<>(stations, connections);
+		return new Graph<>(stops, connections);
 	}
 
 }

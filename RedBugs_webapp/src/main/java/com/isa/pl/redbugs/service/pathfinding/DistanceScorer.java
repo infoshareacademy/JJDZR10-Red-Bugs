@@ -1,8 +1,10 @@
 package com.isa.pl.redbugs.service.pathfinding;
 
-public class DistanceScorer implements Scorer<Station> {
+import com.isa.pl.redbugs.model.Stop;
+
+public class DistanceScorer implements Scorer<Stop> {
     @Override
-    public double computeCost(Station from, Station to) {
+    public double computeCost(Stop from, Stop to) {
         double R = 6372.8; // In kilometers
 
         double dLat = Math.toRadians(to.getLatitude() - from.getLatitude());

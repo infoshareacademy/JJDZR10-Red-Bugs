@@ -9,7 +9,7 @@ import java.util.List;
 public class InitDataService {
     public static List<Stop> stopsDataList() {
         List<Stop> stops = new ArrayList<>();
-        stops.add(new Stop("1", "Dąbrowa Centrum", new Schedule(), 54.35483, 54.35483 ));
+        stops.add(new Stop("1013", "Dworzec Główny", new Schedule(), 54.35483, 54.35483 ));
 
         return stops;
     }
