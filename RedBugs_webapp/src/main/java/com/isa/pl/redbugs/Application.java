@@ -1,7 +1,6 @@
 package com.isa.pl.redbugs;
 
-import com.isa.pl.redbugs.service.InitDataService;
-import com.isa.pl.redbugs.service.PathFindingService;
+import com.isa.pl.redbugs.service.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

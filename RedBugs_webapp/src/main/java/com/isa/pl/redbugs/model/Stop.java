@@ -1,7 +1,6 @@
 package com.isa.pl.redbugs.model;
 
 import com.isa.pl.redbugs.service.pathfinding.GraphNode;
-
 import java.util.Objects;
 
 public class Stop implements GraphNode {
@@ -20,7 +19,6 @@ public class Stop implements GraphNode {
     }
 
     public Stop() {
-
     }
 
     @Override
