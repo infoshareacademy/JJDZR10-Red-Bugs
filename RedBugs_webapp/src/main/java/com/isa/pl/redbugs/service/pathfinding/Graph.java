@@ -1,5 +1,6 @@
 package com.isa.pl.redbugs.service.pathfinding;
 
+import com.isa.pl.redbugs.service.exception.NodeNotFoundException;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -18,7 +19,7 @@ public class Graph<T extends GraphNode> {
         return nodes.stream()
                 .filter(node -> node.getStopId().equals(stopId))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("No node found with ID"));
+                .orElseThrow(() -> new NodeNotFoundException(stopId));
     }
 
     public Set<T> getConnections(T node) {
