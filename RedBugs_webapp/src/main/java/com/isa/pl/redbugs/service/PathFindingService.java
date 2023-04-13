@@ -15,8 +15,14 @@ import java.util.stream.Stream;
 @Service
 public class PathFindingService {
 
+    private final StopService stopService;
+
+    public PathFindingService(StopService stopService) {
+        this.stopService = stopService;
+    }
+
     public Graph<Stop> setUpStopsAndConnections() throws Exception {
-        Set<Stop> stops = InitDataService.stopsDataList().stream().collect(Collectors.toSet());
+        Set<Stop> stops = stopService.findAllStops().stream().collect(Collectors.toSet());
         Map<String, Set<String>> connections = new HashMap<>();
 
         // TODO: task 39 to be done by Adam

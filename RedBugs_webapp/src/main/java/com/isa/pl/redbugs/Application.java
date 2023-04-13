@@ -19,7 +19,7 @@ public class Application {
 		InitDataService initDataService = new InitDataService();
 		initDataService.writeInitializedDataToJson();
 
-		PathFindingService pathFindingService = new PathFindingService();
+		PathFindingService pathFindingService = new PathFindingService(stopService);
 		pathFindingService.calculateShortestRoute("1028", "14693");
 	}
 
