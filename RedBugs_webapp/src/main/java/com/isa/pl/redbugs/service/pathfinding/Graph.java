@@ -14,9 +14,9 @@ public class Graph<T extends GraphNode> {
         this.connections = connections;
     }
 
-    public T getNode(String id) {
+    public T getNode(String stopId) {
         return nodes.stream()
-                .filter(node -> node.getStopId().equals(id))
+                .filter(node -> node.getStopId().equals(stopId))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("No node found with ID"));
     }
