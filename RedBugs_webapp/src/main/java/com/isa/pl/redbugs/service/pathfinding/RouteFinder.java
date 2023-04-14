@@ -32,9 +32,7 @@ public class RouteFinder<T extends GraphNode> {
             System.out.println("Open Set contains: " + openSet.stream().map(RouteNode::getCurrent).collect(Collectors.toSet()));
             RouteNode<T> next = openSet.poll();
             System.out.println("Looking at node: " + next);
-            if (next.getCurrent().equals(to)) {
-                System.out.println("Found our destination!");
-
+            if (isDestinationReached(next, to)) {
                 List<T> route = new ArrayList<>();
                 RouteNode<T> current = next;
                 do {
@@ -62,6 +60,15 @@ public class RouteFinder<T extends GraphNode> {
         }
 
         throw new IllegalStateException("No route found");
+    }
+
+    private boolean isDestinationReached(RouteNode<T> next, T to) {
+        if (next.getCurrent().equals(to)) {
+            System.out.println("Found our destination!");
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
