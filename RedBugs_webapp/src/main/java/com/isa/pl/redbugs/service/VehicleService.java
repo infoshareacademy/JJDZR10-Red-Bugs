@@ -19,14 +19,14 @@ public class VehicleService {
     }
 
     public void createVehicle(Vehicle vehicle) throws IOException {
-        List<Vehicle> allVehicles = new ArrayList(rs.readJson("Vehicles.json", Vehicle[].class));
+        List<Vehicle> allVehicles = findAllVehicles();
         allVehicles.add(vehicle);
         ws.writeToJson(allVehicles, "Vehicles.json");
     }
 
     public void deleteVehicle(long idOfVehicle) throws IOException {
         Vehicle vehicleToDelete = findVehicleById(idOfVehicle);
-        List<Vehicle> allVehicles = new ArrayList(findAllVehicles());
+        List<Vehicle> allVehicles = findAllVehicles();
         allVehicles.remove(vehicleToDelete);
         ws.writeToJson(allVehicles, "Vehicles.json");
     }
@@ -36,7 +36,7 @@ public class VehicleService {
     }
 
     public Vehicle findVehicleById(long id) throws IOException {
-        List<Vehicle> allVehicles = rs.readJson("Vehicles.json", Vehicle[].class);
+        List<Vehicle> allVehicles = findAllVehicles();
 
         return allVehicles.stream()
                 .filter(route -> route.getVehicleId() == id)
