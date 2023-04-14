@@ -1,6 +1,7 @@
 package com.isa.pl.redbugs.service;
 
 import com.isa.pl.redbugs.model.Route;
+import com.isa.pl.redbugs.service.exception.RouteNotFoundException;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,6 +44,6 @@ public class RouteService {
         return allRoutes.stream()
                 .filter(route -> route.getRouteId() == id)
                 .findFirst()
-                .orElseThrow(() -> new NoSuchElementException("Route with id " + id + " not found"));
+                .orElseThrow(() -> new RouteNotFoundException(String.format("Route with id %s not found", id)));
     }
 }

@@ -58,7 +58,7 @@ public class RouteFinder<T extends GraphNode> {
             });
         }
 
-        throw new RouteNotFoundException();
+        throw new RouteNotFoundException("Route not found");
     }
 
     private boolean isDestinationReached(RouteNode<T> next, T to) {
