@@ -19,14 +19,14 @@ public class StopService {
     }
 
     public void createStop(Stop stop) throws IOException {
-        List<Stop> allStops = new ArrayList(rs.readJson("Stops.json", Stop[].class));
+        List<Stop> allStops = findAllStops();
         allStops.add(stop);
         ws.writeToJson(allStops, "Stops.json");
     }
 
     public void deleteStop(long idOfStop) throws IOException {
         Stop stopToDelete = findStopById(idOfStop);
-        List<Stop> allStops = new ArrayList(findAllStops());
+        List<Stop> allStops = findAllStops();
         allStops.remove(stopToDelete);
         ws.writeToJson(allStops, "Stops.json");
     }
@@ -36,7 +36,7 @@ public class StopService {
     }
 
     public Stop findStopById(long id) throws IOException {
-        List<Stop> allStops = rs.readJson("Stops.json", Stop[].class);
+        List<Stop> allStops = findAllStops();
 
         return allStops.stream()
                 .filter(route -> route.getStopId().equals(id))
