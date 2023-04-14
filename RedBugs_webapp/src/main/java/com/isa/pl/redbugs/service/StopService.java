@@ -40,6 +40,6 @@ public class StopService {
         return allStops.stream()
                 .filter(route -> route.getStopId().equals(stopId))
                 .findFirst()
-                .orElseThrow(() -> new StopNotFoundException(stopId));
+                .orElseThrow(() -> new StopNotFoundException(String.format("Stop with id %s not found", stopId)));
     }
 }

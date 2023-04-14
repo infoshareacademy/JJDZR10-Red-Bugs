@@ -1,8 +1,8 @@
 package com.isa.pl.redbugs.service.exception;
 
 public class StopNotFoundException extends RuntimeException {
-    public StopNotFoundException(String stopId) {
+    public StopNotFoundException(String message) {
 
-        super(String.format("Stop with id %s not found", stopId));
+        super(message);
     }
 }
