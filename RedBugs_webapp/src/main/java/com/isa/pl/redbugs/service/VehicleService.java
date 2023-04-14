@@ -42,6 +42,6 @@ public class VehicleService {
         return allVehicles.stream()
                 .filter(route -> route.getVehicleId() == id)
                 .findFirst()
-                .orElseThrow(() -> new VehicleNotFoundException(id));
+                .orElseThrow(() -> new VehicleNotFoundException(String.format("Vehicle with id %d not found", id)));
     }
 }
