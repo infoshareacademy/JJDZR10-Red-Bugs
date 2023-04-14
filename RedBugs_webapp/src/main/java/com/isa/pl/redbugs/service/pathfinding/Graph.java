@@ -19,7 +19,7 @@ public class Graph<T extends GraphNode> {
         return nodes.stream()
                 .filter(node -> node.getStopId().equals(stopId))
                 .findFirst()
-                .orElseThrow(() -> new NodeNotFoundException(stopId));
+                .orElseThrow(() -> new NodeNotFoundException(String.format("Node with id %s not found", stopId)));
     }
 
     public Set<T> getConnections(T node) {
