@@ -14,6 +14,9 @@ public class RouteFinder<T extends GraphNode> {
     private final Scorer<T> nextNodeScorer;
     private final Scorer<T> targetScorer;
 
+    private Map<T, RouteNode<T>> allNodes = new HashMap<>();
+    private Queue<RouteNode> openSet = new PriorityQueue<>();
+
     public RouteFinder(Graph<T> graph, Scorer<T> nextNodeScorer, Scorer<T> targetScorer) {
         this.graph = graph;
         this.nextNodeScorer = nextNodeScorer;
@@ -21,12 +24,7 @@ public class RouteFinder<T extends GraphNode> {
     }
 
     public List<T> findRoute(T from, T to) {
-        Map<T, RouteNode<T>> allNodes = new HashMap<>();
-        Queue<RouteNode> openSet = new PriorityQueue<>();
-
-        RouteNode<T> start = new RouteNode<>(from, null, 0d, targetScorer.computeCost(from, to));
-        allNodes.put(from, start);
-        openSet.add(start);
+        createStartNode(from, to);
 
         while (!openSet.isEmpty()) {
             System.out.println("Open Set contains: " + openSet.stream().map(RouteNode::getCurrent).collect(Collectors.toSet()));
@@ -70,5 +68,11 @@ public class RouteFinder<T extends GraphNode> {
             return false;
         }
     }
+
+    private RouteNode<T> createStartNode(T from, T to) {
+        RouteNode<T> start = new RouteNode<>(from, null, 0d, targetScorer.computeCost(from, to));
+        allNodes.put(from, start);
+        openSet.add(start);
+        return start; }
 
 }
