@@ -1,5 +1,6 @@
 package com.isa.pl.redbugs.service.pathfinding;
 
+import com.isa.pl.redbugs.service.exception.RouteNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -57,7 +58,7 @@ public class RouteFinder<T extends GraphNode> {
             });
         }
 
-        throw new IllegalStateException("No route found");
+        throw new RouteNotFoundException();
     }
 
     private boolean isDestinationReached(RouteNode<T> next, T to) {
