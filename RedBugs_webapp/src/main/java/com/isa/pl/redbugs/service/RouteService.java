@@ -1,6 +1,7 @@
 package com.isa.pl.redbugs.service;
 
 import com.isa.pl.redbugs.model.Route;
+import com.isa.pl.redbugs.service.exception.RouteNotFoundException;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,15 +19,16 @@ public class RouteService {
         this.rs = rs;
     }
 
+
     public void createRoute(Route route) throws IOException {
-        List<Route> allRoutes = new ArrayList(rs.readJson("Routes.json", Route[].class));
+        List<Route> allRoutes = findAllRoutes();
         allRoutes.add(route);
         ws.writeToJson(allRoutes, "Routes.json");
     }
 
     public void deleteRoute(long idOfRoute) throws IOException {
         Route routeToDelete = findRouteById(idOfRoute);
-        List<Route> allRoutes = new ArrayList(findAllRoutes());
+        List<Route> allRoutes = findAllRoutes();
         allRoutes.remove(routeToDelete);
         ws.writeToJson(allRoutes, "Routes.json");
     }
@@ -37,11 +39,11 @@ public class RouteService {
     }
 
     public Route findRouteById(long id) throws IOException {
-        List<Route> allRoutes = rs.readJson("Routes.json", Route[].class);
+        List<Route> allRoutes = findAllRoutes();
 
         return allRoutes.stream()
                 .filter(route -> route.getRouteId() == id)
                 .findFirst()
-                .orElseThrow(() -> new NoSuchElementException("Route with id " + id + " not found"));
+                .orElseThrow(() -> new RouteNotFoundException(String.format("Route with id %s not found", id)));
     }
 }

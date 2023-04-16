@@ -6,19 +6,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import java.io.IOException;
+
 import java.util.Arrays;
 
 @SpringBootApplication
 public class Application {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 
 		SpringApplication.run(Application.class, args);
 
 		InitDataService initDataService = new InitDataService();
 		initDataService.writeInitializedDataToJson();
-
 	}
 
 	@Bean
@@ -33,5 +32,4 @@ public class Application {
 			}
 		};
 	}
-
 }

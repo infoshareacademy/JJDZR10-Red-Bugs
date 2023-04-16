@@ -8,14 +8,14 @@ import java.util.Objects;
 public class Route {
 
     private long routeId;
-    private long numberVehicle;
-    private String nameRoute;
-    private long[] stops;
+    private long vehicleNumber;
+    private String routeName;
+    private String[] stops;
 
-    public Route(long routeId, long numberVehicle, String nameRoute, long[] stops) {
+    public Route(long routeId, long numberVehicle, String nameRoute, String[] stops) {
         this.routeId = routeId;
-        this.numberVehicle = numberVehicle;
-        this.nameRoute = nameRoute;
+        this.vehicleNumber = numberVehicle;
+        this.routeName = nameRoute;
         this.stops = stops;
     }
 
@@ -40,27 +40,27 @@ public class Route {
         this.routeId = routeId;
     }
 
-    public long getNumberVehicle() {
-        return numberVehicle;
+    public long getVehicleNumber() {
+        return vehicleNumber;
     }
 
-    public void setNumberVehicle(long numberVehicle) {
-        this.numberVehicle = numberVehicle;
+    public void setVehicleNumber(long vehicleNumber) {
+        this.vehicleNumber = vehicleNumber;
     }
 
-    public String getNameRoute() {
-        return nameRoute;
+    public String getRouteName() {
+        return routeName;
     }
 
-    public void setNameRoute(String nameRoute) {
-        this.nameRoute = nameRoute;
+    public void setRouteName(String routeName) {
+        this.routeName = routeName;
     }
 
-    public long[] getStops() {
+    public String[] getStops() {
         return stops;
     }
 
-    public void setStops(long[] stops) {
+    public void setStops(String[] stops) {
         this.stops = stops;
     }
 
@@ -68,8 +68,8 @@ public class Route {
     public String toString() {
         return "Route{" +
                 "routeId=" + routeId +
-                ", numberVehicle=" + numberVehicle +
-                ", nameRoute='" + nameRoute + '\'' +
+                ", numberVehicle=" + vehicleNumber +
+                ", nameRoute='" + routeName + '\'' +
                 ", stops=" + Arrays.toString(stops) +
                 '}';
     }
@@ -82,16 +82,16 @@ public class Route {
         Route route = (Route) o;
 
         if (routeId != route.routeId) return false;
-        if (numberVehicle != route.numberVehicle) return false;
-        if (!Objects.equals(nameRoute, route.nameRoute)) return false;
+        if (vehicleNumber != route.vehicleNumber) return false;
+        if (!Objects.equals(routeName, route.routeName)) return false;
         return Arrays.equals(stops, route.stops);
     }
 
     @Override
     public int hashCode() {
         int result = (int) (routeId ^ (routeId >>> 32));
-        result = 31 * result + (int) (numberVehicle ^ (numberVehicle >>> 32));
-        result = 31 * result + (nameRoute != null ? nameRoute.hashCode() : 0);
+        result = 31 * result + (int) (vehicleNumber ^ (vehicleNumber >>> 32));
+        result = 31 * result + (routeName != null ? routeName.hashCode() : 0);
         result = 31 * result + Arrays.hashCode(stops);
         return result;
     }
