@@ -70,21 +70,9 @@ public class RouteFinder<T extends GraphNode> {
         }
     }
 
-    private RouteNode<T> createStartNode(T from, T to) {
+    private void createStartNode(T from, T to) {
         RouteNode<T> start = new RouteNode<>(from, null, 0d, targetScorer.computeCost(from, to));
         allNodes.put(from, start);
         openSet.add(start);
-        return start;
     }
-
-    private List<T> reconstructRoute(Map<T, T> cameFrom, T current) {
-        List<T> route = new ArrayList<>();
-        route.add(current);
-        while (cameFrom.containsKey(current)) {
-            current = cameFrom.get(current);
-            route.add(0, current);
-        }
-        return route;
-    }
-
 }

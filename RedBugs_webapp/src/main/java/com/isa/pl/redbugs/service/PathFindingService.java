@@ -32,10 +32,18 @@ public class PathFindingService {
 
         return new Graph<>(stops, connections);
     }
-    public void calculateShortestRoute(String startId, String endId) throws Exception {
+    public void calculateShortestRoute(String firstStopId, String lastStopId) throws Exception {
         Graph<Stop> stopsGraph = setUpStopsAndConnections();
+        List<Stop> route = findShortestRoute(stopsGraph, firstStopId, lastStopId);
+        printRoute(route);
+    }
+
+    private List<Stop> findShortestRoute(Graph<Stop> stopsGraph, String firstStopId, String lastStopId) {
         RouteFinder<Stop> routeFinder = new RouteFinder<>(stopsGraph, new DistanceScorer(), new DistanceScorer());
-        List<Stop> route = routeFinder.findRoute(stopsGraph.getNode(startId), stopsGraph.getNode(endId));
-        route.stream().map(Stop::getStopName).collect(Collectors.toList()).forEach(stop -> System.out.println(stop));
+        return routeFinder.findRoute(stopsGraph.getNode(firstStopId), stopsGraph.getNode(lastStopId));
+    }
+
+    private void printRoute(List<Stop> route) {
+        route.stream().map(Stop::getStopName).forEach(stop -> System.out.println(stop));
     }
 }
