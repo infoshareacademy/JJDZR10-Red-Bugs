@@ -20,7 +20,7 @@ public class Application {
 		initDataService.writeInitializedDataToJson();
 
 		PathFindingService pathFindingService = new PathFindingService();
-		pathFindingService.calculateShortestRoute("1028", "14693");
+		pathFindingService.calculateShortestRoute("1314", "14693");
 	}
 
 	@Bean
