@@ -31,6 +31,7 @@ public class StopService {
     }
 
     public List<Stop> findAllStops() throws IOException {
+        ws.writeToJson(InitDataService.stopsDataList(), "Stops.json");
         return rs.readJson("Stops.json", Stop[].class);
     }
 
