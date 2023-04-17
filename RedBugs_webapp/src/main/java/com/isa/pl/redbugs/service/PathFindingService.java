@@ -15,40 +15,33 @@ import java.util.stream.Stream;
 public class PathFindingService {
 
     public Graph<Stop> setUpStopsAndConnections() throws Exception {
-        Set<Stop> stops = InitDataService.stopsDataList().stream().collect(Collectors.toSet());
-        Set<Route> routes = InitDataService.routesDataList().stream().collect(Collectors.toSet());
+        Set<Stop> stops = new HashSet<>(InitDataService.stopsDataList());
+        Set<Route> routes = new HashSet<>(InitDataService.routesDataList());
         Map<String, Set<String>> connections = new HashMap<>();
 
-
-        stops.forEach(stop -> {
+        for (Stop stop : stops) {
             connections.put(stop.getStopId(), new HashSet<>());
-        });
+        }
 
-
-        stops.forEach(stop -> {
-
-            routes.forEach(route -> {
-                for (int i = 0; i < route.getStops().length; i++) {
-                    if (route.getStops()[i].equals(stop.getStopId())) {
-                        Set<String> stopConnection = connections.get(stop.getStopId());
-
-                        if (i == 0) {
-                            stopConnection.add(route.getStops()[i + 1]);
-                        } else if (i > 0 && i < route.getStops().length - 1) {
-                            stopConnection.add(route.getStops()[i - 1]);
-                            stopConnection.add(route.getStops()[i + 1]);
-                        } else if (i == route.getStops().length - 1) {
-                            stopConnection.add(route.getStops()[i - 1]);
-                        }
-                    }
+        for (Route route : routes) {
+            String[] routeStops = route.getStops();
+            for (int i = 0; i < routeStops.length; i++) {
+                String currentStopId = routeStops[i];
+                Set<String> currentStopConnection = connections.get(currentStopId);
+                if (i == 0) {
+                    currentStopConnection.add(routeStops[i + 1]);
+                } else if (i < routeStops.length - 1) {
+                    currentStopConnection.add(routeStops[i - 1]);
+                    currentStopConnection.add(routeStops[i + 1]);
+                } else {
+                    currentStopConnection.add(routeStops[i - 1]);
                 }
-            });
-        });
-
+            }
+        }
 
         return new Graph<>(stops, connections);
-
     }
+
 
     public void calculateShortestRoute(String startId, String endId) throws Exception {
         Graph<Stop> stopsGraph = setUpStopsAndConnections();
