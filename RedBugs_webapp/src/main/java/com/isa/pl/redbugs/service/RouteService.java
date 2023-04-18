@@ -1,6 +1,7 @@
 package com.isa.pl.redbugs.service;
 
 import com.isa.pl.redbugs.model.Route;
+import com.isa.pl.redbugs.model.Stop;
 import com.isa.pl.redbugs.service.exception.RouteNotFoundException;
 import org.springframework.stereotype.Component;
 
@@ -61,7 +62,16 @@ public class RouteService {
                 }
             });
         }
-
         return stopsOnRoute;
     }
+
+    public void editRouteById(Long routeId, Route route) throws IOException {
+        Route routeToEdit = findRouteById(routeId);
+
+        routeToEdit.setRouteId(route.getRouteId());
+        routeToEdit.setRouteName(route.getRouteName());
+        routeToEdit.setVehicleNumber(route.getVehicleNumber());
+        routeToEdit.setStops(route.getStops());
+    }
+
 }
