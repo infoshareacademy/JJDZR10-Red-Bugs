@@ -37,7 +37,6 @@ public class RouteService {
 
 
     public List<Route> findAllRoutes() throws IOException {
-        ws.writeToJson(InitDataService.routesDataList(), "Routes.json");
         return rs.readJson("Routes.json", Route[].class);
     }
 
