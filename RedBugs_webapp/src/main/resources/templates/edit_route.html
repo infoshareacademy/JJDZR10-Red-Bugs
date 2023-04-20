@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container">
-  <h1 th:text="${pageTattle}">Edit list of bus stops </h1>
+  <h1 th:text="${pageTattle}"> Edycja listy przystanków </h1>
   <form action="#" th:action="@{/routes/edit/{routeId}/edit(routeId=${route.routeId})}" th:object="${route}" method="post">
   <p>Route Id: <input type="text" th:field="*{routeId}"/></p>
   <p>Route Number: <input type="text" th:field="*{routeName}"/></p>

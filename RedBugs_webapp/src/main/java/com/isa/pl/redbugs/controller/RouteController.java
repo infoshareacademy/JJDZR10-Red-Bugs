@@ -33,7 +33,7 @@ public class RouteController {
         Route routeFound = routeService.findRouteById(routeId);
         model.addAttribute("route", routeFound);
 
-        String pageTitle = "List of stops bus number " + routeId;
+        String pageTitle = "Lista przystanków autobusu numer: " + routeId;
         model.addAttribute("pageTattle", pageTitle);
 
         List<String> stopList = routeService.findAllStopsOnRoute(routeId);
@@ -46,7 +46,7 @@ public class RouteController {
         Route routeFound = routeService.findRouteById(routeId);
         model.addAttribute("route", routeFound);
 
-        String pageTitle = "Editing route number: " + routeId;
+        String pageTitle = "Edycja trasy numer: " + routeId;
         model.addAttribute("pageTattle", pageTitle);
 
         List<String> stopsOnRouteName = routeService.findAllStopsOnRoute(routeId);
