@@ -29,7 +29,6 @@ public class Application {
 		pathFindingService.calculateShortestRoute(stops, routes, "1314", "14693");
 	}
 
-
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return  args -> {
