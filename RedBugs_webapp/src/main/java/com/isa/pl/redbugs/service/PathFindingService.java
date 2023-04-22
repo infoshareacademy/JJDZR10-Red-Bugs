@@ -14,9 +14,7 @@ import java.util.stream.Stream;
 @Service
 public class PathFindingService {
 
-    public Graph<Stop> setUpStopsAndConnections() throws Exception {
-        Set<Stop> stops = new HashSet<>(InitDataService.stopsDataList());
-        Set<Route> routes = new HashSet<>(InitDataService.routesDataList());
+    public Graph<Stop> setUpStopsAndConnections(Set<Stop> stops, Set<Route> routes) throws Exception {
         Map<String, Set<String>> connections = new HashMap<>();
 
         for (Stop stop : stops) {
@@ -43,8 +41,8 @@ public class PathFindingService {
     }
 
 
-    public void calculateShortestRoute(String startId, String endId) throws Exception {
-        Graph<Stop> stopsGraph = setUpStopsAndConnections();
+    public void calculateShortestRoute(Set<Stop> stops, Set<Route> routes, String startId, String endId) throws Exception {
+        Graph<Stop> stopsGraph = setUpStopsAndConnections(stops, routes);
         RouteFinder<Stop> routeFinder = new RouteFinder<>(stopsGraph, new DistanceScorer(), new DistanceScorer());
         List<Stop> route = routeFinder.findRoute(stopsGraph.getNode(startId), stopsGraph.getNode(endId));
         route.stream().map(Stop::getStopName).collect(Collectors.toList()).forEach(stop -> System.out.println(stop));
