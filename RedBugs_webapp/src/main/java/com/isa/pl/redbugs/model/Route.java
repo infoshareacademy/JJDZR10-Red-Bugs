@@ -1,14 +1,19 @@
 package com.isa.pl.redbugs.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class Route {
-
+    @Positive
     private long routeId;
+    @Positive
     private long vehicleNumber;
+    @NotEmpty
     private String routeName;
     private String[] stops;
 
