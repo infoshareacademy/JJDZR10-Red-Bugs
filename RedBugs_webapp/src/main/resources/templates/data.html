@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"
+          type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Data</title>
+</head>
+<body>
+<div th:replace="fragments/fragment.html :: menu"></div>
+<div class="container">
+    <h2>Wyświetlanie danych szczegółowych</h2>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Info</a></li>
+        <li><a data-toggle="tab" href="#menu1">Przystanki</a></li>
+        <li><a data-toggle="tab" href="#menu2">Pojazdy</a></li>
+        <li><a data-toggle="tab" href="#menu3">Trasy</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <br>
+            <p>Panel administracyjny, służący wyświetlaniu wszsytkich tras, pojazdów oraz przystanków</p>
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <h3>Lista przystanków</h3>
+            <p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Nazwa</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="stop : ${stops}">
+                    <td th:text="${stop.stopName}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            </p>
+        </div>
+        <div id="menu2" class="tab-pane fade">
+            <h3>Pojazdy</h3>
+            <p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Trasa pojazdu</th>
+                    <th scope="col">Typ pojazdu</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="vehicles : ${vehicles}">
+                    <td th:text="${vehicles.getVehicleName()}"></td>
+                    <td th:text="${vehicles.getType()}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            </p>
+        </div>
+        <div id="menu3" class="tab-pane fade">
+            <h3>Trasy</h3>
+            <p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Trasa</th>
+                    <th scope="col">Przystanki</th>
+                    <th scope="col">Linia</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="routes : ${routes}">
+                    <td th:text="${routes.routeName}"></td>
+                    <td>
+                        <ul>
+                            <a th:href="@{/templates/routes/details/{routeId}(routeId=${routes.vehicleNumber})}">Lista
+                                przystanków dla danej linii</a>
+                        </ul>
+                    </td>
+                    <td th:text="${routes.vehicleNumber}"></td>
+
+                </tr>
+                </tbody>
+            </table>
+
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</script>
+</body>
+</html>

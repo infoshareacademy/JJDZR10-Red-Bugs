@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
+<div th:replace="fragments/fragment.html :: menu"></div>
 <div class="container">
     <h1 th:text="${pageTattle}"> Lista przystanków </h1>
     <table class="table">
