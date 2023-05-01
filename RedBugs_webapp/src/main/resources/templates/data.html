@@ -34,11 +34,13 @@
                 <thead>
                 <tr>
                     <th scope="col">Nazwa</th>
+                    <th scope="col">ID</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="stop : ${stops}">
                     <td th:text="${stop.stopName}"></td>
+                    <td th:text="${stop.stopId}"></td>
                 </tr>
                 </tbody>
             </table>
@@ -74,6 +76,7 @@
                     <th scope="col">Trasa</th>
                     <th scope="col">Przystanki</th>
                     <th scope="col">Linia</th>
+                    <th scope="col">Edycja</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -86,7 +89,12 @@
                         </ul>
                     </td>
                     <td th:text="${routes.vehicleNumber}"></td>
-
+                    <td>
+                        <ul>
+                            <a th:href="@{/templates/routes/edit/{routeId}(routeId=${routes.vehicleNumber})}">Edycja
+                                przystanków dla danej linii</a>
+                        </ul>
+                    </td>
                 </tr>
                 </tbody>
             </table>

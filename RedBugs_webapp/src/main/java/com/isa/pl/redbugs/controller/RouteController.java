@@ -35,6 +35,8 @@ public class RouteController {
 
         List<String> stopList = routeService.findAllStopsOnRoute(routeId);
         model.addAttribute("stops", stopList);
+
+
         return "details_of_route";
     }
 
