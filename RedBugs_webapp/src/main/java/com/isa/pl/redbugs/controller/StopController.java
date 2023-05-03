@@ -1,8 +1,13 @@
 package com.isa.pl.redbugs.controller;
 
+import com.isa.pl.redbugs.model.Stop;
 import com.isa.pl.redbugs.service.StopService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.IOException;
 
@@ -19,5 +24,23 @@ public class StopController {
     public String getStops() throws IOException {
         stopService.findAllStops();
         return "stops";
+    }
+
+    @GetMapping("/addStop")
+    public String addStopForm(Model model) {
+        model.addAttribute("stop", new Stop());
+        return "addStop";
+    }
+
+    @PostMapping("/addStop")
+    public String addStop(@ModelAttribute("stop") Stop stop) {
+        stopService.saveStop(stop);
+        return "redirect:/stops";
+    }
+
+    @GetMapping("/deleteStop/{stopId}")
+    public String deleteStop(@PathVariable("stopId") Long stopId) {
+        stopService.deleteStop(stopId);
+        return "redirect:/stops";
     }
 }
