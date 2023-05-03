@@ -35,16 +35,19 @@
                 <tr>
                     <th scope="col">Nazwa</th>
                     <th scope="col">ID</th>
+                    <th scope="col">Akcje</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="stop : ${stops}">
                     <td th:text="${stop.stopName}"></td>
                     <td th:text="${stop.stopId}"></td>
+                    <td>
+                        <a th:href="@{/deleteStop/{stopId}(stopId=${stop.stopId})}" class="btn btn-danger">Usuń</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
-
             </p>
         </div>
         <div id="menu2" class="tab-pane fade">

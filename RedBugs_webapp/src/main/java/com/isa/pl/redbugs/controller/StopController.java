@@ -34,13 +34,20 @@ public class StopController {
 
     @PostMapping("/addStop")
     public String addStop(@ModelAttribute("stop") Stop stop) {
-        stopService.saveStop(stop);
+        try {
+            stopService.saveStop(stop);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         return "redirect:/stops";
     }
 
     @GetMapping("/deleteStop/{stopId}")
     public String deleteStop(@PathVariable("stopId") Long stopId) {
-        stopService.deleteStop(stopId);
+        try {
+            stopService.deleteStop(String.valueOf(stopId));
+        } catch (IOException e) {
+        }
         return "redirect:/stops";
     }
 }

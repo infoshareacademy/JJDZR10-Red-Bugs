@@ -42,4 +42,9 @@ public class StopService {
                 .findFirst()
                 .orElseThrow(() -> new StopNotFoundException(String.format("Stop with id %s not found", stopId)));
     }
+    public void saveStop(Stop stop) throws IOException {
+        List<Stop> allStops = findAllStops();
+        allStops.add(stop);
+        ws.writeToJson(allStops, "Stops.json");
+    }
 }
