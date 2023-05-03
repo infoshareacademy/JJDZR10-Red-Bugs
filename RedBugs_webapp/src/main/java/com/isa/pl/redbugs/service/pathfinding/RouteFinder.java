@@ -1,5 +1,6 @@
 package com.isa.pl.redbugs.service.pathfinding;
 
+import com.isa.pl.redbugs.service.exception.RouteNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +15,9 @@ public class RouteFinder<T extends GraphNode> {
     private final Scorer<T> nextNodeScorer;
     private final Scorer<T> targetScorer;
 
+    private Map<T, RouteNode<T>> allNodes = new HashMap<>();
+    private Queue<RouteNode> openSet = new PriorityQueue<>();
+
     public RouteFinder(Graph<T> graph, Scorer<T> nextNodeScorer, Scorer<T> targetScorer) {
         this.graph = graph;
         this.nextNodeScorer = nextNodeScorer;
@@ -21,20 +25,13 @@ public class RouteFinder<T extends GraphNode> {
     }
 
     public List<T> findRoute(T from, T to) {
-        Map<T, RouteNode<T>> allNodes = new HashMap<>();
-        Queue<RouteNode> openSet = new PriorityQueue<>();
-
-        RouteNode<T> start = new RouteNode<>(from, null, 0d, targetScorer.computeCost(from, to));
-        allNodes.put(from, start);
-        openSet.add(start);
+        createStartNode(from, to);
 
         while (!openSet.isEmpty()) {
             System.out.println("Open Set contains: " + openSet.stream().map(RouteNode::getCurrent).collect(Collectors.toSet()));
             RouteNode<T> next = openSet.poll();
             System.out.println("Looking at node: " + next);
-            if (next.getCurrent().equals(to)) {
-                System.out.println("Found our destination!");
-
+            if (isDestinationReached(next, to)) {
                 List<T> route = new ArrayList<>();
                 RouteNode<T> current = next;
                 do {
@@ -61,7 +58,21 @@ public class RouteFinder<T extends GraphNode> {
             });
         }
 
-        throw new IllegalStateException("No route found");
+        throw new RouteNotFoundException("Route not found");
     }
 
+    private boolean isDestinationReached(RouteNode<T> next, T to) {
+        if (next.getCurrent().equals(to)) {
+            System.out.println("Found our destination!");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void createStartNode(T from, T to) {
+        RouteNode<T> start = new RouteNode<>(from, null, 0d, targetScorer.computeCost(from, to));
+        allNodes.put(from, start);
+        openSet.add(start);
+    }
 }

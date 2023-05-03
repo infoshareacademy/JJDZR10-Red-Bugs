@@ -27,6 +27,7 @@ public class Application {
 
 		PathFindingService pathFindingService = new PathFindingService();
 		pathFindingService.calculateShortestRoute(stops, routes, "1314", "14693");
+
 	}
 
 	@Bean
