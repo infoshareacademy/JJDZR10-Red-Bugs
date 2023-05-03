@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class StopController {
@@ -21,10 +23,12 @@ public class StopController {
     }
 
     @GetMapping("/stops")
-    public String getStops() throws IOException {
-        stopService.findAllStops();
+    public String getStops(Model model) throws IOException {
+        List<Stop> stops = stopService.findAllStops();
+        model.addAttribute("stops", stops);
         return "stops";
     }
+
 
     @GetMapping("/addStop")
     public String addStopForm(Model model) {
@@ -42,12 +46,14 @@ public class StopController {
         return "redirect:/stops";
     }
 
-    @GetMapping("/deleteStop/{stopId}")
+    @PostMapping("/deleteStop/{stopId}")
     public String deleteStop(@PathVariable("stopId") Long stopId) {
         try {
             stopService.deleteStop(String.valueOf(stopId));
         } catch (IOException e) {
         }
-        return "redirect:/stops";
+        return "redirect:/templates/data.html";
     }
+
 }
+

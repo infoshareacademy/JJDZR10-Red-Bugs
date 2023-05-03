@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista przystanków</title>
+</head>
+<body>
+<h1>Lista przystanków</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Nazwa</th>
+    <th>ID</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="stop : ${stops}">
+    <td th:text="${stop.stopName}"></td>
+    <td th:text="${stop.stopId}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
