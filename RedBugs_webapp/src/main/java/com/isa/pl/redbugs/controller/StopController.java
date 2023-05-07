@@ -47,21 +47,17 @@ public class StopController {
         return "redirect:/stops";
     }
 
-//    @PostMapping("/deleteStop/{stopId}")
-//    public String deleteStop(@PathVariable("stopId") Long stopId) {
-//        try {
-//            stopService.deleteStop(String.valueOf(stopId));
-//        } catch (IOException e) {
-//        }
-//        return "redirect:/templates/data.html";
-//    }
+    @PostMapping("/deleteStop/{stopId}")
+    public String deleteStop(@PathVariable String stopId) {
+        try {
+            stopService.deleteStop(stopId);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-    @GetMapping("/deleteStop/{stopId}")
-    public String deleteStop(@PathVariable String StopId) {
-        stopService.deleteStop(StopId);
-
-        return "redirect:/templates/data.html";
+        return "redirect:/stops";
     }
+
 }
 
 
