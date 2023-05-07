@@ -8,8 +8,6 @@ import com.isa.pl.redbugs.service.pathfinding.RouteFinder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class PathFindingService {
@@ -40,11 +38,11 @@ public class PathFindingService {
         return new Graph<>(stops, connections);
     }
 
-    public void calculateShortestRoute(Set<Stop> stops, Set<Route> routes, String startId, String endId) throws Exception {
+    public List<Stop> calculateShortestRoute(Set<Stop> stops, Set<Route> routes, String startId, String endId) throws Exception {
         Graph<Stop> stopsGraph = setUpStopsAndConnections(stops, routes);
 
         RouteFinder<Stop> routeFinder = new RouteFinder<>(stopsGraph, new DistanceScorer(), new DistanceScorer());
-        return routeFinder.findRoute(stopsGraph.getNode(firstStopId), stopsGraph.getNode(lastStopId));
+        return routeFinder.findRoute(stopsGraph.getNode(startId), stopsGraph.getNode(endId));
     }
 
     private void printRoute(List<Stop> route) {
