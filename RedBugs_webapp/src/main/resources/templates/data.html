@@ -43,9 +43,11 @@
                     <td th:text="${stop.stopName}"></td>
                     <td th:text="${stop.stopId}"></td>
                     <td>
-                        <form th:action="@{/deleteStop/{stopId}(stopId=${stop.stopId})}" method="post">
-                            <button type="submit" class="btn btn-danger">Usuń</button>
-                        </form>
+
+                        <a th:href="@{/deleteStop/{stopId}(stopId=${stop.stopId})}" class="btn btn-danger">
+                            DELETE
+                        </a>
+
                     </td>
                 </tr>
                 </tbody>

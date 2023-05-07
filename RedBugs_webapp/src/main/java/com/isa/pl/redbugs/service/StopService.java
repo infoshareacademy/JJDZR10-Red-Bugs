@@ -23,11 +23,27 @@ public class StopService {
         ws.writeToJson(allStops, "Stops.json");
     }
 
-    public void deleteStop(String stopId) throws IOException {
-        Stop stopToDelete = findStopById(stopId);
-        List<Stop> allStops = findAllStops();
+//    public void deleteStop(String stopId) throws IOException {
+//        Stop stopToDelete = findStopById(stopId);
+//        List<Stop> allStops = findAllStops();
+//        allStops.remove(stopToDelete);
+//        ws.writeToJson(allStops, "Stops.json");
+//    }
+
+    public void deleteStop(String stopId) {
+        Stop stopToDelete = null;
+        try {
+            stopToDelete = findStopById(stopId);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        List<Stop> allStops = null;
+        try {
+            allStops = findAllStops();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         allStops.remove(stopToDelete);
-        ws.writeToJson(allStops, "Stops.json");
     }
 
     public List<Stop> findAllStops() throws IOException {
