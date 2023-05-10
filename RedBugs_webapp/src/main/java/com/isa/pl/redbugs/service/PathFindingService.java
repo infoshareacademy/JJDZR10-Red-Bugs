@@ -5,12 +5,15 @@ import com.isa.pl.redbugs.model.Stop;
 import com.isa.pl.redbugs.service.pathfinding.DistanceScorer;
 import com.isa.pl.redbugs.service.pathfinding.Graph;
 import com.isa.pl.redbugs.service.pathfinding.RouteFinder;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
 public class PathFindingService {
+    private static final Logger LOGGER = LogManager.getLogger(PathFindingService.class);
 
     public Graph<Stop> setUpStopsAndConnections(Set<Stop> stops, Set<Route> routes) throws Exception {
         Map<String, Set<String>> connections = new HashMap<>();
@@ -46,6 +49,6 @@ public class PathFindingService {
     }
 
     private void printRoute(List<Stop> route) {
-        route.stream().map(Stop::getStopName).forEach(stop -> System.out.println(stop));
+        route.stream().map(Stop::getStopName).forEach(stop -> LOGGER.info(stop));
     }
 }
