@@ -12,7 +12,7 @@ import java.util.List;
 public class WriteService <T>{
     ObjectMapper objectMapper = new ObjectMapper();
 
-    public void writeToJson(List<T> objectList, String fileName) throws IOException {
+    public Object writeToJson(List<T> objectList, String fileName) throws IOException {
 
         String arrayListAsSting = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(objectList);
 
@@ -20,5 +20,6 @@ public class WriteService <T>{
         Files.write(path, arrayListAsSting.getBytes());
 
        path.toFile().deleteOnExit();
+        return null;
     }
 }
