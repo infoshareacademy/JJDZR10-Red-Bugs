@@ -1,12 +1,10 @@
 package com.isa.pl.redbugs.controller;
-
 import com.isa.pl.redbugs.service.RouteService;
 import com.isa.pl.redbugs.service.StopService;
 import com.isa.pl.redbugs.service.VehicleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import java.io.IOException;
 
 
@@ -22,6 +20,7 @@ public class DataController {
         this.stopService = stopService;
         this.vehicleService = vehicleService;
     }
+
 
 
     @GetMapping("/templates/data.html")
