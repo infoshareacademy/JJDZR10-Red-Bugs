@@ -43,7 +43,7 @@ public class RouteFinder<T extends GraphNode> {
                     current = allNodes.get(current.getPrevious());
                 } while (current != null);
 
-                LOGGER.info("Route: " + route);
+                LOGGER.info("Best route: " + route);
                 return route;
             }
 
@@ -67,7 +67,7 @@ public class RouteFinder<T extends GraphNode> {
 
     private boolean isDestinationReached(RouteNode<T> next, T to) {
         if (next.getCurrent().equals(to)) {
-            LOGGER.info("Destination found");
+            LOGGER.info("Destination found. Stop ID: " + to.getStopId());
             return true;
         } else {
             return false;
