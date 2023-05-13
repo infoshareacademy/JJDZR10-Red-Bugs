@@ -1,26 +1,23 @@
 package com.isa.pl.redbugs.controller;
-
-import com.isa.pl.redbugs.model.Route;
-import com.isa.pl.redbugs.model.Stop;
 import com.isa.pl.redbugs.service.RouteService;
+import com.isa.pl.redbugs.model.Route;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
 @Controller
+@RequestMapping("/templates")
 public class RouteController {
     private final RouteService routeService;
 
     public RouteController(RouteService routeService) {
         this.routeService = routeService;
     }
+
 
     @GetMapping("/routes")
     public String getRoutes() throws IOException {
@@ -38,6 +35,8 @@ public class RouteController {
 
         List<String> stopList = routeService.findAllStopsOnRoute(routeId);
         model.addAttribute("stops", stopList);
+
+
         return "details_of_route";
     }
 

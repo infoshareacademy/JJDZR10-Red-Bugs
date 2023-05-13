@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
+<div th:replace="fragments/fragment.html :: menu"></div>
 <div class="container">
   <h1 th:text="${pageTattle}"> Edycja listy przystanków </h1>
   <form action="#" th:action="@{/routes/edit/{routeId}/edit(routeId=${route.routeId})}" th:object="${route}" method="post">
