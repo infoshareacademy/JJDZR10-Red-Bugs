@@ -1,5 +1,11 @@
 package com.isa.pl.redbugs.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
@@ -7,6 +13,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+
+@Entity
+@NoArgsConstructor
+@Getter
+@Setter
 
 public class Route {
     @Positive
@@ -16,6 +27,8 @@ public class Route {
     @NotEmpty
     private String routeName;
     private String[] stops;
+    @Id
+    private Long id;
 
     public Route(long routeId, long numberVehicle, String nameRoute, String[] stops) {
         this.routeId = routeId;
@@ -24,50 +37,7 @@ public class Route {
         this.stops = stops;
     }
 
-    public Route() {
-    }
-
     private static List<Stop> stopList = new ArrayList<>();
-
-    public static List<Stop> getStopList() {
-        return stopList;
-    }
-
-    public static void setStopList(List<Stop> stopList) {
-        Route.stopList = stopList;
-    }
-
-    public long getRouteId() {
-        return routeId;
-    }
-
-    public void setRouteId(long routeId) {
-        this.routeId = routeId;
-    }
-
-    public long getVehicleNumber() {
-        return vehicleNumber;
-    }
-
-    public void setVehicleNumber(long vehicleNumber) {
-        this.vehicleNumber = vehicleNumber;
-    }
-
-    public String getRouteName() {
-        return routeName;
-    }
-
-    public void setRouteName(String routeName) {
-        this.routeName = routeName;
-    }
-
-    public String[] getStops() {
-        return stops;
-    }
-
-    public void setStops(String[] stops) {
-        this.stops = stops;
-    }
 
     @Override
     public String toString() {
@@ -100,5 +70,7 @@ public class Route {
         result = 31 * result + Arrays.hashCode(stops);
         return result;
     }
+
+
 }
 
