@@ -19,6 +19,6 @@ public class WriteService <T>{
         Path path = Paths.get(fileName);
         Files.write(path, arrayListAsSting.getBytes());
 
-       //path.toFile().deleteOnExit();
+       path.toFile().deleteOnExit();
     }
 }
