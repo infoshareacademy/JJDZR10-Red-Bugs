@@ -1,44 +1,24 @@
 package com.isa.pl.redbugs.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
+@Entity
+@NoArgsConstructor
+@Getter
+@Setter
 
 public class Vehicle {
     private long vehicleId;
     private String vehicleName;
     private VehicleType type;
+    @Id
+    private Long id;
 
-    public Vehicle(long vehicleId, String vehicleName, VehicleType type) {
-        this.vehicleId = vehicleId;
-        this.vehicleName = vehicleName;
-        this.type = type;
-    }
-
-    public Vehicle() {
-    }
-
-    public long getVehicleId() {
-        return vehicleId;
-    }
-
-    public void setVehicleId(Integer vehicleId) {
-        this.vehicleId = vehicleId;
-    }
-
-    public String getVehicleName() {
-        return vehicleName;
-    }
-
-    public void setVehicleName(String vehicleName) {
-        this.vehicleName = vehicleName;
-    }
-
-    public VehicleType getType() {
-        return type;
-    }
-
-    public void setType(VehicleType type) {
-        this.type = type;
-    }
 
     @Override
     public String toString() {
@@ -50,20 +30,14 @@ public class Vehicle {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Vehicle vehicle = (Vehicle) o;
-
-        if (vehicleId != vehicle.vehicleId) return false;
-        if (!Objects.equals(vehicleName, vehicle.vehicleName)) return false;
-        return type == vehicle.type;
+        if (!(o instanceof Vehicle vehicle)) return false;
+        return vehicleId == vehicle.vehicleId && Objects.equals(vehicleName, vehicle.vehicleName) && type == vehicle.type;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (vehicleId ^ (vehicleId >>> 32));
-        result = 31 * result + (vehicleName != null ? vehicleName.hashCode() : 0);
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        return result;
+        return Objects.hash(vehicleId, vehicleName, type);
     }
+
+
 }
