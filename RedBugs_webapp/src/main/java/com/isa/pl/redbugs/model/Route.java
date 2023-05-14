@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
@@ -28,6 +29,7 @@ public class Route {
     private String routeName;
     private String[] stops;
     @Id
+    @GeneratedValue
     private Long id;
 
     public Route(long routeId, long numberVehicle, String nameRoute, String[] stops) {

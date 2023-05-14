@@ -6,11 +6,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
-@NoArgsConstructor
+
 @Getter
 @Setter
 
@@ -20,7 +21,9 @@ public class Stop implements GraphNode {
     private double latitude;
     private double longitude;
     @Id
+    @GeneratedValue
     private Long id;
+
 
     @Override
     public String toString() {
@@ -31,7 +34,6 @@ public class Stop implements GraphNode {
                 ", longitude=" + longitude +
                 '}';
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
