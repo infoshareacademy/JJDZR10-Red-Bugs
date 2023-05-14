@@ -1,5 +1,17 @@
 package com.isa.pl.redbugs.model;
 
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.Entity;
+
+@Entity
+@NoArgsConstructor
+@Getter
+@Setter
+
 public class User {
     private String name;
     private String surname;
@@ -9,52 +21,4 @@ public class User {
 
     private UserRoute userRoute;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String setPassword(String password) {
-        this.password = password;
-        return password;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public UserRoute getUserRoute() {
-        return userRoute;
-    }
-
-    public void setUserRoute(UserRoute userRoute) {
-        this.userRoute = userRoute;
-    }
 }
