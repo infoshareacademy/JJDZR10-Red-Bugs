@@ -1,10 +1,13 @@
 package com.isa.pl.redbugs.service;
 
 import com.isa.pl.redbugs.model.*;
+import org.springframework.stereotype.Service;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class InitDataService {
     public static List<Stop> stopsDataList() {
         List<Stop> stops = new ArrayList<>();
