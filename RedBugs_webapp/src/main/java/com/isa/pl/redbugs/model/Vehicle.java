@@ -8,19 +8,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Objects;
+
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
 
 public class Vehicle {
+    @Id
     private long vehicleId;
     private String vehicleName;
     private VehicleType type;
-    @Id
-    @GeneratedValue
-    private Long id;
-
 
     @Override
     public String toString() {
@@ -33,13 +31,12 @@ public class Vehicle {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Vehicle vehicle)) return false;
-        return vehicleId == vehicle.vehicleId && Objects.equals(vehicleName, vehicle.vehicleName) && type == vehicle.type;
+        return vehicleId == vehicle.vehicleId && Objects.equals(vehicleName, vehicle.vehicleName)
+                && type == vehicle.type;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(vehicleId, vehicleName, type);
     }
-
-
 }

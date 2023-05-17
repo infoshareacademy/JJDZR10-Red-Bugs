@@ -11,13 +11,11 @@ import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
-
 @Getter
 @Setter
 
 public class Stop implements GraphNode {
     @Id
-    @GeneratedValue
     private String stopId;
     private String stopName;
     private double latitude;
@@ -40,7 +38,6 @@ public class Stop implements GraphNode {
         if (!(o instanceof Stop stop)) return false;
         return Double.compare(stop.latitude, latitude) == 0 && Double.compare(stop.longitude, longitude) == 0 && Objects.equals(stopId, stop.stopId) && Objects.equals(stopName, stop.stopName);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(stopId, stopName, latitude, longitude);

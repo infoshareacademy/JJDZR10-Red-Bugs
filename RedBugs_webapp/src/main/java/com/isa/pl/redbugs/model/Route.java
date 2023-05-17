@@ -1,15 +1,11 @@
 package com.isa.pl.redbugs.model;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,7 +38,6 @@ public class Route {
 
     private static List<Stop> stopList = new ArrayList<>();
 
-
     @Override
     public String toString() {
         return "Route{" +
@@ -52,15 +47,12 @@ public class Route {
                 ", stops=" + stops +
                 '}';
     }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Route route)) return false;
         return routeId == route.routeId && vehicleNumber == route.vehicleNumber && Objects.equals(routeName, route.routeName) && Objects.equals(stops, route.stops);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(routeId, vehicleNumber, routeName, stops);

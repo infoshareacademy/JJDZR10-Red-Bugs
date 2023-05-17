@@ -22,7 +22,5 @@ public class User {
     @Id
     @GeneratedValue
     private int id;
-
-
-    }
+}
 
