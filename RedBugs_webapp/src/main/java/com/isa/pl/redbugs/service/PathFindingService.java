@@ -20,17 +20,17 @@ public class PathFindingService {
         }
 
         for (Route route : routes) {
-            String[] routeStops = route.getStops();
-            for (int i = 0; i < routeStops.length; i++) {
-                String currentStopId = routeStops[i];
+            List<String> routeStops = route.getStops();
+            for (int i = 0; i < routeStops.size(); i++) {
+                String currentStopId = routeStops.get(i);
                 Set<String> currentStopConnection = connections.get(currentStopId);
                 if (i == 0) {
-                    currentStopConnection.add(routeStops[i + 1]);
-                } else if (i < routeStops.length - 1) {
-                    currentStopConnection.add(routeStops[i - 1]);
-                    currentStopConnection.add(routeStops[i + 1]);
+                    currentStopConnection.add(routeStops.get(i + 1));
+                } else if (i < routeStops.size() - 1) {
+                    currentStopConnection.add(routeStops.get(i - 1));
+                    currentStopConnection.add(routeStops.get(i + 1));
                 } else {
-                    currentStopConnection.add(routeStops[i - 1]);
+                    currentStopConnection.add(routeStops.get(i - 1));
                 }
             }
         }

@@ -51,7 +51,7 @@ public class RouteController {
         List<String> stopsOnRouteName = routeService.findAllStopsOnRoute(routeId);
         model.addAttribute("stops", stopsOnRouteName);
 
-        String[] stopsOnRouteId = routeFound.getStops();
+        List<String> stopsOnRouteId = routeFound.getStops();
         model.addAttribute("stopsOnRoute", stopsOnRouteId);
 
         return "edit_route";
