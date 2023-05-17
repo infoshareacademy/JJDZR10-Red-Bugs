@@ -16,13 +16,12 @@ import java.util.Objects;
 @Setter
 
 public class Stop implements GraphNode {
+    @Id
+    @GeneratedValue
     private String stopId;
     private String stopName;
     private double latitude;
     private double longitude;
-    @Id
-    @GeneratedValue
-    private Long id;
 
 
     @Override
@@ -34,15 +33,17 @@ public class Stop implements GraphNode {
                 ", longitude=" + longitude +
                 '}';
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Stop stop)) return false;
-        return Double.compare(stop.latitude, latitude) == 0 && Double.compare(stop.longitude, longitude) == 0 && Objects.equals(stopId, stop.stopId) && Objects.equals(stopName, stop.stopName) && Objects.equals(id, stop.id);
+        return Double.compare(stop.latitude, latitude) == 0 && Double.compare(stop.longitude, longitude) == 0 && Objects.equals(stopId, stop.stopId) && Objects.equals(stopName, stop.stopName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(stopId, stopName, latitude, longitude, id);
+        return Objects.hash(stopId, stopName, latitude, longitude);
     }
 }
+

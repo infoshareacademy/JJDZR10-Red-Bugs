@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
@@ -22,17 +19,19 @@ import java.util.Objects;
 @Setter
 
 public class Route {
+    @Id
     @Positive
+    @Column(name = "routeId", nullable = false)
     private long routeId;
     @Positive
+    @Column(name = "vehicleNumber", nullable = false)
     private long vehicleNumber;
     @NotEmpty
+    @Column(name = "routeName", nullable = false)
     private String routeName;
     @ElementCollection
+    @Column(nullable = false)
     private List<String> stops;
-    @Id
-    @GeneratedValue
-    private Long id;
 
     public Route(long routeId, long numberVehicle, String nameRoute, List<String> stops) {
         this.routeId = routeId;
@@ -51,7 +50,6 @@ public class Route {
                 ", vehicleNumber=" + vehicleNumber +
                 ", routeName='" + routeName + '\'' +
                 ", stops=" + stops +
-                ", id=" + id +
                 '}';
     }
 
@@ -60,12 +58,12 @@ public class Route {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Route route)) return false;
-        return routeId == route.routeId && vehicleNumber == route.vehicleNumber && Objects.equals(routeName, route.routeName) && Objects.equals(stops, route.stops) && Objects.equals(id, route.id);
+        return routeId == route.routeId && vehicleNumber == route.vehicleNumber && Objects.equals(routeName, route.routeName) && Objects.equals(stops, route.stops);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(routeId, vehicleNumber, routeName, stops, id);
+        return Objects.hash(routeId, vehicleNumber, routeName, stops);
     }
 }
 
