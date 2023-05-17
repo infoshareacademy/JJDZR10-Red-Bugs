@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.GeneratedValue;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -58,8 +59,9 @@ public class InitDataService {
 
     public static List<Route> routesDataList() {
         List<Route> routes = new ArrayList<>();
-        routes.add(new Route(4, 4, "Dworzec Główny - Płocka", new String[]{"1013", "1028", "14693", "1200", "1238", "1239", "1241", "1252", "130", "1247", "1717", "1861", "1863", "1865"}));
-        routes.add(new Route(14, 14, "Dworzec Główny - Płocka", new String[]{"1013", "1028", "1248", "1250", "1254", "1247", "1717", "1314", "1865"}));
+        routes.add(new Route(4, 4, "Dworzec Główny - Płocka", new ArrayList<>(Arrays.asList("1013", "1028", "14693", "1200", "1238", "1239", "1241", "1252", "130", "1247", "1717", "1861", "1863", "1865"))));
+
+        routes.add(new Route(14, 14, "Dworzec Główny - Płocka", new ArrayList<>(Arrays.asList("1013", "1028", "1248", "1250", "1254", "1247", "1717", "1314", "1865"))));
         return routes;
     }
 
