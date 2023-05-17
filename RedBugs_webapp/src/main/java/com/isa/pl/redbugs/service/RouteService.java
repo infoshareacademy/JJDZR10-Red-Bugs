@@ -53,10 +53,10 @@ public class RouteService {
         List<String> stopsOnRoute = new ArrayList<>();
         Route route = findRouteById(routeId);
 
-        for (int i = 0; i < route.getStops().length; i++) {
+        for (int i = 0; i < route.getStops().size(); i++) {
             int finalI = i;
             new StopService(ws, rs).findAllStops().forEach(stop -> {
-                if (route.getStops()[finalI].equals(stop.getStopId())) {
+                if (route.getStops().get(finalI).equals(stop.getStopId())) {
                     stopsOnRoute.add(stop.getStopName());
                 }
             });

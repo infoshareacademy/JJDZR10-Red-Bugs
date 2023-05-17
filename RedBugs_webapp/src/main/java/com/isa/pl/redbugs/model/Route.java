@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -27,12 +28,13 @@ public class Route {
     private long vehicleNumber;
     @NotEmpty
     private String routeName;
-    private String[] stops;
+    @ElementCollection
+    private List<String> stops;
     @Id
     @GeneratedValue
     private Long id;
 
-    public Route(long routeId, long numberVehicle, String nameRoute, String[] stops) {
+    public Route(long routeId, long numberVehicle, String nameRoute, List<String> stops) {
         this.routeId = routeId;
         this.vehicleNumber = numberVehicle;
         this.routeName = nameRoute;
@@ -41,38 +43,29 @@ public class Route {
 
     private static List<Stop> stopList = new ArrayList<>();
 
+
     @Override
     public String toString() {
         return "Route{" +
                 "routeId=" + routeId +
-                ", numberVehicle=" + vehicleNumber +
-                ", nameRoute='" + routeName + '\'' +
-                ", stops=" + Arrays.toString(stops) +
+                ", vehicleNumber=" + vehicleNumber +
+                ", routeName='" + routeName + '\'' +
+                ", stops=" + stops +
+                ", id=" + id +
                 '}';
     }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Route route = (Route) o;
-
-        if (routeId != route.routeId) return false;
-        if (vehicleNumber != route.vehicleNumber) return false;
-        if (!Objects.equals(routeName, route.routeName)) return false;
-        return Arrays.equals(stops, route.stops);
+        if (!(o instanceof Route route)) return false;
+        return routeId == route.routeId && vehicleNumber == route.vehicleNumber && Objects.equals(routeName, route.routeName) && Objects.equals(stops, route.stops) && Objects.equals(id, route.id);
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (routeId ^ (routeId >>> 32));
-        result = 31 * result + (int) (vehicleNumber ^ (vehicleNumber >>> 32));
-        result = 31 * result + (routeName != null ? routeName.hashCode() : 0);
-        result = 31 * result + Arrays.hashCode(stops);
-        return result;
+        return Objects.hash(routeId, vehicleNumber, routeName, stops, id);
     }
-
-
 }
 
