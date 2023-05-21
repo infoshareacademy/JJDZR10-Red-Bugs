@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import java.util.Arrays;
@@ -18,9 +19,10 @@ import java.util.Set;
 public class Application {
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(Application.class, args);
+		ConfigurableApplicationContext cxt = SpringApplication.run(Application.class, args);
+		InitDataService initService = cxt.getBean(InitDataService.class);
 
-		List<Stop> stopsList = InitDataService.stopsDataList();
+		List<Stop> stopsList = initService.getStop();
 		List<Route> routesList = InitDataService.routesDataList();
 		Set<Stop> stops = new HashSet<>(stopsList);
 		Set<Route> routes = new HashSet<>(routesList);

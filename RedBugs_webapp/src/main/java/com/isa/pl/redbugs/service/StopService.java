@@ -12,6 +12,7 @@ public class StopService {
     private final WriteService ws;
     private final ReadService rs;
 
+
     public StopService(WriteService ws, ReadService rs) {
         this.ws = ws;
         this.rs = rs;
