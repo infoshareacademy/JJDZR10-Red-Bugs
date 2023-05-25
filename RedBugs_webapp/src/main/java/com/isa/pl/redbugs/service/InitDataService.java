@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,13 +26,10 @@ public class InitDataService {
     private final VehicleRepository vehicleRepository;
 
     @PostConstruct
-    public void writeInitializedDataToJson() throws IOException {
+    public void writeDataToDatabase() {
         stopsDataList();
         routesDataList();
-//        WriteService ws = new WriteService();
-//        ws.writeToJson(InitDataService.stopsDataList(),"Stops.json");
-//        ws.writeToJson(InitDataService.vehiclesDataList(),"Vehicles.json");
-//        ws.writeToJson(InitDataService.routesDataList(),"Routes.json");
+        vehiclesDataList();
     }
 
     private void stopsDataList() {
@@ -59,6 +55,20 @@ public class InitDataService {
         }
     }
 
+    private void routesDataList() {
+        if (routeRepository.findById("4").isEmpty()) {
+            routeRepository.save(createRoute("4", 4, "Dworzec Główny - Płocka", new ArrayList<>(Arrays.asList("1013", "1028", "14693", "1200", "1238", "1239", "1241", "1252", "130", "1247", "1717", "1861", "1863", "1865"))));
+            routeRepository.save(createRoute("14", 14, "Dworzec Główny - Płocka", new ArrayList<>(Arrays.asList("1013", "1028", "1248", "1250", "1254", "1247", "1717", "1314", "1865"))));
+        }
+    }
+
+    private void vehiclesDataList() {
+        if (vehicleRepository.findById("4").isEmpty()) {
+            vehicleRepository.save(createVehicle(4, "Dworzec Główny - Płocka", VehicleType.Bus));
+            vehicleRepository.save(createVehicle(14, "Dworzec Główny - Płocka", VehicleType.Bus));
+        }
+    }
+
     private static Stop createStop(String id, String name, double latitude, double longitude) {
         Stop stop = new Stop();
         stop.setStopId(id);
@@ -68,11 +78,6 @@ public class InitDataService {
 
         return stop;
     }
-
-//    public static List<Vehicle> vehiclesDataList() {
-//
-//        return vehicles;
-//    }
 
     private static Vehicle createVehicle(long vehicleId, String vehicleName, VehicleType type) {
         Vehicle vehicle = new Vehicle();
@@ -92,14 +97,6 @@ public class InitDataService {
 
         return route;
     }
-
-    private void routesDataList() {
-        if (routeRepository.findById("4").isEmpty()) {
-            routeRepository.save(createRoute("4", 4, "Dworzec Główny - Płocka", new ArrayList<>(Arrays.asList("1013", "1028", "14693", "1200", "1238", "1239", "1241", "1252", "130", "1247", "1717", "1861", "1863", "1865"))));
-            routeRepository.save(createRoute("14", 14, "Dworzec Główny - Płocka", new ArrayList<>(Arrays.asList("1013", "1028", "1248", "1250", "1254", "1247", "1717", "1314", "1865"))));
-        }
-    }
-
 
     public List<Stop> getStop() {
         return stopRepository.findAll();
