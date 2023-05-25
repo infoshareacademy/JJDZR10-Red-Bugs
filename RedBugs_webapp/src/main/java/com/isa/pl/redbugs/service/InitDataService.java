@@ -1,13 +1,14 @@
 package com.isa.pl.redbugs.service;
 
-import com.isa.pl.redbugs.model.*;
+import com.isa.pl.redbugs.model.Route;
+import com.isa.pl.redbugs.model.Stop;
+import com.isa.pl.redbugs.model.Vehicle;
+import com.isa.pl.redbugs.repository.RouteRepository;
 import com.isa.pl.redbugs.repository.StopRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import javax.persistence.GeneratedValue;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import java.util.List;
 public class InitDataService {
 
     private final StopRepository stopRepository;
+    private final RouteRepository routeRepository;
 
     @PostConstruct
     public void writeInitializedDataToJson() throws IOException {
@@ -54,18 +56,13 @@ public class InitDataService {
     }
 
     private static Stop createStop(String s, String name, double v, double v1) {
-   Stop stop = new Stop();
-   stop.setStopId(s);
-   stop.setStopName(name);
-   stop.setLatitude(v);
-   stop.setLongitude(v1);
+        Stop stop = new Stop();
+        stop.setStopId(s);
+        stop.setStopName(name);
+        stop.setLatitude(v);
+        stop.setLongitude(v1);
 
-   return stop;
-
-
-
-
-
+        return stop;
     }
 
     public static List<Vehicle> vehiclesDataList() {
@@ -75,12 +72,33 @@ public class InitDataService {
         return vehicles;
     }
 
-    public static List<Route> routesDataList() {
-        List<Route> routes = new ArrayList<>();
-        routes.add(new Route(4, 4, "Dworzec Główny - Płocka", new ArrayList<>(Arrays.asList("1013", "1028", "14693", "1200", "1238", "1239", "1241", "1252", "130", "1247", "1717", "1861", "1863", "1865"))));
+    private static Route createRoute(long routeId, long vehicleNumber, String routeName, List<String> stops) {
+        Route route = new Route();
+        route.setRouteId(routeId);
+        route.setVehicleNumber(vehicleNumber);
+        route.setRouteName(routeName);
+        route.setStops(stops);
 
-        routes.add(new Route(14, 14, "Dworzec Główny - Płocka", new ArrayList<>(Arrays.asList("1013", "1028", "1248", "1250", "1254", "1247", "1717", "1314", "1865"))));
-        return routes;
+        return route;
+    }
+
+    public void routesDataList() {
+        if (routeRepository.findById("4").isEmpty()) {
+           routeRepository.save(createRoute(4, 4, "Dworzec Główny - Płocka", new ArrayList<>(Arrays.asList("1013", "1028", "14693", "1200", "1238", "1239", "1241", "1252", "130", "1247", "1717", "1861", "1863", "1865"))));
+        }
+
+
+
+
+
+
+
+
+//        List<Route> routes = new ArrayList<>();
+//        routes.add(new Route(4, 4, "Dworzec Główny - Płocka", new ArrayList<>(Arrays.asList("1013", "1028", "14693", "1200", "1238", "1239", "1241", "1252", "130", "1247", "1717", "1861", "1863", "1865"))));
+//
+//        routes.add(new Route(14, 14, "Dworzec Główny - Płocka", new ArrayList<>(Arrays.asList("1013", "1028", "1248", "1250", "1254", "1247", "1717", "1314", "1865"))));
+//        return routes;
     }
 
 
