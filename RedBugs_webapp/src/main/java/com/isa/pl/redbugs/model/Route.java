@@ -18,7 +18,7 @@ public class Route {
     @Id
     @Positive
     @Column(name = "routeId", nullable = false)
-    private long routeId;
+    private String routeId;
     @Positive
     @Column(name = "vehicleNumber", nullable = false)
     private long vehicleNumber;
@@ -29,7 +29,7 @@ public class Route {
     @Column(nullable = false)
     private List<String> stops;
 
-    public Route(long routeId, long numberVehicle, String nameRoute, List<String> stops) {
+    public Route(String routeId, long numberVehicle, String nameRoute, List<String> stops) {
         this.routeId = routeId;
         this.vehicleNumber = numberVehicle;
         this.routeName = nameRoute;
@@ -51,7 +51,7 @@ public class Route {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Route route)) return false;
-        return routeId == route.routeId && vehicleNumber == route.vehicleNumber && Objects.equals(routeName, route.routeName) && Objects.equals(stops, route.stops);
+        return routeId.equals(route.routeId) && vehicleNumber == route.vehicleNumber && Objects.equals(routeName, route.routeName) && Objects.equals(stops, route.stops);
     }
     @Override
     public int hashCode() {

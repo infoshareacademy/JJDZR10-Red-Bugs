@@ -26,6 +26,7 @@ public class InitDataService {
     @PostConstruct
     public void writeInitializedDataToJson() throws IOException {
         stopsDataList();
+        routesDataList();
 //        WriteService ws = new WriteService();
 //        ws.writeToJson(InitDataService.stopsDataList(),"Stops.json");
 //        ws.writeToJson(InitDataService.vehiclesDataList(),"Vehicles.json");
@@ -55,12 +56,12 @@ public class InitDataService {
         }
     }
 
-    private static Stop createStop(String s, String name, double v, double v1) {
+    private static Stop createStop(String id, String name, double latitude, double longitude) {
         Stop stop = new Stop();
-        stop.setStopId(s);
+        stop.setStopId(id);
         stop.setStopName(name);
-        stop.setLatitude(v);
-        stop.setLongitude(v1);
+        stop.setLatitude(latitude);
+        stop.setLongitude(longitude);
 
         return stop;
     }
@@ -72,7 +73,7 @@ public class InitDataService {
         return vehicles;
     }
 
-    private static Route createRoute(long routeId, long vehicleNumber, String routeName, List<String> stops) {
+    private static Route createRoute(String routeId, long vehicleNumber, String routeName, List<String> stops) {
         Route route = new Route();
         route.setRouteId(routeId);
         route.setVehicleNumber(vehicleNumber);
@@ -82,23 +83,11 @@ public class InitDataService {
         return route;
     }
 
-    public void routesDataList() {
+    private void routesDataList() {
         if (routeRepository.findById("4").isEmpty()) {
-           routeRepository.save(createRoute(4, 4, "Dworzec Główny - Płocka", new ArrayList<>(Arrays.asList("1013", "1028", "14693", "1200", "1238", "1239", "1241", "1252", "130", "1247", "1717", "1861", "1863", "1865"))));
+            routeRepository.save(createRoute("4", 4, "Dworzec Główny - Płocka", new ArrayList<>(Arrays.asList("1013", "1028", "14693", "1200", "1238", "1239", "1241", "1252", "130", "1247", "1717", "1861", "1863", "1865"))));
+            routeRepository.save(createRoute("14", 14, "Dworzec Główny - Płocka", new ArrayList<>(Arrays.asList("1013", "1028", "1248", "1250", "1254", "1247", "1717", "1314", "1865"))));
         }
-
-
-
-
-
-
-
-
-//        List<Route> routes = new ArrayList<>();
-//        routes.add(new Route(4, 4, "Dworzec Główny - Płocka", new ArrayList<>(Arrays.asList("1013", "1028", "14693", "1200", "1238", "1239", "1241", "1252", "130", "1247", "1717", "1861", "1863", "1865"))));
-//
-//        routes.add(new Route(14, 14, "Dworzec Główny - Płocka", new ArrayList<>(Arrays.asList("1013", "1028", "1248", "1250", "1254", "1247", "1717", "1314", "1865"))));
-//        return routes;
     }
 
 
