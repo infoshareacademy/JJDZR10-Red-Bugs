@@ -1,4 +1,5 @@
 package com.isa.pl.redbugs.controller;
+import com.isa.pl.redbugs.repository.RouteRepository;
 import com.isa.pl.redbugs.service.RouteService;
 import com.isa.pl.redbugs.model.Route;
 import org.springframework.stereotype.Controller;
@@ -13,15 +14,17 @@ import java.util.List;
 @RequestMapping("/templates")
 public class RouteController {
     private final RouteService routeService;
+    private final RouteRepository routeRepository;
 
-    public RouteController(RouteService routeService) {
+    public RouteController(RouteService routeService, RouteRepository routeRepository) {
         this.routeService = routeService;
+        this.routeRepository = routeRepository;
     }
 
 
     @GetMapping("/routes")
     public String getRoutes() throws IOException {
-        routeService.findAllRoutes();
+        routeRepository.findAll();
         return "vehicle_form";
     }
 
