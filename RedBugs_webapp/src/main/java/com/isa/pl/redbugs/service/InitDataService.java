@@ -3,8 +3,10 @@ package com.isa.pl.redbugs.service;
 import com.isa.pl.redbugs.model.Route;
 import com.isa.pl.redbugs.model.Stop;
 import com.isa.pl.redbugs.model.Vehicle;
+import com.isa.pl.redbugs.model.VehicleType;
 import com.isa.pl.redbugs.repository.RouteRepository;
 import com.isa.pl.redbugs.repository.StopRepository;
+import com.isa.pl.redbugs.repository.VehicleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,7 @@ public class InitDataService {
 
     private final StopRepository stopRepository;
     private final RouteRepository routeRepository;
+    private final VehicleRepository vehicleRepository;
 
     @PostConstruct
     public void writeInitializedDataToJson() throws IOException {
@@ -66,11 +69,18 @@ public class InitDataService {
         return stop;
     }
 
-    public static List<Vehicle> vehiclesDataList() {
-        List<Vehicle> vehicles = new ArrayList<>();
-        vehicles.add(new Vehicle()); //FIXME
+//    public static List<Vehicle> vehiclesDataList() {
+//
+//        return vehicles;
+//    }
 
-        return vehicles;
+    private static Vehicle createVehicle(long vehicleId, String vehicleName, VehicleType type) {
+        Vehicle vehicle = new Vehicle();
+        vehicle.setVehicleId(vehicleId);
+        vehicle.setVehicleName(vehicleName);
+        vehicle.setType(type);
+
+        return vehicle;
     }
 
     private static Route createRoute(String routeId, long vehicleNumber, String routeName, List<String> stops) {
