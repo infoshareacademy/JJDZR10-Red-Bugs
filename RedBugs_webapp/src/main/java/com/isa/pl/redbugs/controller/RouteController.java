@@ -36,7 +36,7 @@ public class RouteController {
         String pageTitle = "Lista przystanków autobusu numer: " + routeId;
         model.addAttribute("pageTattle", pageTitle);
 
-        List<String> stopList = routeRepository.findAllById(routeId);
+        List<String> stopList = routeRepository.findById(routeId).get().getStops();
         model.addAttribute("stops", stopList);
 
 
@@ -60,11 +60,13 @@ public class RouteController {
         return "edit_route";
     }
 
-    @PostMapping("/routes/edit/{routeId}/edit")
-    public String editRouteById(@PathVariable("routeId") Long routeId, @Valid @ModelAttribute Route route, Model model) throws IOException {
-        routeService.editRouteById(routeId, route);
-        return "redirect:/routes";
-    }
+//    FixMe Method needed in future
+
+//    @PostMapping("/routes/edit/{routeId}/edit")
+//    public String editRouteById(@PathVariable("routeId") Long routeId, @Valid @ModelAttribute Route route, Model model){
+//        routeRepository.findById(routeId, route).;
+//        return "redirect:/routes";
+//    }
 
 
 }
