@@ -63,7 +63,7 @@ public class InitDataService {
     }
 
     private void vehiclesDataList() {
-        if (vehicleRepository.findById("4").isEmpty()) {
+        if (vehicleRepository.findById(4L).isEmpty()) {
             vehicleRepository.save(createVehicle(4, "Dworzec Główny - Płocka", VehicleType.Bus));
             vehicleRepository.save(createVehicle(14, "Dworzec Główny - Płocka", VehicleType.Bus));
         }
