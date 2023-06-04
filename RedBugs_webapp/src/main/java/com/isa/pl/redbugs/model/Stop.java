@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class Stop implements GraphNode {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private String stopId;
     private String stopName;
     private double latitude;

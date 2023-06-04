@@ -9,8 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-@NoArgsConstructor
+
 @Data
+@NoArgsConstructor
 public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
