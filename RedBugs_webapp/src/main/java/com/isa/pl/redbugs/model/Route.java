@@ -1,4 +1,5 @@
 package com.isa.pl.redbugs.model;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,11 +12,10 @@ import java.util.Objects;
 
 @Entity
 @NoArgsConstructor
-@Getter
-@Setter
-
+@Data
 public class Route {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Positive
     @Column(name = "routeId", nullable = false)
     private String routeId;
