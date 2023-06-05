@@ -4,8 +4,6 @@ import com.isa.pl.redbugs.repository.StopRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.io.IOException;
-
 @Controller
 public class StopController {
 
@@ -14,14 +12,9 @@ public class StopController {
     public StopController(StopRepository stopRepository) {
         this.stopRepository = stopRepository;
     }
-//    private final StopService stopService;
-
-//    public StopController(StopService stopService) {
-//        this.stopService = stopService;
-//    }
 
     @GetMapping("/stops")
-    public String getStops() throws IOException {
+    public String getStops() {
         stopRepository.findAll();
         return "stops";
     }
