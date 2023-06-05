@@ -10,12 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-
 @Data
 @NoArgsConstructor
 public class Route {
     @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
     @Positive
     @Column(name = "routeId", nullable = false)
     private String routeId;
