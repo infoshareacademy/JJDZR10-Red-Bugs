@@ -25,9 +25,7 @@ public class Route {
     private String routeName;
     @ElementCollection
     @Column(nullable = false)
-    private List<String> stops;
-
-    private static List<Stop> stopList = new ArrayList<>();
+    private List<String> stops = new ArrayList<>();
 
 }
 

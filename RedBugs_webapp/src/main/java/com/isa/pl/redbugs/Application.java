@@ -20,9 +20,8 @@ public class Application {
 		ConfigurableApplicationContext cxt = SpringApplication.run(Application.class, args);
 		InitDataService initService = cxt.getBean(InitDataService.class);
 
-		List<Stop> stopsList = initService.getStop();
-		List<Route> routesList =
-//		List<Route> routesList = InitDataService.routesDataList();
+		List<Stop> stopsList = initService.getStops();
+		List<Route> routesList = initService.getRoutes();
 		Set<Stop> stops = new HashSet<>(stopsList);
 		Set<Route> routes = new HashSet<>(routesList);
 

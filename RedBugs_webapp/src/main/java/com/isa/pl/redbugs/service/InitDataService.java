@@ -98,7 +98,11 @@ public class InitDataService {
         return route;
     }
 
-    public List<Stop> getStop() {
+    public List<Stop> getStops() {
         return stopRepository.findAll();
+    }
+
+    public List<Route> getRoutes() {
+        return routeRepository.findAll();
     }
 }
