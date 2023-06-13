@@ -51,7 +51,7 @@
                     <li th:each="pageNumber : ${#numbers.sequence(0, totalPages -1)}"
                         th:class="${pageNumber == currentPage ? 'page-item active' : 'page-item'}">
                         <a class="page-link" th:href="@{/templates/data.html(page=${pageNumber},tab='menu1')}"
-                           th:text="${pageNumber + 1}"></a>
+                           th:text="${currentPage +1}"></a>
                     </li>
                     <li class="page-item"><a class="page-link" th:href="@{/templates/data.html(page=${totalPages},tab='menu1')}">Next</a>
                     </li>
@@ -82,7 +82,7 @@
                     <li th:each="pageNumber : ${#numbers.sequence(0, totalPages -1)}"
                         th:class="${pageNumber == currentPage ? 'page-item active' : 'page-item'}">
                         <a class="page-link" th:href="@{/templates/data.html(page=${pageNumber},tab='menu2')}"
-                           th:text="${pageNumber + 1}"></a>
+                           th:text="${currentPage +1}"></a>
                     </li>
                     <li class="page-item"><a class="page-link" th:href="@{/templates/data.html(page=${totalPages},tab='menu2')}">Next</a>
                     </li>
@@ -128,7 +128,7 @@
                     <li th:each="pageNumber : ${#numbers.sequence(0, totalPages -1)}"
                         th:class="${pageNumber == currentPage ? 'page-item active' : 'page-item'}">
                         <a class="page-link" th:href="@{/templates/data.html(page=${pageNumber},tab='menu3')}"
-                           th:text="${pageNumber + 1}"></a>
+                           th:text="${currentPage +1}"></a>
                     </li>
                     <li class="page-item"><a class="page-link" th:href="@{/templates/data.html(page=${totalPages},tab='menu3')}">Next</a>
                     </li>
