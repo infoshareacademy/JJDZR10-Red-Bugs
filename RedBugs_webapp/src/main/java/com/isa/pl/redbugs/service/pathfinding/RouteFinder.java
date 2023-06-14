@@ -1,6 +1,9 @@
 package com.isa.pl.redbugs.service.pathfinding;
 
 import com.isa.pl.redbugs.service.exception.RouteNotFoundException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +14,7 @@ import java.util.stream.Collectors;
 
 
 public class RouteFinder<T extends GraphNode> {
+    private static final Logger LOGGER = LogManager.getLogger(RouteFinder.class);
     private final Graph<T> graph;
     private final Scorer<T> nextNodeScorer;
     private final Scorer<T> targetScorer;
@@ -28,9 +32,9 @@ public class RouteFinder<T extends GraphNode> {
         createStartNode(from, to);
 
         while (!openSet.isEmpty()) {
-            System.out.println("Open Set contains: " + openSet.stream().map(RouteNode::getCurrent).collect(Collectors.toSet()));
+            LOGGER.info("Open Set contains: " + openSet.stream().map(RouteNode::getCurrent).collect(Collectors.toSet()));
             RouteNode<T> next = openSet.poll();
-            System.out.println("Looking at node: " + next);
+            LOGGER.info("Looking at node: " + next);
             if (isDestinationReached(next, to)) {
                 List<T> route = new ArrayList<>();
                 RouteNode<T> current = next;
@@ -39,7 +43,7 @@ public class RouteFinder<T extends GraphNode> {
                     current = allNodes.get(current.getPrevious());
                 } while (current != null);
 
-                System.out.println("Route: " + route);
+                LOGGER.info("Best route: " + route);
                 return route;
             }
 
@@ -53,7 +57,7 @@ public class RouteFinder<T extends GraphNode> {
                     nextNode.setRouteScore(newScore);
                     nextNode.setEstimatedScore(newScore + targetScorer.computeCost(connection, to));
                     openSet.add(nextNode);
-                    System.out.println("Found a better route to node: " + nextNode);
+                    LOGGER.info("Found a better route to node: " + nextNode);
                 }
             });
         }
@@ -63,7 +67,7 @@ public class RouteFinder<T extends GraphNode> {
 
     private boolean isDestinationReached(RouteNode<T> next, T to) {
         if (next.getCurrent().equals(to)) {
-            System.out.println("Found our destination!");
+            LOGGER.info("Destination found. Stop ID: " + to.getStopId());
             return true;
         } else {
             return false;
