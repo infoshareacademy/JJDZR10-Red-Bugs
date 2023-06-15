@@ -6,6 +6,7 @@ import com.isa.pl.redbugs.service.InitDataService;
 import com.isa.pl.redbugs.service.PathFindingService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.HashSet;
 import java.util.List;
@@ -15,10 +16,12 @@ import java.util.Set;
 public class Application {
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(Application.class, args);
 
-		List<Stop> stopsList = InitDataService.stopsDataList();
-		List<Route> routesList = InitDataService.routesDataList();
+		ConfigurableApplicationContext cxt = SpringApplication.run(Application.class, args);
+		InitDataService initService = cxt.getBean(InitDataService.class);
+
+		List<Stop> stopsList = initService.getStops();
+		List<Route> routesList = initService.getRoutes();
 		Set<Stop> stops = new HashSet<>(stopsList);
 		Set<Route> routes = new HashSet<>(routesList);
 
@@ -26,4 +29,5 @@ public class Application {
 		pathFindingService.calculateShortestRoute(stops, routes, "1314", "14693");
 
 	}
+
 }

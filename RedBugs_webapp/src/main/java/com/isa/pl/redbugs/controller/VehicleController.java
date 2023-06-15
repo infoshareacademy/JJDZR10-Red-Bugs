@@ -1,23 +1,21 @@
 package com.isa.pl.redbugs.controller;
 
+import com.isa.pl.redbugs.repository.VehicleRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.isa.pl.redbugs.service.VehicleService;
-
-import java.io.IOException;
 
 @Controller
 public class VehicleController {
 
-    private final VehicleService vehicleService;
+    private final VehicleRepository vehicleRepository;
 
-    public VehicleController(VehicleService vehicleService) {
-        this.vehicleService = vehicleService;
+    public VehicleController(VehicleRepository vehicleRepository) {
+        this.vehicleRepository = vehicleRepository;
     }
 
     @GetMapping("/vehicles")
-    public String getVehicles() throws IOException {
-        vehicleService.findAllVehicles();
+    public String getVehicles() {
+        vehicleRepository.findAll();
         return "vehicles";
     }
 }
