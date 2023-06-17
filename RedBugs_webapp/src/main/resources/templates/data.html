@@ -30,17 +30,22 @@
     <div class="tab-content">
         <div id="menu1" class="tab-pane fade">
             <h3>Lista przystanków</h3>
+            <a class="btn btn-primary" href="/addStop">Dodaj przystanek</a>
             <table class="table">
                 <thead>
                 <tr>
                     <th scope="col">Nazwa</th>
                     <th scope="col">ID</th>
+                    <th scope="col">Akcje</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="stop : ${stops}">
                     <td th:text="${stop.stopName}"></td>
                     <td th:text="${stop.stopId}"></td>
+                    <td>
+                        <a class="btn btn-danger" th:href="@{/deleteStop/{stopId}(stopId=${stop.stopId})}">Usuń</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -141,24 +146,60 @@
 
 <script>
     $(document).ready(function () {
-        // Pobieranie aktywnej zakładki z lokalnego magazynu
+
         let activeTab = localStorage.getItem('activeTab');
 
-        // Jeśli nie ma wartości w lokalnym magazynie, ustaw pierwszą zakładkę jako aktywną
+
         if (!activeTab) {
             activeTab = 'menu1';
             localStorage.setItem('activeTab', activeTab);
         }
 
-        // Aktywowanie odpowiedniej zakładki
         $('.nav-tabs a[href="#' + activeTab + '"]').tab('show');
 
-        // Zapisywanie aktywnej zakładki w lokalnym magazynie po zmianie
         $('.nav-tabs a').on('shown.bs.tab', function (e) {
             const activeTab = $(e.target).attr('href').substr(1);
             localStorage.setItem('activeTab', activeTab);
         });
     });
+
+    function addStop() {
+        var stopName = document.getElementById("stopName").value;
+        var stopId = document.getElementById("stopId").value;
+
+        if (stopName !== "" && stopId !== "") {
+            $.ajax({
+                url: "/add-stop", //replace with the correct endpoint
+                type: "POST",
+                data: { stopName: stopName, stopId: stopId },
+                success: function(response) {
+                    alert("Stop added successfully.");
+
+                },
+                error: function(xhr) {
+                    alert("Error adding stop. Please try again.");
+                }
+            });
+        } else {
+            alert("Please enter a stop name and stop ID.");
+        }
+    }
+
+    function deleteStop(stopId) {
+        if (confirm("Are you sure you want to delete this stop?")) {
+            $.ajax({
+                url: "/delete-stop/" + stopId,
+                type: "POST",
+                success: function(response) {
+                    alert("Stop deleted successfully.");
+
+                },
+                error: function(xhr) {
+                    alert("Error deleting stop. Please try again.");
+                }
+            });
+        }
+    }
 </script>
 </body>
 </html>
