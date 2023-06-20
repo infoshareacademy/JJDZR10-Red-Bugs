@@ -74,6 +74,14 @@
                     <td th:text="${vehicle.vehicleId}"></td>
                     <td th:text="${vehicle.vehicleName}"></td>
                     <td th:text="${vehicle.getType()}"></td>
+                    <td>
+                        <a th:href="@{/vehicles/delete-vehicle/{id}(id=${vehicle.vehicleId})}" class="btn btn-danger">
+                            DELETE
+                        </a>
+                        <a th:href="@{/vehicles/{vehicleId}(vehicleId=${vehicle.vehicleId})}" class="btn btn-primary">
+                            EDIT
+                        </a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
