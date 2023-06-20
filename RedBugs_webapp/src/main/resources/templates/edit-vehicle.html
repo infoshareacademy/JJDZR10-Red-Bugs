@@ -13,7 +13,11 @@
 <!--        <p>Id: <input type="text" th:field="*{vehicleId}"/></p>-->
         <h3><span>Edycja pojazdu: </span><span th:text="*{vehicleId}">Vehicle Id</span></h3>
         <p>Trasa pojazdu: <input type="text" th:field="*{vehicleName}"/></p>
-        <p>Typ pojazdu: <input type="text" th:field="*{type}"/></p>
+        <p>Typ pojazdu: <select th:field="*{type}">
+            <option th:value="Bus" th:text="Autobus"></option>
+            <option th:value="Tram" th:text="Tramwaj"></option>
+        </select>
+        </p>
         <p><input type="submit" class="btn btn-success" value="Submit"/> <input type="reset" class="btn btn-danger" value="Reset"/></p>
     </form>
 
