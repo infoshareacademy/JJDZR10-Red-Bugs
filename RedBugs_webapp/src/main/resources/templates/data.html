@@ -76,15 +76,18 @@
                     <td th:text="${vehicle.getType()}"></td>
                     <td>
                         <a th:href="@{/vehicles/delete-vehicle/{id}(id=${vehicle.vehicleId})}" class="btn btn-danger">
-                            DELETE
+                            Usuń
                         </a>
                         <a th:href="@{/vehicles/{vehicleId}(vehicleId=${vehicle.vehicleId})}" class="btn btn-primary">
-                            EDIT
+                            Edytuj
                         </a>
                     </td>
                 </tr>
                 </tbody>
             </table>
+<!--            <a href="edit-vehicle.html" class="btn btn-primary">-->
+<!--                Dodaj nowy pojazd-->
+<!--            </a>-->
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
                     <li class="page-item"><a class="page-link" th:href="@{/templates/data.html(page=0,tab='menu2')}">Previous</a>

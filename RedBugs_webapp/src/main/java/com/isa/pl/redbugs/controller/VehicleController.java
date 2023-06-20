@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class VehicleController {
@@ -36,5 +35,13 @@ public class VehicleController {
         model.addAttribute("vehicle", vehicle);
         return "edit-vehicle";
     }
+
+
+    @PostMapping("/vehicles/{vehicleId}/edit")
+    public String editVehicle(@PathVariable("vehicleId") Long vehicleId, @Valid @ModelAttribute Vehicle vehicle, Model model) {
+        vehicleRepository.save(vehicle);
+        return "redirect:/templates/data.html";
+    }
+
 
 }
