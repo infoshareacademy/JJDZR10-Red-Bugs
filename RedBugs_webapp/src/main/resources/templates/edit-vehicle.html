@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edycja pojazdu</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="fragments/fragment.html :: menu"></div>
+<div class="container">
+<!--    <h1 th:text="${pageTattle}"> Edycja pojazdów </h1>-->
+    <form action="#" th:action="@{/vehicles/{vehicleId}/edit(vehicleId=${vehicle.vehicleId})}" th:object="${vehicle}" method="post">
+        <p>Id: <input type="text" th:field="*{vehicleId}"/></p>
+        <p>Trasa pojazdu: <input type="text" th:field="*{vehicleName}"/></p>
+        <p>Typ pojazdu: <input type="text" th:field="*{type}"/></p>
+        <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Trasa pojazdu</th>
+                <th>Typ pojazdu</th>
+            </tr>
+            </thead>
+<!--            <tbody>-->
+<!--            <tr th:each="vehicle: ${stopsOnRoute}">-->
+<!--                <td th:text="${i.index + 1}"></td>-->
+<!--                <td>-->
+<!--                    <input type="text" th:value="${stop}" />-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+        </table>
+        <p><input type="submit" class="btn btn-success" value="Submit"/> <input type="reset" class="btn btn-danger" value="Reset"/></p>
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>
