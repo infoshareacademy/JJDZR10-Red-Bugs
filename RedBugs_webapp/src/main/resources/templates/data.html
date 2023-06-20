@@ -64,13 +64,15 @@
             <table class="table">
                 <thead>
                 <tr>
+                    <th scope="col">Numer pojazdu</th>
                     <th scope="col">Trasa pojazdu</th>
                     <th scope="col">Typ pojazdu</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="vehicle : ${vehicles}">
-                    <td th:text="${vehicle.getVehicleName()}"></td>
+                    <td th:text="${vehicle.vehicleId}"></td>
+                    <td th:text="${vehicle.vehicleName}"></td>
                     <td th:text="${vehicle.getType()}"></td>
                 </tr>
                 </tbody>
