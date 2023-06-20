@@ -38,9 +38,14 @@ public class VehicleController {
 
 
     @PostMapping("/vehicles/{vehicleId}/edit")
-    public String editVehicleById(@PathVariable("vehicleId") Long vehicleId, @Valid @ModelAttribute Vehicle vehicle, Model model) {
-//        Vehicle vehicleToEdit = vehicleRepository.findById(vehicleId).get();
+    public String editVehicleById(@PathVariable("vehicleId") @Valid @ModelAttribute Vehicle vehicle) {
         vehicleRepository.save(vehicle);
+        return "redirect:/templates/data.html";
+    }
+
+    @GetMapping("vehicles/delete-vehicle/{id}")
+    public String deleteVehicleById(@PathVariable long id) {
+        vehicleRepository.deleteById(id);
         return "redirect:/templates/data.html";
     }
 
