@@ -10,7 +10,8 @@
 <div class="container">
     <h1 th:text="${pageTattle}"> Edycja pojazdu</h1>
     <form action="#" th:action="@{/vehicles/{vehicleId}/edit(vehicleId=${vehicle.vehicleId})}" th:object="${vehicle}" method="post">
-        <p>Id: <input type="text" th:field="*{vehicleId}"/></p>
+<!--        <p>Id: <input type="text" th:field="*{vehicleId}"/></p>-->
+        <h3><span>Edycja pojazdu: </span><span th:text="*{vehicleId}">Vehicle Id</span></h3>
         <p>Trasa pojazdu: <input type="text" th:field="*{vehicleName}"/></p>
         <p>Typ pojazdu: <input type="text" th:field="*{type}"/></p>
         <p><input type="submit" class="btn btn-success" value="Submit"/> <input type="reset" class="btn btn-danger" value="Reset"/></p>
@@ -30,5 +31,8 @@
 
 
 </div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>

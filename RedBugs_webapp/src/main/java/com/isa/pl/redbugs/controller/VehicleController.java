@@ -38,7 +38,8 @@ public class VehicleController {
 
 
     @PostMapping("/vehicles/{vehicleId}/edit")
-    public String editVehicle(@PathVariable("vehicleId") Long vehicleId, @Valid @ModelAttribute Vehicle vehicle, Model model) {
+    public String editVehicleById(@PathVariable("vehicleId") Long vehicleId, @Valid @ModelAttribute Vehicle vehicle, Model model) {
+//        Vehicle vehicleToEdit = vehicleRepository.findById(vehicleId).get();
         vehicleRepository.save(vehicle);
         return "redirect:/templates/data.html";
     }
