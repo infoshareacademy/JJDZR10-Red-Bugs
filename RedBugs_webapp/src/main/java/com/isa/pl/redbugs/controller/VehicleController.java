@@ -4,6 +4,7 @@ import com.isa.pl.redbugs.model.Vehicle;
 import com.isa.pl.redbugs.repository.VehicleRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,6 +48,18 @@ public class VehicleController {
     public String deleteVehicleById(@PathVariable long id) {
         vehicleRepository.deleteById(id);
         return "redirect:/templates/data.html";
+    }
+
+    @GetMapping("/vehicles/create")
+    public String showCreateForm(Model model) {
+        model.addAttribute("vehicle", new Vehicle());
+        return "add-vehicle";
+    }
+
+    @PostMapping("/vehicles/add")
+    public String createVehicle(@Valid @ModelAttribute Vehicle vehicle) {
+        vehicleRepository.save(vehicle);
+        return "add-vehicle";
     }
 
 
