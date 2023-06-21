@@ -4,6 +4,7 @@ import com.isa.pl.redbugs.model.Vehicle;
 import com.isa.pl.redbugs.repository.VehicleRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,10 +57,13 @@ public class VehicleController {
     }
 
     @PostMapping("/vehicles/add")
-    public String createVehicle(@Valid @ModelAttribute Vehicle vehicle) {
+    public String createVehicle(@Valid @ModelAttribute Vehicle vehicle, BindingResult bindingResult) {
         long vehicleToAddId = vehicle.getVehicleId();
         if (vehicleRepository.findById(vehicleToAddId).isPresent()) {
             return "error/vehicle-id-exists";
+        }
+        else if (bindingResult.hasErrors()) {
+            return "error/non-numeric-id";
         }
         else {
             vehicleRepository.save(vehicle);

@@ -18,6 +18,9 @@
             <option th:value="Tram" th:text="Tramwaj"></option>
         </select>
         </p>
+        <ul th:if="${#fields.hasErrors('*')}">
+            <li th:each="err : ${#fields.errors('*')}" th:text="${err}"/>
+        </ul>
         <p><input type="submit" class="btn btn-success" value="Zapisz"/> <input type="reset" class="btn btn-danger" value="Reset"/></p>
     </form>
 </div>
