@@ -59,7 +59,7 @@ public class VehicleController {
     @PostMapping("/vehicles/add")
     public String createVehicle(@Valid @ModelAttribute Vehicle vehicle) {
         vehicleRepository.save(vehicle);
-        return "add-vehicle";
+        return "redirect:/templates/data.html";
     }
 
 
