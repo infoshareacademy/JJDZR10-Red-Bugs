@@ -16,6 +16,7 @@ import java.util.List;
 @Controller
 public class VehicleController {
 
+    public static final String HOMEPAGE_REDIRECTION = "redirect:/templates/data.html";
     private final VehicleRepository vehicleRepository;
 
     public VehicleController(VehicleRepository vehicleRepository) {
@@ -29,7 +30,6 @@ public class VehicleController {
         return "vehicles";
     }
 
-
     @GetMapping("/vehicles/{vehicleId}")
     public String getVehicleById(@PathVariable("vehicleId") Long vehicleId, Model model) {
         Vehicle vehicle = vehicleRepository.findById(vehicleId).get();
@@ -37,17 +37,16 @@ public class VehicleController {
         return "edit-vehicle";
     }
 
-
     @PostMapping("/vehicles/{vehicleId}/edit")
     public String editVehicleById(@PathVariable("vehicleId") @Valid @ModelAttribute Vehicle vehicle) {
         vehicleRepository.save(vehicle);
-        return "redirect:/templates/data.html";
+        return HOMEPAGE_REDIRECTION;
     }
 
     @GetMapping("vehicles/delete-vehicle/{id}")
     public String deleteVehicleById(@PathVariable long id) {
         vehicleRepository.deleteById(id);
-        return "redirect:/templates/data.html";
+        return HOMEPAGE_REDIRECTION;
     }
 
     @GetMapping("/vehicles/create")
@@ -67,9 +66,7 @@ public class VehicleController {
         }
         else {
             vehicleRepository.save(vehicle);
-            return "redirect:/templates/data.html";
+            return HOMEPAGE_REDIRECTION;
         }
     }
-
-
 }
