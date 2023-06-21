@@ -38,7 +38,7 @@ public class VehicleController {
     }
 
     @PostMapping("/vehicles/{vehicleId}/edit")
-    public String editVehicleById(@PathVariable("vehicleId") @Valid @ModelAttribute Vehicle vehicle) {
+    public String editVehicleById(@PathVariable("vehicleId") Long vehicleId, @Valid @ModelAttribute Vehicle vehicle) {
         vehicleRepository.save(vehicle);
         return HOMEPAGE_REDIRECTION;
     }
