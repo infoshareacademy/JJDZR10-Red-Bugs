@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pojazd już istnieje</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="fragments/fragment.html :: menu"></div>
+
+
+<div style="margin: 20px">
+    Błąd wprowadzania danych!<br><br>
+    Pojazd o wybranym ID istnieje. Podaj nowe ID lub edytuj pojazd o wybranym ID.
+</div>
+<a th:href="@{/vehicles/create}" class="btn btn-success">
+    Spróbuj ponownie
+</a>
+
+
+
+</body>
+</html>
