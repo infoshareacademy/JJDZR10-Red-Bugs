@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edycja pojazdu</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="fragments/fragment.html :: menu"></div>
+<div class="container">
+    <form action="#" th:action="@{/vehicles/{vehicleId}/edit(vehicleId=${vehicle.vehicleId})}" th:object="${vehicle}" method="post">
+        <h3><span>Edycja pojazdu: </span><span th:text="*{vehicleId}">Vehicle Id</span></h3>
+        <p>Trasa pojazdu: <input type="text" th:field="*{vehicleName}"/></p>
+        <p>Typ pojazdu: <select th:field="*{type}">
+            <option th:value="Bus" th:text="Autobus"></option>
+            <option th:value="Tram" th:text="Tramwaj"></option>
+        </select>
+        </p>
+        <p><input type="submit" class="btn btn-success" value="Zapisz"/> <input type="reset" class="btn btn-danger" value="Reset"/></p>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

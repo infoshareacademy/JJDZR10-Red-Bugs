@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ID musi być liczbą</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="fragments/fragment.html :: menu"></div>
+<div class="container" style="margin-top: 20px">
+    <p>Błąd wprowadzania danych!</p>
+    <p>ID może zawierać tylko cyfry 0-9.</p>
+    <a th:href="@{/vehicles/create}" class="btn btn-success">
+        Spróbuj ponownie
+    </a>
+</div>
+</body>
+</html>

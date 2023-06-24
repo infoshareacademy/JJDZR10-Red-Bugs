@@ -64,17 +64,30 @@
             <table class="table">
                 <thead>
                 <tr>
+                    <th scope="col">Numer pojazdu</th>
                     <th scope="col">Trasa pojazdu</th>
                     <th scope="col">Typ pojazdu</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="vehicle : ${vehicles}">
-                    <td th:text="${vehicle.getVehicleName()}"></td>
+                    <td th:text="${vehicle.vehicleId}"></td>
+                    <td th:text="${vehicle.vehicleName}"></td>
                     <td th:text="${vehicle.getType()}"></td>
+                    <td>
+                        <a th:href="@{/vehicles/{vehicleId}(vehicleId=${vehicle.vehicleId})}" class="btn btn-primary">
+                            Edytuj
+                        </a>
+                        <a th:href="@{/vehicles/delete-vehicle/{id}(id=${vehicle.vehicleId})}" class="btn btn-danger">
+                            Usuń
+                        </a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
+            <a th:href="@{/vehicles/create}" class="btn btn-primary">
+                Dodaj nowy pojazd
+            </a>
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
                     <li class="page-item"><a class="page-link" th:href="@{/templates/data.html(page=0,tab='menu2')}">Previous</a>
