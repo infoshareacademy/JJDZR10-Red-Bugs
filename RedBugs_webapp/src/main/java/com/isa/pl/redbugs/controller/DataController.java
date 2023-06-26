@@ -12,6 +12,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashSet;
@@ -55,13 +57,33 @@ public class DataController {
     public String getTripFInder(Model model, @RequestParam(defaultValue = "0")int page, @RequestParam(defaultValue = "10") int size) {
         Page<Stop> stopsPage = stopRepository.findAll(PageRequest.of(page, size));
         model.addAttribute("stops", stopsPage.getContent());
-
+        Stop startId = new Stop();
+        Stop endId = new Stop();
+        model.addAttribute("startId", startId);
+        model.addAttribute("endId", endId);
         return "trip-finder";
     }
 
-    @GetMapping("/templates/trip-finder-result")
-    public String getResult(Model model, @RequestParam("startId") String startId, @RequestParam("endId") String endId ) throws Exception {
+//    @PostMapping("/templates/trip-finder-process")
+//    public String getTripFinder(@RequestParam("startId") Stop start , @RequestParam("endId") Stop end) {
+//        String strartId = start.getStopId();
+//        String endId = end.getStopId();
+//
+////        return "redirect:/trip-result?trip-finder-result?startId=" + startId + "&endId=" + endId;
+////    return "redirect:/trip-result";
+//        return "trip-result";
+//    }
 
+    @PostMapping("/templates/trip-finder-result")
+    public String getResult(Model model, @RequestParam("startId") String startId, @RequestParam("endId") String endId ) {
+        model.addAttribute("startId", startId);
+        model.addAttribute("endId", endId);
+
+        return "redirect:/result";
+    }
+
+    @GetMapping("/result")
+    public String resultPage(@ModelAttribute("startId") String startId, @ModelAttribute("endId") String endId , Model model) throws Exception {
         Set<Route> routes = new HashSet<>(routeRepository.findAll());
         Set<Stop> stops = new HashSet<>(stopRepository.findAll());
 
