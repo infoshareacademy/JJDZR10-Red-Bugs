@@ -56,7 +56,6 @@ public class DataController {
         Page<Stop> stopsPage = stopRepository.findAll(PageRequest.of(page, size));
         model.addAttribute("stops", stopsPage.getContent());
 
-
         return "trip-finder";
     }
 
