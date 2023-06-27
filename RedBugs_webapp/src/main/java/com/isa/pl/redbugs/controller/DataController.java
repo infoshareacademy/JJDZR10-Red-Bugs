@@ -75,17 +75,20 @@ public class DataController {
 //    }
 
     @PostMapping("/templates/trip-finder-result")
-    public String getResult(Model model, @RequestParam("startId") String startId, @RequestParam("endId") String endId ) {
+    public String getResult( @RequestParam("startId") Stop startId, @RequestParam("endId") Stop endId, Model model) {
         model.addAttribute("startId", startId);
         model.addAttribute("endId", endId);
 
-        return "redirect:/result";
+        return "redirect:/templates/result";
     }
 
-    @GetMapping("/result")
-    public String resultPage(@ModelAttribute("startId") String startId, @ModelAttribute("endId") String endId , Model model) throws Exception {
+    @GetMapping("/templates/result")
+    public String resultPage(@ModelAttribute("startId") Stop start, @ModelAttribute("endId") Stop end , Model model) throws Exception {
         Set<Route> routes = new HashSet<>(routeRepository.findAll());
         Set<Stop> stops = new HashSet<>(stopRepository.findAll());
+
+        String startId = start.getStopId();
+        String endId = end.getStopId();
 
         List<Stop> listOfResult = pathFindingService.calculateShortestRoute(stops, routes, startId, endId);
         model.addAttribute("listOfResult", listOfResult);
