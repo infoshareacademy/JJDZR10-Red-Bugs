@@ -60,24 +60,16 @@ public class DataController {
         return "trip-finder";
     }
 
-//    @PostMapping("/templates/trip-result")
-//    public String getResult( @RequestParam("startId") Stop startId, @RequestParam("endId") Stop endId, Model model) {
-//        model.addAttribute("startId", startId);
-//        model.addAttribute("endId", endId);
-//
-//        return "trip-result";
-//    }
-
     @PostMapping("/templates/result")
-    public String resultPage(@ModelAttribute("startId") Stop startId, @ModelAttribute("endId") Stop endId , Model model) throws Exception {
+    public String resultPage(@ModelAttribute("startId") String startId, @ModelAttribute("endId") String endId , Model model) throws Exception {
+        model.addAttribute("startId", startId);
+        model.addAttribute("endId", endId);
+
         Set<Route> routes = new HashSet<>(routeRepository.findAll());
         Set<Stop> stops = new HashSet<>(stopRepository.findAll());
 
         List<Stop> listOfResult = pathFindingService.calculateShortestRoute(stops, routes, startId, endId);
         model.addAttribute("listOfResult", listOfResult);
-
-        model.addAttribute("startId", startId);
-        model.addAttribute("endId", endId);
         return "trip-result";
     }
 
