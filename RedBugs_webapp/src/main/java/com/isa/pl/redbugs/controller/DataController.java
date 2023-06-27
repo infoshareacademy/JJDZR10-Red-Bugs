@@ -57,23 +57,19 @@ public class DataController {
     public String getTripFInder(Model model, @RequestParam(defaultValue = "0")int page, @RequestParam(defaultValue = "10") int size) {
         Page<Stop> stopsPage = stopRepository.findAll(PageRequest.of(page, size));
         model.addAttribute("stops", stopsPage.getContent());
-        Stop startId = new Stop();
-        Stop endId = new Stop();
-        model.addAttribute("startId", startId);
-        model.addAttribute("endId", endId);
         return "trip-finder";
     }
 
-    @PostMapping("/templates/trip-result")
-    public String getResult( @RequestParam("startId") Stop startId, @RequestParam("endId") Stop endId, Model model) {
-        model.addAttribute("startId", startId);
-        model.addAttribute("endId", endId);
+//    @PostMapping("/templates/trip-result")
+//    public String getResult( @RequestParam("startId") Stop startId, @RequestParam("endId") Stop endId, Model model) {
+//        model.addAttribute("startId", startId);
+//        model.addAttribute("endId", endId);
+//
+//        return "trip-result";
+//    }
 
-        return "trip-result";
-    }
-
-    @GetMapping("/templates/result")
-    public String resultPage(@ModelAttribute("startId") Stop start, @ModelAttribute("endId") Stop end , Model model) throws Exception {
+    @PostMapping("/templates/result")
+    public String resultPage(@ModelAttribute("startId") Stop startId, @ModelAttribute("endId") Stop endId , Model model) throws Exception {
         Set<Route> routes = new HashSet<>(routeRepository.findAll());
         Set<Stop> stops = new HashSet<>(stopRepository.findAll());
 
