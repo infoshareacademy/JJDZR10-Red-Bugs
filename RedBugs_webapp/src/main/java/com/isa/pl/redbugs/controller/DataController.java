@@ -62,9 +62,6 @@ public class DataController {
 
     @PostMapping("/templates/result")
     public String resultPage(@ModelAttribute("startId") String startId, @ModelAttribute("endId") String endId , Model model) throws Exception {
-        model.addAttribute("startId", startId);
-        model.addAttribute("endId", endId);
-
         Set<Route> routes = new HashSet<>(routeRepository.findAll());
         Set<Stop> stops = new HashSet<>(stopRepository.findAll());
 
