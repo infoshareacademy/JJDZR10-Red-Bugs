@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Redbugs</title>
@@ -20,7 +20,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/tripFinder.html">Strona główna</a>
+                <a class="nav-link" href="/templates/tripFinder.html">Strona główna</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/results.html">Rozkład jazdy</a>
@@ -31,20 +31,24 @@
         </ul>
     </div>
 </nav>
-<div class="container p-5">
-    <form class="g-3 border border-2 rounded p-4">
+<div class="container p-5" >
+    <form class="g-3 border border-2 rounded p-4" th:action="@{/templates/result}" method="post">
         <p class="fs-3 mb-2">Wyszukaj podróż</p>
         <div class="row my-3">
             <div class="col-md-6 col-12">
                 <div>
-                    <label for="exampleInputName" class="form-label">Jadę z</label>
-                    <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp">
+                    <label for="startId"  class="form-label">Jadę z</label>
+                    <select id="startId" name="startId">
+                        <option th:each="stop : ${stops}" th:value="${stop.stopId}" th:text="${stop.stopName}" >
+                    </select>
                 </div>
             </div>
             <div class="col-md-6 col-12">
                 <div>
-                    <label for="exampleInputSurName" class="form-label">Jadę do</label>
-                    <input type="text" class="form-control" id="exampleInputSurName" aria-describedby="surnameHelp">
+                    <label for="endId"  class="form-label">Jadę do</label>
+                        <select id="endId" name="endId">
+                        <option th:each="stop : ${stops}" th:value="${stop.stopId}" th:text="${stop.stopName}">
+                    </select>
                 </div>
             </div>
         </div>
@@ -90,7 +94,7 @@
                 </div>
                 <div class="row my-3">
                     <div class="col-12">
-                        <a href="results.html" type="submit" class="btn btn-primary px-4">Szukaj</a>
+                        <button type="submit" class="btn btn-primary px-4">Szukai</button>
                         <button type="reset" class="btn btn-secondary px-4 ms-3">Resetuj</button>
                     </div>
                 </div>

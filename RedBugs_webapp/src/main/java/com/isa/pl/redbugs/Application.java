@@ -18,15 +18,15 @@ public class Application {
 	public static void main(String[] args) throws Exception {
 
 		ConfigurableApplicationContext cxt = SpringApplication.run(Application.class, args);
-		InitDataService initService = cxt.getBean(InitDataService.class);
-
-		List<Stop> stopsList = initService.getStops();
-		List<Route> routesList = initService.getRoutes();
-		Set<Stop> stops = new HashSet<>(stopsList);
-		Set<Route> routes = new HashSet<>(routesList);
-
-		PathFindingService pathFindingService = new PathFindingService();
-		pathFindingService.calculateShortestRoute(stops, routes, "1314", "14693");
+//		InitDataService initService = cxt.getBean(InitDataService.class);
+//
+//		List<Stop> stopsList = initService.getStops();
+//		List<Route> routesList = initService.getRoutes();
+//		Set<Stop> stops = new HashSet<>(stopsList);
+//		Set<Route> routes = new HashSet<>(routesList);
+//
+//		PathFindingService pathFindingService = new PathFindingService();
+//		pathFindingService.calculateShortestRoute(stops, routes, "1314", "14693");
 
 	}
 
