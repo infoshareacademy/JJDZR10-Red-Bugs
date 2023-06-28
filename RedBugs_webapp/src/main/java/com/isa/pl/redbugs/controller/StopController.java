@@ -28,20 +28,20 @@ public class StopController {
     }
 
     //TODO tu musisz najpierw zrobić szablon edit-stop.html
-//    @GetMapping("/stops/{stopId}")
-//    public String getStopById(@PathVariable("stopId") String stopId, Model model) {
-//        Stop stop = stopRepository.findById(stopId).get();
-//        model.addAttribute("stop", stop);
-//        return "edit-stop";
-//    }
+    @GetMapping("/stops/{stopId}")
+    public String getStopById(@PathVariable("stopId") String stopId, Model model) {
+        Stop stop = stopRepository.findById(stopId).get();
+        model.addAttribute("stop", stop);
+        return "edit-stop";
+    }
 
-//
-//    @PostMapping("/stops/{stopId}/edit")
-//    public String editStopById(@PathVariable("stopId") Long stopId, @Valid @ModelAttribute Stop stop) {
-//        stopRepository.save(stop);
-//        return HOMEPAGE_REDIRECTION;
-//    }
-//
+
+    @PostMapping("/stops/{stopId}/edit")
+    public String editStopById(@PathVariable("stopId") Long stopId, @Valid @ModelAttribute Stop stop) {
+        stopRepository.save(stop);
+        return HOMEPAGE_REDIRECTION;
+    }
+
     @GetMapping("stops/delete-stop/{id}")
     public String deleteStopById(@PathVariable String id) {
         stopRepository.deleteById(id);

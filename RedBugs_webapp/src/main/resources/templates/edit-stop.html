@@ -9,8 +9,9 @@
 <div th:replace="fragments/fragment.html :: menu"></div>
 <div class="container">
   <form th:action="@{/stops/{stopId}/edit(stopId=${stop.stopId})}" th:object="${stop}" method="post">
-    <h3><span>Edycja przystanku: </span><span th:text="*{stop.stopId}">Stop Id</span></h3>
-    <p>Nazwa przystanku: <input type="text" th:field="*{stop.stopName}"/></p>
+    <h3><span>Edycja przystanku: </span><span th:text="*{stopId}">Stop Id</span>
+    </h3>
+    <p>Nazwa przystanku: <input type="text" th:field="*{stopName}"/></p>
     <p><input type="submit" class="btn btn-success" value="Zapisz"/> <input type="reset" class="btn btn-danger" value="Reset"/></p>
   </form>
 </div>
