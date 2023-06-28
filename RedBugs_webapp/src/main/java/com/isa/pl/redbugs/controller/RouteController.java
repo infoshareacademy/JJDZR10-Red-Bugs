@@ -3,6 +3,7 @@ package com.isa.pl.redbugs.controller;
 import com.isa.pl.redbugs.model.Route;
 import com.isa.pl.redbugs.model.Stop;
 import com.isa.pl.redbugs.repository.RouteRepository;
+import com.isa.pl.redbugs.repository.StopRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,15 +12,18 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class RouteController {
 
     public static final String HOMEPAGE_REDIRECTION = "redirect:/templates/data.html";
     private final RouteRepository routeRepository;
+    private final StopRepository stopRepository;
 
-    public RouteController(RouteRepository routeRepository) {
+    public RouteController(RouteRepository routeRepository, StopRepository stopRepository) {
         this.routeRepository = routeRepository;
+        this.stopRepository = stopRepository;
     }
 
     @GetMapping("/routes")
@@ -34,8 +38,15 @@ public class RouteController {
         Route route = routeRepository.findById(routeId).get();
         model.addAttribute("route", route);
 
-        List<String> stopList = route.getStops();
+        List<String> stopList = List.of(String.valueOf(route.getStops()));
         model.addAttribute("stopsOnRoute", stopList);
+
+//        List<Stop> getStopsName =  stopRepository.findById(stopList.get())
+        List<Optional<Stop>> getStopName = new ArrayList<>();
+        stopList.stream()
+                .map(stopRepository::findById)
+                .forEach(getStopName::add);
+        model.addAttribute("stopsNameList", getStopName);
         return "edit-route";
     }
 
