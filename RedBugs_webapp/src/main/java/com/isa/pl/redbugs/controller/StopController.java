@@ -47,25 +47,25 @@ public class StopController {
         stopRepository.deleteById(id);
         return HOMEPAGE_REDIRECTION;
     }
-//
-//    @GetMapping("/stops/create")
-//    public String showCreateForm(Model model) {
-//        model.addAttribute("stop", new Stop());
-//        return "add-stop";
-//    }
-//
-//    @PostMapping("/stops/add")
-//    public String createStop(@Valid @ModelAttribute Stop stop, BindingResult bindingResult) {
-//        long stopToAddId = stop.getStopId();
-//        if (stopRepository.findById(stopToAddId).isPresent()) {
-//            return "error/stop-id-exists";
-//        }
-//        else if (bindingResult.hasErrors()) {
-//            return "error/non-numeric-id";
-//        }
-//        else {
-//            stopRepository.save(stop);
-//            return HOMEPAGE_REDIRECTION;
-//        }
-//    }
+
+    @GetMapping("/stops/create")
+    public String showCreateForm(Model model) {
+        model.addAttribute("stop", new Stop());
+        return "add-stop";
+    }
+
+    @PostMapping("/stops/add")
+    public String createStop(@Valid @ModelAttribute Stop stop, BindingResult bindingResult) {
+        String stopToAddId = stop.getStopId();
+        if (stopRepository.findById(stopToAddId).isPresent()) {
+            return "error/stop-id-exists";
+        }
+        else if (bindingResult.hasErrors()) {
+            return "error/non-numeric-id";
+        }
+        else {
+            stopRepository.save(stop);
+            return HOMEPAGE_REDIRECTION;
+        }
+    }
 }

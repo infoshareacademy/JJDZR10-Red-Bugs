@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edycja przystanku</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="fragments/fragment.html :: menu"></div>
+<div class="container">
+  <form th:action="@{/stops/{stopId}/edit(stopId=${stop.stopId})}" th:object="${stop}" method="post">
+    <h3><span>Edycja przystanku: </span><span th:text="*{stop.stopId}">Stop Id</span></h3>
+    <p>Nazwa przystanku: <input type="text" th:field="*{stop.stopName}"/></p>
+    <p><input type="submit" class="btn btn-success" value="Zapisz"/> <input type="reset" class="btn btn-danger" value="Reset"/></p>
+  </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
