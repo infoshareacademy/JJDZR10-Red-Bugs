@@ -1,6 +1,7 @@
 package com.isa.pl.redbugs.controller;
 
 import com.isa.pl.redbugs.model.Route;
+import com.isa.pl.redbugs.model.Stop;
 import com.isa.pl.redbugs.repository.RouteRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -31,6 +33,9 @@ public class RouteController {
     public String getRouteById(@PathVariable("routeId") String routeId, Model model) {
         Route route = routeRepository.findById(routeId).get();
         model.addAttribute("route", route);
+
+        List<String> stopList = route.getStops();
+        model.addAttribute("stopsOnRoute", stopList);
         return "edit-route";
     }
 

@@ -11,7 +11,7 @@
   <h1 th:text="${pageTattle}"> Edycja listy przystanków </h1>
   <form action="#" th:action="@{/routes/edit/{routeId}/edit(routeId=${route.routeId})}" th:object="${route}" method="post">
   <p>Route Id: <input type="text" th:field="*{routeId}"/></p>
-  <p>Route Number: <input type="text" th:field="*{routeName}"/></p>
+  <p>Route Name: <input type="text" th:field="*{routeName}"/></p>
   <p>Vehicle Number: <input type="text" th:field="*{vehicleNumber}"/></p>
     <table class="table table-hover table-striped">
       <thead>
