@@ -10,9 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class RouteController {
@@ -38,15 +36,34 @@ public class RouteController {
         Route route = routeRepository.findById(routeId).get();
         model.addAttribute("route", route);
 
-        List<String> stopList = List.of(String.valueOf(route.getStops()));
+        List<String> stopList = route.getStops();
         model.addAttribute("stopsOnRoute", stopList);
 
 //        List<Stop> getStopsName =  stopRepository.findById(stopList.get())
-        List<Optional<Stop>> getStopName = new ArrayList<>();
-        stopList.stream()
-                .map(stopRepository::findById)
-                .forEach(getStopName::add);
-        model.addAttribute("stopsNameList", getStopName);
+//        List<Optional<Stop>> getStopName = new ArrayList<>();
+//        stopList.stream()
+//                .map(id -> stopRepository.findById(id))
+//                .forEach(stop -> getStopName.add(stop));
+//        model.addAttribute("stopsNameList", getStopName);
+
+        Map<String, Optional<Stop>> stopMap = new HashMap<>();
+        for (int i = 0; i < stopList.size(); i++) {
+            if (i < stopList.size()) {
+                stopMap.put(stopList.get(i), stopRepository.findById(stopList.get(i)));
+            }
+        }
+        model.addAttribute("stopsNameList", stopMap);
+
+//        List<Stop> stopList1 = new ArrayList<>();
+//        for (int i = 0; i < stopList.size(); i++) {
+//            if (i < stopList.size()) {
+//                stopList1.add(stopRepository.findById(stopList.get(i)));
+//            }
+//        }
+        model.addAttribute("stopsNameList", stopMap);
+
+
+
         return "edit-route";
     }
 

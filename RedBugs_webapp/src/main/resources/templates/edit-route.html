@@ -21,7 +21,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr th:each="stop, i : ${stopsOnRoute}">
+      <tr th:each="stop, i : ${stopsNameList}">
         <td th:text="${i.index + 1}"></td>
         <td>
           <input type="text" th:value="${stop}" />

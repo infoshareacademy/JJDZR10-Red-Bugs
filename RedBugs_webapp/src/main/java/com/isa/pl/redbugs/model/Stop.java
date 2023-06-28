@@ -17,6 +17,12 @@ public class Stop implements GraphNode {
     private double latitude;
     private double longitude;
 
+    public String getStopName() {
+        return stopName;
+    }
 
+    public void setStopName(String stopName) {
+        this.stopName = stopName;
+    }
 }
 
