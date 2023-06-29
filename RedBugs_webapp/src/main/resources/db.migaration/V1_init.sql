@@ -20,3 +20,16 @@ CREATE TABLE  user_roles (
     foreign key (role_id) references roles (id)
 );
 
+insert into roles (name)
+values
+    ('ROLE_USER'), ('ROLE_ADMIN');
+
+insert into users (username, password, email)
+values
+    ('user', '$2a$/123456', 'user@gmail.com'),
+    ('admin', '$2a$/123456', 'admin@gmail.com');
+
+insert into user_roles (user_id, role_id)
+values
+    (1, 1),
+    (2, 2);
