@@ -33,17 +33,28 @@
             <table class="table">
                 <thead>
                 <tr>
+                    <th scope="col">Numer przystanku</th>
                     <th scope="col">Nazwa</th>
-                    <th scope="col">ID</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="stop : ${stops}">
-                    <td th:text="${stop.stopName}"></td>
                     <td th:text="${stop.stopId}"></td>
+                    <td th:text="${stop.stopName}"></td>
+                    <td>
+                        <a th:href="@{/stops/{stopId}(stopId=${stop.stopId})}" class="btn btn-primary">
+                            Edytuj
+                        </a>
+                        <a th:href="@{/stops/delete-stop/{id}(id=${stop.stopId})}" class="btn btn-danger">
+                            Usuń
+                        </a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
+            <a th:href="@{/stops/create}" class="btn btn-primary">
+                Dodaj nowy przystanek
+            </a>
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
                     <li class="page-item"><a class="page-link" th:href="@{/templates/data.html(page=0,tab='menu1')}">Previous</a>
@@ -53,7 +64,8 @@
                         <a class="page-link" th:href="@{/templates/data.html(page=${pageNumber},tab='menu1')}"
                            th:text="${currentPage +1}"></a>
                     </li>
-                    <li class="page-item"><a class="page-link" th:href="@{/templates/data.html(page=${totalPages},tab='menu1')}">Next</a>
+                    <li class="page-item"><a class="page-link"
+                                             th:href="@{/templates/data.html(page=${totalPages},tab='menu1')}">Next</a>
                     </li>
                 </ul>
             </nav>
@@ -97,7 +109,8 @@
                         <a class="page-link" th:href="@{/templates/data.html(page=${pageNumber},tab='menu2')}"
                            th:text="${currentPage +1}"></a>
                     </li>
-                    <li class="page-item"><a class="page-link" th:href="@{/templates/data.html(page=${totalPages},tab='menu2')}">Next</a>
+                    <li class="page-item"><a class="page-link"
+                                             th:href="@{/templates/data.html(page=${totalPages},tab='menu2')}">Next</a>
                     </li>
                 </ul>
             </nav>
@@ -143,7 +156,8 @@
                         <a class="page-link" th:href="@{/templates/data.html(page=${pageNumber},tab='menu3')}"
                            th:text="${currentPage +1}"></a>
                     </li>
-                    <li class="page-item"><a class="page-link" th:href="@{/templates/data.html(page=${totalPages},tab='menu3')}">Next</a>
+                    <li class="page-item"><a class="page-link"
+                                             th:href="@{/templates/data.html(page=${totalPages},tab='menu3')}">Next</a>
                     </li>
                 </ul>
             </nav>
@@ -151,22 +165,14 @@
         </div>
     </div>
 </div>
-
 <script>
     $(document).ready(function () {
-        // Pobieranie aktywnej zakładki z lokalnego magazynu
         let activeTab = localStorage.getItem('activeTab');
-
-        // Jeśli nie ma wartości w lokalnym magazynie, ustaw pierwszą zakładkę jako aktywną
         if (!activeTab) {
             activeTab = 'menu1';
             localStorage.setItem('activeTab', activeTab);
         }
-
-        // Aktywowanie odpowiedniej zakładki
         $('.nav-tabs a[href="#' + activeTab + '"]').tab('show');
-
-        // Zapisywanie aktywnej zakładki w lokalnym magazynie po zmianie
         $('.nav-tabs a').on('shown.bs.tab', function (e) {
             const activeTab = $(e.target).attr('href').substr(1);
             localStorage.setItem('activeTab', activeTab);

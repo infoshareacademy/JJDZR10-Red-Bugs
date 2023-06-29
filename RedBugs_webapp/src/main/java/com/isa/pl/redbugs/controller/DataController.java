@@ -53,7 +53,7 @@ public class DataController {
         return "data";
     }
 
-    @GetMapping("/templates/trip-finder")
+    @GetMapping("/templates/trip-finder.html")
     public String getTripFInder(Model model, @RequestParam(defaultValue = "0")int page, @RequestParam(defaultValue = "10") int size) {
         Page<Stop> stopsPage = stopRepository.findAll(PageRequest.of(page, size));
         model.addAttribute("stops", stopsPage.getContent());
