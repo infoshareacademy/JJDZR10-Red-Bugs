@@ -1,28 +1,25 @@
 package com.isa.pl.redbugs.controller;
 
 import com.isa.pl.redbugs.model.Route;
-import com.isa.pl.redbugs.model.Stop;
 import com.isa.pl.redbugs.repository.RouteRepository;
-import com.isa.pl.redbugs.repository.StopRepository;
-import com.isa.pl.redbugs.service.RouteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.util.*;
+import java.util.List;
 
 @Controller
 public class RouteController {
 
     public static final String HOMEPAGE_REDIRECTION = "redirect:/templates/data.html";
     private final RouteRepository routeRepository;
-    private final StopRepository stopRepository;
-
-    public RouteController(RouteRepository routeRepository, StopRepository stopRepository) {
+    public RouteController(RouteRepository routeRepository) {
         this.routeRepository = routeRepository;
-        this.stopRepository = stopRepository;
     }
 
     @GetMapping("/routes")
@@ -39,32 +36,6 @@ public class RouteController {
 
         List<String> stopList = route.getStops();
         model.addAttribute("stopsOnRoute", stopList);
-
-        Stop entyStop = new Stop();
-        model.addAttribute("stop", entyStop);
-
-
-        RouteService routeService = new RouteService(stopRepository, routeRepository);
-        model.addAttribute("stopsNameList", routeService.stopsOnRoute(routeId));
-
-//        Map<String, Optional<Stop>> stopMap = new HashMap<>();
-//        for (int i = 0; i < stopList.size(); i++) {
-//            if (i < stopList.size()) {
-//                stopMap.put(stopList.get(i), stopRepository.findById(stopList.get(i)));
-//            }
-//        }
-//        model.addAttribute("stopsNameList", stopMap);
-
-//        List<Stop> stopList1 = new ArrayList<>();
-//        for (int i = 0; i < stopList.size(); i++) {
-//            if (i < stopList.size()) {
-//                stopList1.add(stopRepository.findById(stopList.get(i)));
-//            }
-//        }
-//        model.addAttribute("stopsNameList", stopMap);
-//
-
-
         return "edit-route";
     }
 
