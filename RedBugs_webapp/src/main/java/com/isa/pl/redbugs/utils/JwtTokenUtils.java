@@ -1,5 +1,6 @@
 package com.isa.pl.redbugs.utils;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +23,7 @@ public class JwtTokenUtils {
     @Value("${jwt.lifetime}")
     private Duration jwtLifetime;
 
-    public String genetateToken(UserDetails userDetails) {
+    public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
         List<String> rolesList = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
@@ -41,5 +42,19 @@ public class JwtTokenUtils {
                 .compact();
     }
 
+    public String getUsername(String token) {
+        return getAllClaimFromToken(token).getSubject();
+    }
 
+    public List<String> getRoles(String token) {
+        return getAllClaimFromToken(token).get("roles", List.class);
+    }
+
+
+    private Claims getAllClaimFromToken(String token) {
+        return Jwts.parser()
+                .setSigningKey(secret)
+                .parseClaimsJws(token)
+                .getBody();
+    }
 }
