@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 public class RouteController {
@@ -39,20 +40,32 @@ public class RouteController {
         List<String> stopList = route.getStops();
         model.addAttribute("stopsOnRoute", stopList);
 
-//        List<Stop> getStopsName =  stopRepository.findById(stopList.get())
-//        List<Optional<Stop>> getStopName = new ArrayList<>();
-//        stopList.stream()
-//                .map(id -> stopRepository.findById(id))
-//                .forEach(stop -> getStopName.add(stop));
-//        model.addAttribute("stopsNameList", getStopName);
+        Stop entyStop = new Stop();
+        model.addAttribute("stop", entyStop);
 
-        Map<String, Optional<Stop>> stopMap = new HashMap<>();
-        for (int i = 0; i < stopList.size(); i++) {
-            if (i < stopList.size()) {
-                stopMap.put(stopList.get(i), stopRepository.findById(stopList.get(i)));
-            }
-        }
-        model.addAttribute("stopsNameList", stopMap);
+
+
+        List<Stop> getStops =  stopRepository.findAll();
+        List<Stop> getStopsNameOnRoute = getStops.stream()
+                .filter(stop -> stopList.contains(stop.getStopName()))
+                .collect(Collectors.toList());
+
+//        for (int i = 0; i < getStops.size(); i++) {
+//            if (stopList.get(i).equals(getStops.get(i).getStopName())) {
+//                getStopsNameOnRoute.add(getStops.get(i));
+//            }
+//        }
+
+
+        model.addAttribute("stopsNameList", getStopsNameOnRoute);
+
+//        Map<String, Optional<Stop>> stopMap = new HashMap<>();
+//        for (int i = 0; i < stopList.size(); i++) {
+//            if (i < stopList.size()) {
+//                stopMap.put(stopList.get(i), stopRepository.findById(stopList.get(i)));
+//            }
+//        }
+//        model.addAttribute("stopsNameList", stopMap);
 
 //        List<Stop> stopList1 = new ArrayList<>();
 //        for (int i = 0; i < stopList.size(); i++) {
@@ -60,8 +73,8 @@ public class RouteController {
 //                stopList1.add(stopRepository.findById(stopList.get(i)));
 //            }
 //        }
-        model.addAttribute("stopsNameList", stopMap);
-
+//        model.addAttribute("stopsNameList", stopMap);
+//
 
 
         return "edit-route";
