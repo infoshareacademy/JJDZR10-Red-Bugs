@@ -4,6 +4,7 @@ import com.isa.pl.redbugs.model.Route;
 import com.isa.pl.redbugs.model.Stop;
 import com.isa.pl.redbugs.repository.RouteRepository;
 import com.isa.pl.redbugs.repository.StopRepository;
+import com.isa.pl.redbugs.service.RouteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Controller
 public class RouteController {
@@ -44,20 +44,8 @@ public class RouteController {
         model.addAttribute("stop", entyStop);
 
 
-
-        List<Stop> getStops =  stopRepository.findAll();
-        List<Stop> getStopsNameOnRoute = getStops.stream()
-                .filter(stop -> stopList.contains(stop.getStopName()))
-                .collect(Collectors.toList());
-
-//        for (int i = 0; i < getStops.size(); i++) {
-//            if (stopList.get(i).equals(getStops.get(i).getStopName())) {
-//                getStopsNameOnRoute.add(getStops.get(i));
-//            }
-//        }
-
-
-        model.addAttribute("stopsNameList", getStopsNameOnRoute);
+        RouteService routeService = new RouteService(stopRepository, routeRepository);
+        model.addAttribute("stopsNameList", routeService.stopsOnRoute(routeId));
 
 //        Map<String, Optional<Stop>> stopMap = new HashMap<>();
 //        for (int i = 0; i < stopList.size(); i++) {
