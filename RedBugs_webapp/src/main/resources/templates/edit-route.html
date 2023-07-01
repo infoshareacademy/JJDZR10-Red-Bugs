@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Edit route</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Edytuj trasę</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
 <div th:replace="fragments/fragment.html :: menu"></div>
 <div class="container">
-  <h1 th:text="${pageTattle}"> Edycja listy przystanków </h1>
-  <form action="#" th:action="@{/routes/edit/{routeId}/edit(routeId=${route.routeId})}" th:object="${route}" method="post">
-  <p>Route Id: <input type="text" th:field="*{routeId}"/></p>
-  <p>Route Name: <input type="text" th:field="*{routeName}"/></p>
-  <p>Vehicle Number: <input type="text" th:field="*{vehicleNumber}"/></p>
-    <table class="table table-hover table-striped">
-      <thead>
-      <tr>
-        <th>#</th>
-        <th>Stop Id</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="stop, i : ${stopsNameList}">
-        <td th:text="${i.index + 1}"></td>
-        <td>
-          <input type="text" th:value="${stop}" />
-        </td>
-      </tr>
-      </tbody>
-    </table>
-    <p><input type="submit" class="btn btn-success" value="Submit"/> <input type="reset" class="btn btn-danger" value="Reset"/></p>
-  </form>
+    <h1 th:text="${pageTattle}"> Edycja listy przystanków </h1>
+    <form action="#" th:action="@{/routes/edit/{routeId}/edit(routeId=${route.routeId})}" th:object="${route}"
+          method="post">
+        <p>Identyfikator trasy: <input type="text" th:field="*{routeId}"/></p>
+        <p>Nazwa trasy: <input type="text" th:field="*{routeName}"/></p>
+        <p>Numer pojazdu: <input type="text" th:field="*{vehicleNumber}"/></p>
+        <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Identyfikator przystanku</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="stop, i : ${stopsOnRoute}">
+                <td th:text="${i.count + 1}"></td>
+                <td><input type="text" th:value="${stop}"/>
+                </td>
+                <td><input type="skasuj" class="btn btn-danger" value="Usuń przystanek"/>
+            </tr>
+            </tbody>
+        </table>
+        <p>
+            <input type="dodaj" class="btn btn-success" value="Dodaj przystanek"/>
+            <input type="submit" class="btn btn-success" value="Zapisz"/>
+            <input type="reset" class="btn btn-danger" value="Skasuj"/></p>
+    </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
