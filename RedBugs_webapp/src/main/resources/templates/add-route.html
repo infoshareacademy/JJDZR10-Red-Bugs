@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Dodawanie pojazdu</title>
+    <title>Dodawanie trasy</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
@@ -10,11 +10,31 @@
 <div class="container">
     <h3>Dodawanie nowej trasy</h3>
     <form action="#" th:action="@{/routes/add}" th:object="${route}" method="post">
-        <p>ID pojazdu: <input type="text" th:field="*{routeId}"/></p>
-        <p>Trasa pojazdu: <input type="text" th:field="*{routeName}"/></p>
-        <p>Wybiez pszystanki: <select th:field="*{stops}">
-            <option th:value="Bus" th:text="Autobus"></option>
-            <option th:value="Tram" th:text="Tramwaj"></option>
+        <p>Id trasy: <input type="text" th:field="*{routeId}"/></p>
+        <p>Nazwa trasy: <input type="text" th:field="*{routeName}"/></p>
+        <p>Numer pojazdu:  <input type="text" th:field="*{vehicleNumber}"/></p>
+        <p>Wybież przystanki:</p>
+        <p>Wybież przystanek 1:<select id="stop1" name="startId">
+            <option th:each="stop : ${stopList}" th:value="${stop.stopId}" th:text="${stop.stopName}" >
+        </select></p>
+        <p>Wybież przystanek 2: <select id="stop2" name="startId">
+            <option th:each="stop : ${stopList}" th:value="${stop.stopId}" th:text="${stop.stopName}" >
+        </select></p>
+        <p>Wybież przystanek 3: <select id="stop3" name="startId">
+            <option th:each="stop : ${stopList}" th:value="${stop.stopId}" th:text="${stop.stopName}" >
+        </select></p>
+        <p>Wybież przystanek 4: <select id="stop4" name="startId">
+            <option th:each="stop : ${stopList}" th:value="${stop.stopId}" th:text="${stop.stopName}" >
+        </select></p>
+        <p>Wybież przystanek 5: <select id="stop5" name="startId">
+            <option th:each="stop : ${stopList}" th:value="${stop.stopId}" th:text="${stop.stopName}" >
+        </select></p>
+        <p>Wybież przystanek 6: <select id="stop6" name="startId">
+            <option th:each="stop : ${stopList}" th:value="${stop.stopId}" th:text="${stop.stopName}" >
+        </select></p>
+        <p>Wybież przystanek 7:
+        <select id="startId" name="stop7">
+            <option th:each="stop : ${stopList}" th:value="${stop.stopId}" th:text="${stop.stopName}" >
         </select>
         </p>
         <ul th:if="${#fields.hasErrors('*')}">

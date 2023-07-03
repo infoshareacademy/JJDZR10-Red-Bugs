@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Details of route</title>
+    <title>Szczegóły trasy</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
@@ -13,11 +13,11 @@
         <thead>
         <tr>
             <th>#</th>
-            <th>Stop name</th>
+            <th>Numer przystanku</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="stop, i : ${stops}">
+        <tr th:each="stop, i : ${stopsOnRoute}">
             <td th:text="${i.index + 1}"></td>
             <td th:text="${stop}"></td>
          </tbody>

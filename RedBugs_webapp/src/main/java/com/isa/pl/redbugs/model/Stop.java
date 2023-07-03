@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 @Data
@@ -16,7 +17,6 @@ public class Stop implements GraphNode {
     private String stopName;
     private double latitude;
     private double longitude;
-
 
 }
 

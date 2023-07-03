@@ -18,7 +18,7 @@ public class Application {
 	public static void main(String[] args) throws Exception {
 
 		ConfigurableApplicationContext cxt = SpringApplication.run(Application.class, args);
-//		InitDataService initService = cxt.getBean(InitDataService.class);
+		InitDataService initService = cxt.getBean(InitDataService.class);
 //
 //		List<Stop> stopsList = initService.getStops();
 //		List<Route> routesList = initService.getRoutes();

@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Trasa już istnieje</title>
+    <title>ID musi być liczbą</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
 <div th:replace="fragments/fragment.html :: menu"></div>
 <div class="container" style="margin-top: 20px">
     <p>Błąd wprowadzania danych!</p>
-    <p>Trasa o wybranym ID już istnieje. Podaj nowe ID lub edytuj trase o wybranym ID.</p>
+    <p>ID może zawierać tylko cyfry 0-200.</p>
     <a th:href="@{/routes/create}" class="btn btn-success">
         Spróbuj ponownie
     </a>
